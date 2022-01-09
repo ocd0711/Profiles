@@ -23,6 +23,25 @@ always-real-ip = %APPEND% msftconnecttest.com, msftncsi.com, *.msftconnecttest.c
 # > VIF Excluded Routes
 tun-excluded-routes = %APPEND% 239.255.255.250/32
 
+[Host]
+# > Firebase Cloud Messaging
+mtalk.google.com = 108.177.125.188
+
+# > Google Dl
+dl.google.com = server:119.29.29.29
+dl.l.google.com = server:119.29.29.29
+update.googleapis.com = server:119.29.29.29
+
+# > PlayStation
+*.dl.playstation.net = server:119.29.29.29
+
+# > Router Admin Panel
+falogin.cn = server:syslib
+melogin.cn = server:syslib
+router.asus.com = server:syslib
+tplinklogin.net = server:syslib
+tplogin.cn = server:syslib
+
 [URL Rewrite]
 # Redirect Google Search Service
 ^https?:\/\/(www.)?(g|google)\.cn https://www.google.com 302
