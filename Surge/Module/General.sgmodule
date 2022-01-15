@@ -2,20 +2,8 @@
 #!desc=高级设置及通用的 URL 重定向优化（如 Google 搜索及地图、AbeamTV 区域限制等）
 
 [General]
-# > Internet 测试 URL
-internet-test-url = http://wifi.vivo.com.cn/generate_204
-# > 代理测速 URL
-proxy-test-url = http://cp.cloudflare.com/generate_204
-# > 测试超时（秒）
-test-timeout = 5
-
-# > 自定义 GeoIP 数据库
-geoip-maxmind-url = https://raw.githubusercontent.com/JMVoid/ipip2mmdb/release/Country.mmdb
-
 # > 跳过代理
 skip-proxy = %APPEND% passenger.t3go.cn
-# > 排除简单主机名
-exclude-simple-hostnames = true
 
 # > Always Real IP Hosts
 always-real-ip = %APPEND% msftconnecttest.com, msftncsi.com, *.msftconnecttest.com, *.msftncsi.com, *.srv.nintendo.net, *.stun.playstation.net, xbox.*.microsoft.com, *.xboxlive.com, *.battlenet.com.cn, *.battlenet.com, *.blzstatic.cn, *.battle.net
@@ -24,41 +12,6 @@ always-real-ip = %APPEND% msftconnecttest.com, msftncsi.com, *.msftconnecttest.c
 tun-excluded-routes = %APPEND% 239.255.255.250/32
 
 [Host]
-# > Apple
-aaplimg.com = server:119.29.29.29
-apple.com = server:119.29.29.29
-apple-cloudkit.com = server:119.29.29.29
-apple-mapkit.com = server:119.29.29.29
-cdn-apple.com = server:119.29.29.29
-mzstatic.com = server:119.29.29.29
-*.aaplimg.com = server:119.29.29.29
-*.apple.com = server:119.29.29.29
-*.apple-cloudkit.com = server:119.29.29.29
-*.apple-mapkit.com = server:119.29.29.29
-*.cdn-apple.com = server:119.29.29.29
-*.mzstatic.com = server:119.29.29.29
-*apple.com.akadns.net = server:119.29.29.29
-*.apple.com.edgekey.net = server:119.29.29.29
-*.apple.com.edgekey.net.globalredir.akadns.net = server:119.29.29.29
-*icloud.com.akadns.net = server:119.29.29.29
-
-# > Firebase Cloud Messaging
-mtalk.google.com = 108.177.125.188
-
-# > Google Dl
-dl.google.com = server:119.29.29.29
-dl.l.google.com = server:119.29.29.29
-update.googleapis.com = server:119.29.29.29
-
-# > PlayStation
-*.dl.playstation.net = server:119.29.29.29
-
-# > Router Admin Panel
-falogin.cn = server:syslib
-melogin.cn = server:syslib
-router.asus.com = server:syslib
-tplinklogin.net = server:syslib
-tplogin.cn = server:syslib
 
 [URL Rewrite]
 # Redirect Google Search Service
