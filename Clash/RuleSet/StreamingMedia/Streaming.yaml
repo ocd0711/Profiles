@@ -4,10 +4,12 @@ payload:
   # (Live)
   # > Twitch
   - PROCESS-NAME,tv.twitch.android.app
+  - DOMAIN-SUFFIX,ext-twitch.tv
   - DOMAIN-SUFFIX,jtvnw.net
   - DOMAIN-SUFFIX,ttvnw.net
   - DOMAIN-SUFFIX,twitch.tv
   - DOMAIN-SUFFIX,twitchcdn.net
+  - DOMAIN-SUFFIX,twitch-ext.rootonline.de
 
   # (Music)
   # > Deezer

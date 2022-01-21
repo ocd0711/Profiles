@@ -2,10 +2,12 @@
 
 # (Live)
 # > Twitch
+DOMAIN-SUFFIX,ext-twitch.tv
 DOMAIN-SUFFIX,jtvnw.net
 DOMAIN-SUFFIX,ttvnw.net
 DOMAIN-SUFFIX,twitch.tv
 DOMAIN-SUFFIX,twitchcdn.net
+DOMAIN-SUFFIX,twitch-ext.rootonline.de
 
 # (Music)
 # > Apple Music Radio
