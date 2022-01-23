@@ -1,4 +1,5 @@
 # > bilibili
+DOMAIN,api.biliapi.net
 DOMAIN,api.bilibili.com
 DOMAIN,app.bilibili.com
 DOMAIN,grpc.biliapi.net
