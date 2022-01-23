@@ -3,7 +3,9 @@ DOMAIN,api.biliapi.net
 DOMAIN,api.bilibili.com
 DOMAIN,app.bilibili.com
 DOMAIN,grpc.biliapi.net
+DOMAIN,m.bilibili.com
 DOMAIN,upos-hz-mirrorakam.akamaized.net
+DOMAIN,www.bilibili.com
 DOMAIN-KEYWORD,cn-hk-eq-bcache-
 # > 愛奇藝台灣站
 DOMAIN,cache.video.iqiyi.com
