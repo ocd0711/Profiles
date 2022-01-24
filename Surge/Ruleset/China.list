@@ -341,3 +341,6 @@ DOMAIN-SUFFIX,zhimg.com
 DOMAIN-SUFFIX,zhuihd.com
 
 DOMAIN,download.jetbrains.com
+
+# Just for Quantumult X, change priority(local geoip > remote ip-cidr) to order
+GEOIP,CN,no-resolve
