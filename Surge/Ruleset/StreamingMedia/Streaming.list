@@ -222,9 +222,6 @@ DOMAIN,d3c7rimkq79yfu.cloudfront.net
 # > LiTV
 DOMAIN-SUFFIX,litv.tv
 DOMAIN,litvfreemobile-hichannel.cdn.hinet.net
-# > MangoTV(芒果TV国际)
-DOMAIN-SUFFIX,api.mgtv.com
-DOMAIN,mobileso.bz.mgtv.com
 # > My5
 USER-AGENT,My5*
 DOMAIN-SUFFIX,channel5.com
