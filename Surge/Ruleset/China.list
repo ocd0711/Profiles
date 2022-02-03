@@ -28,5 +28,5 @@ IP-CIDR,203.205.254.0/23,no-resolve
 DOMAIN,ip.istatmenus.app
 DOMAIN,sms.imagetasks.com
 
-# Just for Quantumult X, change priority(local geoip > remote ip-cidr) to order
+# Just for Quantumult X, move GEOIP,CN to the bottom (local filter at the top by default)
 GEOIP,CN,no-resolve
