@@ -1,6 +1,7 @@
 # China Area Network
 DOMAIN-SUFFIX,flyert.com
 DOMAIN-SUFFIX,gandi.net
+DOMAIN,api.steampowered.com // Steam Client
 DOMAIN,download.jetbrains.com
 # ---(Microsoft)---
 # > Outlook
