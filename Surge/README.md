@@ -11,22 +11,22 @@
 
 ## 说明
 
-你可能需要阅读这份[使用说明](https://www.notion.so/divineengine/b4161dac0412486e9a6f1637a1b2d572)。
+### 关于 IPv6
 
-对于 Surge(Legacy Support) 即 Surge 2 用户的支持已经停止。
+默认并不开启 IPv6，如需要可在「更多设置 >」里打开「IPv6 支持」，或在文本配置中修改 `ipv6 = false` 为 `ipv6 = true`。
 
-### 关于 Rewrite
+### 关于 DNS
 
-对于 Surge 4（指已解锁「模块」功能）的用户，可自行删除 `[URL Rewrite]` 内的 Rewrite 以模块替代方便更新，建议必选 Module 目录下的 `General.sgmodule` 模块，其他按需添加。
+如果所使用的网络没有 DNS 劫持问题，则配置为使用系统 DNS 并追加公共 DNS，如果所使用的网络存在 DNS 劫持问题，则配置为仅使用公共 DNS；
+> 如部分运营商存在劫持海外正常网站至反诈页面的（据目前反馈它们没有抢答公共 DNS，所以）可以在「DNS 设置」中选择「使用自定义 DNS 服务器」或文本配置中将 `dns-server =` 中的 `system` 移除。
 
-对于 Surge 3（指未解锁「模块」功能）的用户，默认不带有去广告的 Rewrite 及 hostname，你需要进行以下步骤：
+不建议使用海外 DNS（包括 119.28.28.28），如 `1.1.1.1` 解析哔哩哔哩返回的是香港的 CDN，这时候再指定个规则直连没什么意义；
 
-0. 需要安装[快捷指令](https://apps.apple.com/app/apple-store/id915249334)并在系统设置中设置「允许不受信任的快捷指令」，然后添加快捷指令：[更新 Rewrite Block Ads](https://www.icloud.com/shortcuts/c1c80c2c67a742f2ac734f086f12b30b)。
-1. 打开 Surge 进入「配置列表」，在底部选择「导出到 iCloud 或其他应用」，选择「我的 iPhone」或「iCloud Drive」。
-2. 打开快捷指令「更新 Rewrite Block Ads」根据提示打开刚才导出的配置。
-3. 在自动化配置完成后会自动弹出界面，在应用图标那一行向左滑动，在最右侧有「更多」图标，点击进去后选择『拷贝到「Surge」』
-4. 在配置列表内选择刚才导入进来已经更新完成的配置文件名，默认为「Surge.conf」（若需要修改成其他名字可自行修改快捷指令，在末尾处）。
+非必要不建议使用 DoH；
+> 必要指的是如中国移动这种抢答公共 DNS 的运营商
 
-⚠️ 注意：如在 Surge 内出现『未能打开文件「*.conf」，因为它不存在』的错误提示，这一般出现在运行快捷指令时 Surge 没有同时打开，这时关掉提示重新运行一次快捷指令即可。
+### 关于 Apple 分流
 
-之后更新有关去广告的 Rewrite 及 hostname 均可重复此步骤，此方法极大简化了未解锁「模块」功能用户更新 Rewrite 及 hostname 部分的困难操作，如有自定义的 `hostname` 放置在首部（也就是 `www.google.cn` 之前）不会在更新时被覆盖。
+默认 Apple 分流为直连（除了被动或主动屏蔽的那些，所以 Apple.list 放在 Global.list 之后），所以如果想完全走代理可以将 `RULE-SET,Apple.list` 修改为代理策略。
+
+但若想 Apple 只要国内全走直连只要国外全走代理可将 `RULE-SET,Apple.list` 注释或移除，**前提是 Apple 相关域名仅使用国内 DNS**。
