@@ -12,6 +12,9 @@ payload:
   - DOMAIN-SUFFIX,twitch-ext.rootonline.de
 
   # (Music)
+  # > Apple Music Radio
+  - DOMAIN,radio.itunes.apple.com
+  - DOMAIN,tv.applemusic.com
   # > Deezer
   - PROCESS-NAME,deezer.android.app
   - DOMAIN-SUFFIX,deezer.com
@@ -169,7 +172,6 @@ payload:
   - DOMAIN,players.brightcove.net
   - DOMAIN,s3-ap-southeast-1.amazonaws.com
   # > 华文电视
-  # USER-AGENT,HWTVMobile*
   - DOMAIN-SUFFIX,5itv.tv
   - DOMAIN-SUFFIX,ocnttv.com
   # > Hulu
