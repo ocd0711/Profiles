@@ -1,5 +1,6 @@
 # > Apple Music
 USER-AGENT,Music*,PROXY
+DOMAIN-SUFFIX,applemusic.com,PROXY
 DOMAIN-SUFFIX,music.apple.com,PROXY
 DOMAIN,aod.itunes.apple.com,PROXY
 DOMAIN,aod-ssl.itunes.apple.com,PROXY
