@@ -12,9 +12,6 @@ payload:
   - DOMAIN-SUFFIX,twitch-ext.rootonline.de
 
   # (Music)
-  # > Apple Music Radio
-  - DOMAIN,radio.itunes.apple.com
-  - DOMAIN,tv.applemusic.com
   # > Deezer
   - PROCESS-NAME,deezer.android.app
   - DOMAIN-SUFFIX,deezer.com

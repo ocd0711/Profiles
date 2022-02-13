@@ -361,7 +361,7 @@ payload:
   - DOMAIN-SUFFIX,reutersmedia.net
   # > Steam
   - DOMAIN-SUFFIX,steamcommunity.com
-  #   - DOMAIN,store.steampowered.com
+  # - DOMAIN,store.steampowered.com
   # > Telegram
   - DOMAIN-SUFFIX,legra.ph
   - DOMAIN-SUFFIX,t.me
@@ -446,6 +446,7 @@ payload:
   - DOMAIN,beta.music.apple.com
   - DOMAIN,books.itunes.apple.com
   - DOMAIN,lookup-api.apple.com
+  - DOMAIN,radio.itunes.apple.com
   # > Web Preview
   - DOMAIN,apps.apple.com
   - DOMAIN,books.apple.com
