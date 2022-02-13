@@ -23,6 +23,7 @@ payload:
   # > PayPal
   - DOMAIN-SUFFIX,paypal.com
   - DOMAIN-SUFFIX,paypal.me
+  - DOMAIN-SUFFIX,paypal-mktg.com
   - DOMAIN-SUFFIX,paypalobjects.com
   # > Tencent
   - IP-CIDR,182.254.116.0/24,no-resolve
