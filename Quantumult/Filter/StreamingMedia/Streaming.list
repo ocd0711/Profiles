@@ -85,6 +85,8 @@ DOMAIN,d1v5ir2lpwr8os.cloudfront.net,Streaming
 DOMAIN,d27xxe7juh1us6.cloudfront.net,Streaming
 # DOMAIN,www.amazon.com,Streaming
 DOMAIN-KEYWORD,avoddashs,Streaming
+# > Apple Music TV
+DOMAIN,tv.applemusic.com,Streaming
 # > Apple TV
 DOMAIN,linear.tv.apple.com,Streaming
 DOMAIN,play-edge.itunes.apple.com,Streaming
