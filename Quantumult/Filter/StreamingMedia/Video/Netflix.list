@@ -19,4 +19,4 @@ DOMAIN-SUFFIX,netflixdnstest8.com,Netflix
 DOMAIN-SUFFIX,netflixdnstest9.com,Netflix
 DOMAIN-KEYWORD,apiproxy-device-prod-nlb-,Netflix
 DOMAIN-KEYWORD,dualstack.apiproxy-,Netflix
-GEOIP,netflix,no-resolve,Netflix
+# GEOIP,netflix,no-resolve,Netflix
