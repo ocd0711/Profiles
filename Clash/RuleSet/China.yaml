@@ -2,8 +2,10 @@ payload:
   # China Area Network
   - DOMAIN-SUFFIX,flyert.com
   - DOMAIN-SUFFIX,gandi.net
-  - DOMAIN-SUFFIX,steampowered.com
+  - DOMAIN-SUFFIX,cm.steampowered.com
+  - DOMAIN,api.steampowered.com
   - DOMAIN,download.jetbrains.com
+  - DOMAIN,origin-a.akamaihd.ne
   # ---(Microsoft)---
   # > Outlook
   - DOMAIN,outlook.office365.com
