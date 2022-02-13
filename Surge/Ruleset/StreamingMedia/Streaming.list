@@ -10,9 +10,6 @@ DOMAIN-SUFFIX,twitchcdn.net
 DOMAIN-SUFFIX,twitch-ext.rootonline.de
 
 # (Music)
-# > Apple Music Radio
-DOMAIN,radio.itunes.apple.com
-DOMAIN,tv.applemusic.com
 # > Deezer
 USER-AGENT,Deezer*
 DOMAIN-SUFFIX,deezer.com
