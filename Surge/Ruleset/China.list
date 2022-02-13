@@ -1,8 +1,10 @@
 # China Area Network
 DOMAIN-SUFFIX,flyert.com
 DOMAIN-SUFFIX,gandi.net
-DOMAIN-SUFFIX,steampowered.com // Steam Client
+DOMAIN-SUFFIX,cm.steampowered.com // Steam Connect Manager Servers
+DOMAIN,api.steampowered.com
 DOMAIN,download.jetbrains.com
+DOMAIN,origin-a.akamaihd.net // Origin Download
 # ---(Microsoft)---
 # > Outlook
 DOMAIN,outlook.office365.com

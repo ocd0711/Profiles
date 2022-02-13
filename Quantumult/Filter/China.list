@@ -1,8 +1,10 @@
 # China Area Network
 DOMAIN-SUFFIX,flyert.com,DIRECT
 DOMAIN-SUFFIX,gandi.net,DIRECT
-DOMAIN-SUFFIX,steampowered.com,DIRECT
+DOMAIN-SUFFIX,cm.steampowered.com,DIRECT
+DOMAIN,api.steampowered.com,DIRECT
 DOMAIN,download.jetbrains.com,DIRECT
+DOMAIN,origin-a.akamaihd.ne,DIRECT
 # ---(Microsoft)---
 # > Outlook
 DOMAIN,outlook.office365.com,DIRECT
