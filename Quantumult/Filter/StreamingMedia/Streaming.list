@@ -255,7 +255,7 @@ DOMAIN-SUFFIX,netflixdnstest8.com,Streaming
 DOMAIN-SUFFIX,netflixdnstest9.com,Streaming
 DOMAIN-KEYWORD,apiproxy-device-prod-nlb-,Streaming
 DOMAIN-KEYWORD,dualstack.apiproxy-,Streaming
-# GEOIP,netflix,no-resolve,Streaming
+# GEOIP,netflix,Streaming
 # > niconico
 USER-AGENT,Niconico*,Streaming
 DOMAIN-SUFFIX,dmc.nico,Streaming
