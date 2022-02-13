@@ -84,6 +84,8 @@ payload:
   - DOMAIN,d27xxe7juh1us6.cloudfront.net
   # - DOMAIN,www.amazon.com
   - DOMAIN-KEYWORD,avoddashs
+  # > Apple Music TV
+  - DOMAIN,tv.applemusic.com
   # > Apple TV
   - DOMAIN,linear.tv.apple.com
   - DOMAIN,play-edge.itunes.apple.com
