@@ -95,6 +95,7 @@ DOMAIN,uts-api.itunes.apple.com,Streaming
 USER-AGENT,Anime*,Streaming
 DOMAIN-SUFFIX,bahamut.com.tw,Streaming
 DOMAIN-SUFFIX,gamer.com.tw,Streaming
+DOMAIN,bahamut.akamaized.net,Streaming
 DOMAIN,gamer-cds.cdn.hinet.net,Streaming
 DOMAIN,gamer2-cds.cdn.hinet.net,Streaming
 # > BBC iPlayer
