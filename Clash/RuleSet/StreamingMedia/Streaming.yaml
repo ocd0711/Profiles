@@ -302,7 +302,7 @@ payload:
   - DOMAIN-SUFFIX,tik-tokapi.com
   - DOMAIN-SUFFIX,tiktokcdn.com
   - DOMAIN-SUFFIX,tiktokv.com
-  - DOMAIN-KEYWORD,-tiktokcdn-com
+  - DOMAIN-KEYWORD,tiktokcdn-
   # > TVer
   - PROCESS-NAME,jp.hamitv.hamiand1
   - DOMAIN-SUFFIX,tver.jp

@@ -301,7 +301,7 @@ DOMAIN-SUFFIX,tiktok.com,Streaming
 DOMAIN-SUFFIX,tik-tokapi.com,Streaming
 DOMAIN-SUFFIX,tiktokcdn.com,Streaming
 DOMAIN-SUFFIX,tiktokv.com,Streaming
-DOMAIN-KEYWORD,-tiktokcdn-com,Streaming
+DOMAIN-KEYWORD,tiktokcdn-,Streaming
 # > TVer
 USER-AGENT,TVer-Release*,Streaming
 DOMAIN-SUFFIX,tver.jp,Streaming
