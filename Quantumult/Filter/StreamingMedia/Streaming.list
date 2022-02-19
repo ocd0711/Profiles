@@ -72,8 +72,9 @@ USER-AGENT,Prime%20Video*,Streaming
 DOMAIN-SUFFIX,aiv-cdn.net,Streaming
 DOMAIN-SUFFIX,aiv-delivery.net,Streaming
 DOMAIN-SUFFIX,amazonvideo.com,Streaming
-DOMAIN-SUFFIX,primevideo.com,Streaming
 DOMAIN-SUFFIX,media-amazon.com,Streaming
+DOMAIN-SUFFIX,primevideo.com,Streaming
+DOMAIN-SUFFIX,pv-cdn.net,Streaming
 DOMAIN,atv-ps.amazon.com,Streaming
 DOMAIN,fls-na.amazon.com,Streaming
 DOMAIN,avodmp4s3ww-a.akamaihd.net,Streaming
