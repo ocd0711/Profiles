@@ -33,6 +33,7 @@ payload:
   - DOMAIN-SUFFIX,binance.im
   - DOMAIN-SUFFIX,binance.me
   - DOMAIN-SUFFIX,binance.us
+  - DOMAIN-SUFFIX,bnappzh.co
   - DOMAIN-SUFFIX,bnappzh.com
   - DOMAIN-SUFFIX,bnbstatic.com
   - DOMAIN-SUFFIX,bntrace.com
@@ -45,4 +46,3 @@ payload:
   - DOMAIN-SUFFIX,aimoon.com
   - DOMAIN-SUFFIX,coingecko.com
   - DOMAIN-SUFFIX,coinmarketcap.com
-  - DOMAIN-SUFFIX,tradingview.com
