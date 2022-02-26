@@ -347,6 +347,7 @@ payload:
   - DOMAIN,az416426.vo.msecnd.net
   - DOMAIN,az668014.vo.msecnd.net
   # > Pinterest
+  - DOMAIN-SUFFIX,pinimg.com
   - DOMAIN-KEYWORD,.pinterest.
   # > pixiv
   - DOMAIN-SUFFIX,pixiv.net

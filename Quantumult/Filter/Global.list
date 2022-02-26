@@ -346,6 +346,7 @@ DOMAIN,assets2.xboxlive.com,PROXY
 DOMAIN,az416426.vo.msecnd.net,PROXY
 DOMAIN,az668014.vo.msecnd.net,PROXY
 # > Pinterest
+DOMAIN-SUFFIX,pinimg.com,PROXY
 DOMAIN-KEYWORD,.pinterest.,PROXY
 # > pixiv
 DOMAIN-SUFFIX,pixiv.net,PROXY
