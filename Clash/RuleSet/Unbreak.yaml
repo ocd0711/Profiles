@@ -1,11 +1,5 @@
 payload:
   # Unbreak
-  # > General
-  - DOMAIN,app.adjust.com
-  - DOMAIN,bdtj.tagtic.cn
-  # > Alibaba
-  - DOMAIN,log.mmstat.com
-  - DOMAIN,sycm.mmstat.com
   # > Google
   - DOMAIN-SUFFIX,blog.google
   - DOMAIN-SUFFIX,googletraveladservices.com
@@ -27,12 +21,3 @@ payload:
   - DOMAIN,alt6-mtalk.google.com
   - DOMAIN,alt7-mtalk.google.com
   - DOMAIN,alt8-mtalk.google.com
-  # > Tencent
-  - DOMAIN,fairplay.l.qq.com
-  - DOMAIN,livew.l.qq.com
-  - DOMAIN,vd.l.qq.com
-  # > Strava
-  - DOMAIN,analytics.strava.com
-  # > Umeng
-  - DOMAIN,msg.umeng.com
-  - DOMAIN,msg.umengcloud.com
