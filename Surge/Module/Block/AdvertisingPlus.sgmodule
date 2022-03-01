@@ -1,20 +1,12 @@
 #!name=Block Advertising Plus
 #!desc=Block Advertising with Script
 
-[URL Rewrite]
-# > Douyin(<= 16.2.0) By Choler
-^https?:\/\/api.*\.amemv\.com\/aweme\/v2\/feed\/ https://aweme.snssdk.com/aweme/v1/feed/ header
-
 [Map Local]
 # ---(By blackmatrix7)---
 # 知乎其他广告拦截
 ^https?:\/\/api\.zhihu\.com\/(notifications\/v\d\/count|v\d\/package|me\/guides|drama\/living-info|ad|fringe|commercial|market\/popovers|.*featured-comment-ad) data="https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/blank/blank_dict.json"
 
 [Script]
-# ---(By Choler)---
-# > Douyin(<= 16.2.0) - api*.amemv.com, *.snssdk.com
-douyin = type=http-response,pattern=^https?:\/\/aweme\.snssdk\.com\/aweme\/v\d\/feed\/,requires-body=1,script-path=https://raw.githubusercontent.com/Choler/Surge/master/Script/douyin.js
-# ------
 
 # ---(By yichahucha)---
 # > Weibo - api.weibo.cn,mapi.weibo.com,*.uve.weibo.com
