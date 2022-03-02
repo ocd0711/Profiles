@@ -128,6 +128,9 @@ DOMAIN-SUFFIX,discoveryplus.co.uk
 DOMAIN-SUFFIX,discoveryplus.com
 DOMAIN-SUFFIX,discoveryplus.in
 DOMAIN-SUFFIX,dnitv.com
+# DOMAIN,go-prod-vz.akamaized.net
+DOMAIN,x-default-stgec.uplynk.com
+DOMAIN-KEYWORD,discovery.uplynk.com
 # > Disney+
 USER-AGENT,Disney+*
 DOMAIN-SUFFIX,bamgrid.com
