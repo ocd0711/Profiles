@@ -227,6 +227,7 @@ payload:
   - DOMAIN-SUFFIX,on2.com
   - DOMAIN-SUFFIX,recaptcha.net
   - DOMAIN-SUFFIX,schema.org
+  - DOMAIN-SUFFIX,tenor.com
   - DOMAIN-SUFFIX,tensorflow.org
   - DOMAIN-SUFFIX,tfhub.dev
   - DOMAIN-SUFFIX,tiltbrush.com
@@ -339,6 +340,7 @@ payload:
   - DOMAIN-SUFFIX,github.blog
   - DOMAIN-SUFFIX,github.com
   - DOMAIN-SUFFIX,github.io
+  - DOMAIN-SUFFIX,githubassets.com
   - DOMAIN-SUFFIX,githubusercontent.com
   - DOMAIN-SUFFIX,onedrive.live.com
   - DOMAIN-SUFFIX,streaming.mediaservices.windows.net
