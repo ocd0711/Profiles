@@ -1,6 +1,7 @@
 # Unbreak
 # > General
 DOMAIN,app.adjust.com,DIRECT
+DOMAIN,app.appsflyer.com,DIRECT
 DOMAIN,bdtj.tagtic.cn,DIRECT
 # > Alibaba
 DOMAIN,log.mmstat.com,DIRECT
