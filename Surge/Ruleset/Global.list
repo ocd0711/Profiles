@@ -439,6 +439,7 @@ DOMAIN-SUFFIX,engadget.com
 DOMAIN-SUFFIX,ifixit.com
 DOMAIN-SUFFIX,terabox.com
 DOMAIN-SUFFIX,zaobao.com.sg
+DOMAIN,addons.mozilla.org // Firefox Add-ons HTTP 451
 DOMAIN,wego.here.com
 # > Alphabet
 DOMAIN-SUFFIX,go.dev

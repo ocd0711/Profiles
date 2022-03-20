@@ -438,6 +438,7 @@ DOMAIN-SUFFIX,engadget.com,PROXY
 DOMAIN-SUFFIX,ifixit.com,PROXY
 DOMAIN-SUFFIX,terabox.com,PROXY
 DOMAIN-SUFFIX,zaobao.com.sg,PROXY
+DOMAIN,addons.mozilla.org,PROXY
 DOMAIN,wego.here.com,PROXY
 # > Alphabet
 DOMAIN-SUFFIX,go.dev,PROXY
