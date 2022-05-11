@@ -6,14 +6,14 @@
 
 | 类别 | 配置 |
 | :------------: | :------------: |
-| 出国版 | [Outbound](https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Outbound.conf) |
-| 回国版 | [Inbound](https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Inbound.conf) |
+| 出国版 | [Outbound](https://raw.githubusercontent.com/OCD0711/Profiles/master/Surge/Outbound.conf) |
+| 回国版 | [Inbound](https://raw.githubusercontent.com/OCD0711/Profiles/master/Surge/Inbound.conf) |
 
 ## 说明
 
 ### 关于 IPv6
 
-默认并不开启 IPv6，如需要可在「更多设置 >」里打开「IPv6 支持」，或在文本配置中修改 `ipv6 = false` 为 `ipv6 = true`。
+默认并开启 IPv6，如需要可在「更多设置 >」里g关闭「IPv6 支持」，或在文本配置中修改 `ipv6 = true` 为 `ipv6 = false`。
 
 ### 关于 DNS
 
@@ -26,7 +26,7 @@
 > 注意，有代理规则的域名并不会有本地 DNS 结果（远程解析），如果出现已有代理规则的域名出现在「DNS 结果」说明有不带「no-resolve」参数的 IP 规则位于 DOMAIN 规则之前。
 
 非必要不建议使用 DoH；
-> 必要指的是如中国移动这种抢答公共 DNS 的运营商
+> 必要指的是如中国移动这种抢答公共 DNS 的运营商,默认已添加 ali of DNS servers，如果需要添加或者删除 DNS 服务器，可在「DNS 设置」中设置。
 
 ### 关于 Apple 分流
 
