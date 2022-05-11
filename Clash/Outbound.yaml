@@ -20,7 +20,7 @@ mixed-port: 7890
 
 # Set to true to allow connections to the local-end server from
 # other LAN IP addresses
-allow-lan: false
+allow-lan: true
 
 # This is only applicable when `allow-lan` is `true`
 # '*': bind all IP addresses
@@ -39,7 +39,7 @@ mode: rule
 log-level: info
 
 # When set to false, resolver won't translate hostnames to IPv6 addresses
-ipv6: false
+ipv6: true
 
 # RESTful web API listening address
 external-controller: 127.0.0.1:9090
@@ -70,9 +70,9 @@ hosts:
 
   # Firebase Cloud Messaging
   'mtalk.google.com': 108.177.125.188
-  # Google Dl
-  'dl.google.com': 180.163.151.161
-  'dl.l.google.com': 180.163.151.161
+
+  # > Router Admin Panel
+  'router.asus.com': 192.168.50.1
 
 profile:
   # Store the `select` results in $HOME/.config/clash/.cache
@@ -99,25 +99,24 @@ dns:
   # i.e. questions to these domain names will always be answered with their
   # real IP addresses
   fake-ip-filter:
-    - '*.lan'
-    - localhost.ptlogin2.qq.com
-    - '+.srv.nintendo.net'
-    - '+.stun.playstation.net'
-    - '+.msftconnecttest.com'
-    - '+.msftncsi.com'
-    - '+.xboxlive.com'
-    - 'msftconnecttest.com'
+    - '*.msftconnecttest.com'
+    - '*.msftncsi.com'
+    - '*.srv.nintendo.net'
+    - '*.stun.playstation.net'
     - 'xbox.*.microsoft.com'
-    - '*.battlenet.com.cn'
-    - '*.battlenet.com'
-    - '*.blzstatic.cn'
-    - '*.battle.net'
+    - '*.xboxlive.com'
+    - '*.logon.battlenet.com.cn'
+    - '*.logon.battle.net'
+    - 'stun.l.google.com'
   
   # Supports UDP, TCP, DoT, DoH. You can specify the port to connect to.
   # All DNS questions are sent directly to the nameserver, without proxies
   # involved. Clash answers the DNS question with the first result gathered.
   nameserver:
-    - 119.29.29.29
+    - 223.5.5.5
+    - 223.6.6.6
+    - dhcp://en0
+    - https://223.5.5.5/dns-query
     # - 114.114.114.114 # default value
     # - 8.8.8.8 # default value
     # - tls://dns.rubyfish.cn:853 # DNS over TLS
@@ -240,9 +239,9 @@ proxy-providers:
 
   # 此处只是订阅示例，如果没有订阅链接的使用需求，此处及 proxy-groups 的相关内容可删除
 
-  DuckDuckGoList: #「冲鸭机场」订阅
+  DlerCloud: #「机场」订阅
     type: http
-    url: "https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/ProxyList/List.yaml" # 放机场订阅链接
+    url: "https://xxxx?protocols=smart&list=clash" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/List.yaml # 注意此处文件名不可相同
     health-check:
@@ -250,15 +249,45 @@ proxy-providers:
       interval: 600
       url: http://www.gstatic.com/generate_204
 
-  # DuckDuckGoUS: #「冲鸭机场」订阅美国地区节点
-  #   type: http
-  #   url: "https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/ProxyList/US.yaml" # 放机场订阅链接
-  #   interval: 3600
-  #   path: ./Proxy/US.yaml # 注意此处文件名不可相同
-  #   health-check:
-  #     enable: true
-  #     interval: 600
-  #     url: http://www.gstatic.com/generate_204
+  HK: #「机场」订阅香港地区节点
+    type: http
+    url: "https://xxxx?protocols=smart&list=clash&area=hk" # 放机场订阅链接
+    interval: 3600
+    path: ./Proxy/HK.yaml # 注意此处文件名不可相同
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+  
+  TW: #「机场」订阅台湾地区节点
+    type: http
+    url: "https://xxxx?protocols=smart&list=clash&area=tw" # 放机场订阅链接
+    interval: 3600
+    path: ./Proxy/TW.yaml # 注意此处文件名不可相同
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+
+  US: #「机场」订阅美国地区节点
+    type: http
+    url: "https://xxxx?protocols=smart&list=clash&area=us" # 放机场订阅链接
+    interval: 3600
+    path: ./Proxy/US.yaml # 注意此处文件名不可相同
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+
+  JP: #「机场」订阅日本地区节点
+    type: http
+    url: "https://xxxx?protocols=smart&list=clash&area=jp" # 放机场订阅链接
+    interval: 3600
+    path: ./Proxy/JP.yaml # 注意此处文件名不可相同
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
 
 proxy-groups:
 # 策略组示例请查阅 Clash 项目 README 以使用最新格式：https://github.com/Dreamacro/clash/wiki/configuration
@@ -289,23 +318,50 @@ proxy-groups:
   # 但如果订阅节点很多选起来就很麻烦，不如先嵌套一个策略组进行手动或自动的选择。
 
   # 手动选择订阅节点
-  - name: "DuckDuckGo"
-    type: select # 亦可使用 fallback 或 load-balance
+  - name: "DlerCloud"
+    type: url-test # 亦可使用 fallback 或 load-balance
     use: # 注意此处是「use」
-      - DuckDuckGoList # 这是上面「proxy-providers」的名称
+      - DlerCloud # 这是上面「proxy-providers」的名称
+    url: http://www.gstatic.com/generate_204
+    interval: "3600"
 
-  # - name: "US"
-  #   type: select # 亦可使用 fallback 或 load-balance
-  #   use: # 注意此处是「use」
-  #     - DuckDuckGoUS # 这是上面「proxy-providers」的名称
+  - name: "US"
+    type: url-test # 亦可使用 fallback 或 load-balance
+    use: # 注意此处是「use」
+      - US # 这是上面「proxy-providers」的名称
+    url: http://www.gstatic.com/generate_204
+    interval: "3600"
+
+  - name: "TW"
+    type: url-test # 亦可使用 fallback 或 load-balance
+    use: # 注意此处是「use」
+      - TW # 这是上面「proxy-providers」的名称
+    url: http://www.gstatic.com/generate_204
+    interval: "3600"
+
+  - name: "HK"
+    type: url-test # 亦可使用 fallback 或 load-balance
+    use: # 注意此处是「use」
+      - HK # 这是上面「proxy-providers」的名称
+    url: http://www.gstatic.com/generate_204
+    interval: "3600"
+
+  - name: "JP"
+    type: url-test # 亦可使用 fallback 或 load-balance
+    use: # 注意此处是「use」
+      - JP # 这是上面「proxy-providers」的名称
+    url: http://www.gstatic.com/generate_204
+    interval: "3600"
 
   # Fallback 比较实用的策略组类型，用于测试服务器节点的可用性，当第一个节点不可用时切换到第二个，以此类推。
   - name: "Fallback"
     type: fallback
     proxies:
-      - 1
-      - 2
-      - 3
+      - DlerCloud
+      - HK
+      - JP
+      - TW
+      - US
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
 
@@ -313,11 +369,12 @@ proxy-groups:
   - name: "PROXY"
     type: select
     proxies:
+      - DlerCloud
       - Fallback
-      - 1
-      - 2
-      - 3
-      - DuckDuckGo # 嵌套使用订阅节点策略组
+      - HK
+      - JP
+      - TW
+      - US
 
   # 白名单模式 PROXY, 黑名单模式 DIRECT, 不知道别动
   - name: "MATCH"
@@ -330,11 +387,12 @@ proxy-groups:
   - name: "Streaming"
     type: select
     proxies:
-      - PROXY
-      - 1
-      - 2
-      - 3
-      # - US
+      - DlerCloud
+      - Fallback
+      - HK
+      - JP
+      - TW
+      - US
 
   # 中国流媒体服务（面向海外版本）
   # 用于观看部分国内流媒体面向港澳台的地区的限定内容，此处应放港澳台节点，如果没有此需求可删除此处策略组及相关规则
@@ -342,7 +400,8 @@ proxy-groups:
     type: select
     proxies:
       - DIRECT
-      - 2
+      - HK
+      - TW
 
 # 关于 Rule Provider 请查阅：https://lancellc.gitbook.io/clash/clash-config-file/rule-provider
 
@@ -389,10 +448,20 @@ rule-providers:
     url: https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/China.yaml
     interval: 86400
 
+  WAQI:
+    type: http
+    behavior: classical
+    path: ./RuleSet/WAQI.yaml
+    url: https://raw.githubusercontent.com/OCD0711/Profiles/master/Clash/RuleSet/Extra/WAQI.yaml
+    interval: 86400
+
 # 规则
 rules:
   # Unbreak
   - RULE-SET,Unbreak,DIRECT
+
+  # (WAQI)
+  - RULE-SET,WAQI,JP
 
   # Global Area Network
 
