@@ -3,20 +3,13 @@
 #!system=ios
 
 [Script]
-Bili Region = type=http-response,pattern=^https:\/\/ap(p|i)\.bili(bili|api)\.(com|net)\/(pgc\/view\/v\d\/app\/season|x\/v\d\/search\/defaultwords)\?access_key,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Bili_Auto_Regions.js
-Bili Search = type=http-request,pattern=^https:\/\/ap(p|i)\.bili(bili|api)\.(com|net)\/x\/v\d\/search(\/type)?\?.+?%20(%E6%B8%AF|%E5%8F%B0|%E4%B8%AD)&,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Bili_Auto_Regions.js
 Gist 备份 = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/dompling/Script/master/gist/backup.js
 Gist 同步 = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/dompling/Script/master/gist/restore.js
 functionstatus = type=generic, script-path=https://raw.githubusercontent.com/smartmimi/conf/master/surge/functionstatus.js
 Sub_info = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/smartmimi/conf/master/surge/sub_info_panel.js,script-update-interval=0
-covid19 = type=generic, script-path=https://raw.githubusercontent.com/smartmimi/conf/master/surge/covid19.js
 timecard = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/smartmimi/conf/master/surge/timecard.js
 
 [Panel]
 functionstatus = script-name=functionstatus, title="𝗦𝗨𝗥𝗚𝗘 𝗣𝗥𝗢 ®", content="请刷新", update-interval=60
 Sub_info = script-name=Sub_info,update-interval=-1
-covid19 = script-name=covid19, title="新冠疫情查询", content="请刷新", update-interval=3600
 timecard = script-name=timecard,update-interval=3600
-
-[MITM]
-hostname = %APPEND% ap?.bilibili.com, ap?.biliapi.net
