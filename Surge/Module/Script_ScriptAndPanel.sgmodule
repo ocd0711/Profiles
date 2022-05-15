@@ -3,8 +3,6 @@
 #!system=ios
 
 [Script]
-Gist 备份 = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/dompling/Script/master/gist/backup.js
-Gist 同步 = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/dompling/Script/master/gist/restore.js
 functionstatus = type=generic, script-path=https://raw.githubusercontent.com/smartmimi/conf/master/surge/functionstatus.js
 Sub_info = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/smartmimi/conf/master/surge/sub_info_panel.js,script-update-interval=0
 timecard = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/smartmimi/conf/master/surge/timecard.js
