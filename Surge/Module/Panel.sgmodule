@@ -1,5 +1,5 @@
-#!name=OCD iOS Script And Panel module
-#!desc=iOS Script And Panel 模块配置
+#!name=OCD used Panel
+#!desc=functionstatus, Sub_info, timecard
 #!system=ios
 
 [Script]
