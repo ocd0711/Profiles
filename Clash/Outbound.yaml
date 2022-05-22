@@ -317,7 +317,44 @@ proxy-groups:
   #
   # 但如果订阅节点很多选起来就很麻烦，不如先嵌套一个策略组进行手动或自动的选择。
 
-  # 手动选择订阅节点
+  # 代理节点选择
+  - name: "PROXY"
+    type: select
+    proxies:
+      - DlerCloud
+      - Fallback
+      - HK
+      - JP
+      - TW
+      - US
+
+  # 白名单模式 PROXY, 黑名单模式 DIRECT, 不知道别动
+  - name: "MATCH"
+    type: select
+    proxies:
+      - PROXY
+      - DIRECT
+
+  # 国际流媒体服务
+  - name: "Streaming"
+    type: select
+    proxies:
+      - DlerCloud
+      - Fallback
+      - HK
+      - JP
+      - TW
+      - US
+
+  # 中国流媒体服务（面向海外版本）
+  # 用于观看部分国内流媒体面向港澳台的地区的限定内容，此处应放港澳台节点，如果没有此需求可删除此处策略组及相关规则
+  - name: "StreamingSE"
+    type: select
+    proxies:
+      - DIRECT
+      - HK
+      - TW
+
   - name: "DlerCloud"
     type: url-test # 亦可使用 fallback 或 load-balance
     use: # 注意此处是「use」
@@ -357,51 +394,12 @@ proxy-groups:
   - name: "Fallback"
     type: fallback
     proxies:
-      - DlerCloud
       - HK
       - JP
       - TW
       - US
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
-
-  # 代理节点选择
-  - name: "PROXY"
-    type: select
-    proxies:
-      - DlerCloud
-      - Fallback
-      - HK
-      - JP
-      - TW
-      - US
-
-  # 白名单模式 PROXY, 黑名单模式 DIRECT, 不知道别动
-  - name: "MATCH"
-    type: select
-    proxies:
-      - PROXY
-      - DIRECT
-
-  # 国际流媒体服务
-  - name: "Streaming"
-    type: select
-    proxies:
-      - DlerCloud
-      - Fallback
-      - HK
-      - JP
-      - TW
-      - US
-
-  # 中国流媒体服务（面向海外版本）
-  # 用于观看部分国内流媒体面向港澳台的地区的限定内容，此处应放港澳台节点，如果没有此需求可删除此处策略组及相关规则
-  - name: "StreamingSE"
-    type: select
-    proxies:
-      - DIRECT
-      - HK
-      - TW
 
 # 关于 Rule Provider 请查阅：https://lancellc.gitbook.io/clash/clash-config-file/rule-provider
 
@@ -434,6 +432,13 @@ rule-providers:
     url: https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/StreamingMedia/StreamingSE.yaml
     interval: 86400
 
+  WAQI:
+    type: http
+    behavior: classical
+    path: ./RuleSet/WAQI.yaml
+    url: https://raw.githubusercontent.com/OCD0711/Profiles/master/Clash/RuleSet/Extra/WAQI.yaml
+    interval: 86400
+
   Global:
     type: http
     behavior: classical
@@ -446,13 +451,6 @@ rule-providers:
     behavior: classical
     path: ./RuleSet/China.yaml
     url: https://raw.githubusercontent.com/DivineEngine/Profiles/master/Clash/RuleSet/China.yaml
-    interval: 86400
-
-  WAQI:
-    type: http
-    behavior: classical
-    path: ./RuleSet/WAQI.yaml
-    url: https://raw.githubusercontent.com/OCD0711/Profiles/master/Clash/RuleSet/Extra/WAQI.yaml
     interval: 86400
 
 # 规则
