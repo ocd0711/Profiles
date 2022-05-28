@@ -455,6 +455,9 @@ rule-providers:
 
 # 规则
 rules:
+  # 处理 22 端口转发问题
+  - DST-PORT,22,DIRECT
+
   # Unbreak
   - RULE-SET,Unbreak,DIRECT
 
