@@ -1,0 +1,7 @@
+#!name=部分 Wi-Fi 下走 直连
+#!desc=OCD_AP*
+
+[Rule]
+# 在连接特定 Wi-Fi 时直连
+SUBNET,BSSID:7c:10:c9:e8:2c:38,DIRECT
+SUBNET,BSSID:7c:10:c9:e8:2c:3c,DIRECT
