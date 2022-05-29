@@ -1,5 +1,5 @@
 #!name=OCD used Panel
-#!desc=functionstatus, Sub_info, timecard
+#!desc=functionstatus, Sub_info, timecard, skip_wifi, captureMode
 #!system=ios
 
 [Script]
