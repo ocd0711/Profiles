@@ -39,7 +39,7 @@ mode: rule
 log-level: info
 
 # When set to false, resolver won't translate hostnames to IPv6 addresses
-ipv6: true
+ipv6: false
 
 # RESTful web API listening address
 external-controller: 127.0.0.1:9090
