@@ -1,5 +1,5 @@
-#!name=OCD used Panel
-#!desc=functionstatus, Sub_info, timecard, skip_wifi, captureMode
+#!name=OCD used Panel/Scprit
+#!desc=functionstatus, Sub_info, timecard, skip_wifi, captureMode, SubStore-Sync
 #!system=ios
 
 [Script]
