@@ -1,0 +1,11 @@
+#!name=Y used Panel/Scprit
+#!desc=functionstatus, timecard
+#!system=ios
+
+[Script]
+functionstatus = type=generic, script-path=https://raw.githubusercontent.com/smartmimi/conf/master/surge/functionstatus.js
+timecard = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/smartmimi/conf/master/surge/timecard.js
+
+[Panel]
+functionstatus = script-name=functionstatus, title="𝗦𝗨𝗥𝗚𝗘 𝗣𝗥𝗢 ®", content="请刷新", update-interval=60
+timecard = script-name=timecard,update-interval=3600
