@@ -2,5 +2,4 @@
 #!desc=在连接特定 Wi-Fi 时直连
 
 [Rule]
-SUBNET,BSSID:7c:10:c9:e8:2c:38,DIRECT
-SUBNET,BSSID:7c:10:c9:e8:2c:3c,DIRECT
+SUBNET,SSID:OCD_AP,DIRECT
