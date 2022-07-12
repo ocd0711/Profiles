@@ -8,7 +8,6 @@ Sub_info = type=generic,timeout=10,script-path=https://raw.githubusercontent.com
 timecard = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/smartmimi/conf/master/surge/timecard.js
 skip_wifi = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/OCD0711/Profiles/master/Surge/Js/skip_wifi.js
 captureMode = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/OCD0711/Profiles/master/Surge/Js/captureMode.js
-SubStore-Sync = type=cron,cronexp=0 0 * * *,script-path=https://raw.githubusercontent.com/Peng-YM/Sub-Store/master/backend/dist/cron-sync-artifacts.min.js
 http-response ^https?://api\.m\.jd\.com/(client\.action|api)\?functionId=(wareBusiness|serverConfig|basicConfig|lite_wareBusiness|pingou_item) requires-body=1,script-path=https://raw.githubusercontent.com/Tartarus2014/Script/master/jdjf_price.js, tag=京东比价
 
 [Panel]
