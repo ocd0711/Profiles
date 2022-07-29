@@ -172,53 +172,6 @@ dns:
 proxies:
 # 支持的协议及加密算法示例请查阅 Clash 项目 README 以使用最新格式：https://github.com/Dreamacro/clash/wiki/configuration
 
-  # Shadowsocks(Websocket + TLS)
-  - name: "1"
-    type: ss
-    server: server
-    port: 443
-    cipher: chacha20-ietf-poly1305
-    password: "password"
-    plugin: v2ray-plugin
-    plugin-opts:
-      mode: websocket # no QUIC now
-      tls: true # wss
-      # skip-cert-verify: true
-      # host: bing.com
-      path: "/s"
-      # mux: true
-      # headers:
-      #   custom: value
-
-  # VMess(Websocket + TLS)
-  - name: "2"
-    type: vmess
-    server: v2ray.cool
-    port: 443
-    uuid: a3482e88-686a-4a58-8126-99c9df64b7bf
-    alterId: 32
-    cipher: auto
-    # udp: true
-    tls: true
-    # skip-cert-verify: true
-    network: ws
-    ws-path: /v
-    # ws-headers:
-    #   Host: v2ray.com
-
-  # Trojan
-  - name: "3"
-    type: trojan
-    server: server
-    port: 443
-    password: yourpsk
-    # udp: true
-    # sni: example.com # aka server name
-    # alpn:
-    #   - h2
-    #   - http/1.1
-    # skip-cert-verify: true
-
 # 服务器节点订阅
 proxy-providers:
   # name: # Provider 名称
@@ -242,7 +195,7 @@ proxy-providers:
 
   DlerCloud: #「机场」订阅
     type: http
-    url: "https://xxxxx?protocols=smart&list=clash" # 放机场订阅链接
+    url: "https://xxxxxx?protocols=smart&provider=clash" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/List.yaml # 注意此处文件名不可相同
     health-check:
@@ -252,7 +205,7 @@ proxy-providers:
 
   HK: #「机场」订阅香港地区节点
     type: http
-    url: "https://xxxxx?protocols=smart&list=clash&area=hk" # 放机场订阅链接
+    url: "https://xxxxxx?protocols=smart&provider=clash&type=love&area=hk" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/HK.yaml # 注意此处文件名不可相同
     health-check:
@@ -262,7 +215,7 @@ proxy-providers:
   
   TW: #「机场」订阅台湾地区节点
     type: http
-    url: "https://xxxxx?protocols=smart&list=clash&area=tw" # 放机场订阅链接
+    url: "https://xxxxxx?protocols=smart&provider=clash&type=love&area=tw" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/TW.yaml # 注意此处文件名不可相同
     health-check:
@@ -272,7 +225,7 @@ proxy-providers:
 
   US: #「机场」订阅美国地区节点
     type: http
-    url: "https://xxxxx?protocols=smart&list=clash&area=us" # 放机场订阅链接
+    url: "https://xxxxxx?protocols=smart&provider=clash&type=love&area=us" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/US.yaml # 注意此处文件名不可相同
     health-check:
@@ -282,7 +235,7 @@ proxy-providers:
 
   JP: #「机场」订阅日本地区节点
     type: http
-    url: "https://xxxxx?protocols=smart&list=clash&area=jp" # 放机场订阅链接
+    url: "https://xxxxxx?protocols=smart&provider=clash&type=love&area=jp" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/JP.yaml # 注意此处文件名不可相同
     health-check:
@@ -292,7 +245,7 @@ proxy-providers:
 
   SG: #「机场」订阅新加坡地区节点
     type: http
-    url: "https://xxxxx?protocols=smart&list=clash&area=sg" # 放机场订阅链接
+    url: "https://xxxxxx?protocols=smart&provider=clash&type=love&area=sg" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/SG.yaml # 注意此处文件名不可相同
     health-check:
@@ -302,7 +255,7 @@ proxy-providers:
 
   GAMER: #「机场」订阅游戏节点
     type: http
-    url: "https://xxxxx?protocols=smart&list=clash&type=gamer" # 放机场订阅链接
+    url: "https://xxxxxx?protocols=smart&provider=clash&type=gamer" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/GAMER.yaml # 注意此处文件名不可相同
     health-check:
@@ -377,6 +330,12 @@ proxy-groups:
       - DIRECT
       - HK
       - TW
+
+  - name: "GAME"
+    type: select
+    proxies:
+      - DIRECT
+      - GAMER
 
   - name: "Guard"
     type: select
@@ -592,7 +551,7 @@ rules:
   - RULE-SET,Hijacking,Guard
 
   # Gamer 游戏分流
-  - RULE-SET,Gamer,GAMER
+  - RULE-SET,Gamer,GAME
 
   # Streaming Media
   - RULE-SET,GlobalMedia,Streaming
