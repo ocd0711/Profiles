@@ -1,0 +1,272 @@
+{
+  "id": "ocd",
+  "name": "ocd",
+  "author": "@OCD",
+  "icon": "https://avatars.githubusercontent.com/u/25606004?s=96&v=4",
+  "repo": "https://github.com/OCD0711/Profiles/tree/master/boxjs",
+  "apps": [
+    {
+      "id": "airport",
+      "name": "机场流量",
+      "keys": [],
+      "settings": [
+        {
+          "id": "airport_url",
+          "name": "订阅链接",
+          "val": "",
+          "type": "textarea",
+          "placeholder": "http://XXXX",
+          "autoGrow": true,
+          "rows": 1,
+          "desc": "输入订阅链接"
+        },
+        {
+          "id": "airport_title",
+          "name": "标题",
+          "val": "",
+          "type": "textarea",
+          "placeholder": "浦东机场",
+          "autoGrow": true,
+          "rows": 1,
+          "desc": "输入机场名称"
+        },
+        {
+          "id": "airport_rest_day",
+          "name": "重置时间",
+          "val": "",
+          "type": "textarea",
+          "placeholder": "3",
+          "autoGrow": true,
+          "rows": 1,
+          "desc": "输入下一次重置的时间（几号），可选"
+        },
+        {
+          "id": "airport_expire",
+          "name": "套餐到期日期",
+          "val": "",
+          "type": "textarea",
+          "placeholder": "yyyy-MM-dd",
+          "autoGrow": true,
+          "rows": 1,
+          "desc": "输入套餐到期日期，可选"
+        },
+        {
+          "id": "airport_icon",
+          "name": "图标",
+          "val": "",
+          "type": "textarea",
+          "placeholder": "airplane.circle",
+          "autoGrow": true,
+          "rows": 1,
+          "desc": "输入图标名称，可选"
+        },
+        {
+          "id": "airport_color",
+          "name": "图标颜色",
+          "val": "",
+          "type": "textarea",
+          "placeholder": "#007aff",
+          "autoGrow": true,
+          "rows": 1,
+          "desc": "输入图标颜色，可选"
+        }
+      ],
+      "author": "@ocd",
+      "repo": "https://github.com/OCD0711/Profiles/tree/master/boxjs",
+      "script": "https://raw.githubusercontent.com/OCD0711/Profiles/master/Surge/Js/sub_info_panel.js",
+      "icons": [
+        "https://raw.githubusercontent.com/OCD0711/Profiles/master/boxjs/caiji.png",
+        "https://raw.githubusercontent.com/OCD0711/Profiles/master/boxjs/caiji.png"
+      ]
+    },
+    {
+      "id": "jf",
+      "name": "京粉转链",
+      "desc": "在京东比价中增加京粉转链，如显示有转链信息（即使显示无详细返利信息）则可点击跳转跟单，如未显示返利信息则为未参加推广的商品，不会跳转。",
+      "keys": [
+        "jfCookie",
+        "jfUseConvert",
+        "jfAutoScheme",
+        "jfusejsapp",
+        "jfChooseScheme",
+        "chooseBrowser",
+        "jfDIYScheme"
+      ],
+      "settings": [
+        {
+          "id": "jfUseConvert",
+          "name": "开启转链",
+          "val": true,
+          "type": "boolean",
+          "desc": "是否开启京粉转链？"
+        },
+        {
+          "id": "jfAutoScheme",
+          "name": "自动目标",
+          "val": true,
+          "type": "boolean",
+          "desc": "开启后如转链成功有返利，点击通知跳转正在使用的 app，关闭则跳转自选的 app。"
+        },
+        {
+          "id": "jfChooseScheme",
+          "name": "自选目标",
+          "val": "jd",
+          "type": "radios",
+          "desc": "自选跳转的 app，仅在自动目标关闭时有效。",
+          "items": [
+            {
+              "key": "jd",
+              "label": "京东"
+            },
+            {
+              "key": "jx",
+              "label": "京喜"
+            },
+            {
+              "key": "jk",
+              "label": "京东健康"
+            },
+            {
+              "key": "js",
+              "label": "京东极速版"
+            },
+            {
+              "key": "browser",
+              "label": "浏览器"
+            }
+          ]
+        },
+        {
+          "id": "jfusejsapp",
+          "name": "京东极速版使用 app",
+          "val": false,
+          "type": "boolean",
+          "desc": "开启时对目标为京东极速版则跳转京东极速版，关闭则跳转浏览器，默认关闭。注意：即使开启，由于极速版 URL Scheme 问题，跳转后只能先加入购物车，返回原购物车界面进行结账，否则无法使用极速版优惠券。"
+        },
+        {
+          "id": "chooseBrowser",
+          "name": "浏览器目标",
+          "val": "Safari",
+          "type": "radios",
+          "desc": "自选跳转的浏览器。",
+          "items": [
+            {
+              "key": "Safari",
+              "label": "Safari"
+            },
+            {
+              "key": "Alook",
+              "label": "Alook"
+            },
+            {
+              "key": "DIY",
+              "label": "自定义"
+            }
+          ]
+        },
+        {
+          "id": "jfDIYScheme",
+          "name": "自定义浏览器",
+          "val": "",
+          "type": "textarea",
+          "placeholder": "Foxok://url?",
+          "autoGrow": true,
+          "rows": 2,
+          "desc": "自定义跳转浏览器 URL Scheme，拼接后会是 diy+convertURL，如 Foxok://url?convertURL"
+        },
+        {
+          "id": "jfCookie",
+          "name": "Cookie",
+          "type": "textarea",
+          "autoGrow": true,
+          "rows": 2,
+          "desc": "使用京粉的京东账号 Cookie，如不填则为京东系脚本中的第一个 Cookie。"
+        }
+      ],
+      "author": "@MuTu888",
+      "repo": "https://github.com/githubdulong/Script",
+      "icons": [
+        "https://is5-ssl.mzstatic.com/image/thumb/Purple125/v4/eb/a8/f6/eba8f63a-b550-4586-b5d3-f22c0718ef81/source/100x100bb.jpg",
+        "https://is5-ssl.mzstatic.com/image/thumb/Purple125/v4/eb/a8/f6/eba8f63a-b550-4586-b5d3-f22c0718ef81/source/100x100bb.jpg"
+      ]
+    },
+    {
+      "id": "xream.gist",
+      "name": "Gist 备份",
+      "descs_html": [
+        "原脚本由 <a href='https://github.com/dompling' target='_blank'>@dompling</a> 提供, 感谢!",
+        "本脚本涉及大量对 BoxJs 以及原脚本的复制粘贴 侵删",
+        "<br />",
+        "<b>Token</b> 获取方式:",
+        "<span style='margin-left: 40px'>头像菜单 -></span>",
+        "<span style='margin-left: 40px'>Settings -></span>",
+        "<span style='margin-left: 40px'>Developer settings -></span>",
+        "<span style='margin-left: 40px'>Personal access tokens -></span>",
+        "<span style='margin-left: 40px'>Generate new token -></span>",
+        "<span style='margin-left: 40px'>在里面找到 gist 勾选提交</span>",
+        "<a href=\"https://github.com/xream/scripts/tree/main/surge/modules/gist\">查看文档</a>",
+        "<a href=\"https://github.com/settings/tokens\">GitHub Personal access tokens 页面</a>",
+        "<a onClick=\"window.location.reload(true);\">刷新</a>"
+      ],
+      "keys": [
+        "@xream.gist.username",
+        "@xream.gist.token",
+        "@xream.gist.desc",
+        "@xream.gist.saveKey"
+      ],
+      "author": "@xream",
+      "repo": "https://github.com/xream/scripts/tree/main/surge/modules/gist",
+      "scripts": [
+        {
+          "name": "备份",
+          "script": "https://raw.githubusercontent.com/xream/scripts/main/surge/modules/gist/backup.js"
+        },
+        {
+          "name": "恢复(谨慎操作)",
+          "script": "https://raw.githubusercontent.com/xream/scripts/main/surge/modules/gist/restore.js"
+        },
+        {
+          "name": "删除(谨慎操作)",
+          "script": "https://raw.githubusercontent.com/xream/scripts/main/surge/modules/gist/delete.js"
+        }
+      ],
+      "settings": [
+        {
+          "id": "@xream.gist.username",
+          "name": "用户名",
+          "val": "",
+          "type": "text",
+          "desc": "你的个人页面是 https://github.com/xream 那么 xream 就是你的用户名"
+        },
+        {
+          "id": "@xream.gist.token",
+          "name": "Personal access token",
+          "placeholder": "",
+          "val": "",
+          "type": "text",
+          "desc": "获取方式见👆🏻"
+        },
+        {
+          "id": "@xream.gist.desc",
+          "name": "Gist 描述",
+          "placeholder": "",
+          "val": "Auto Generated BoxJs Global Backup",
+          "type": "text",
+          "desc": "默认为 Auto Generated BoxJs Global Backup"
+        },
+        {
+          "id": "@xream.gist.saveKey",
+          "name": "Gist 文件名",
+          "placeholder": "",
+          "val": "backup.json",
+          "type": "text",
+          "desc": "默认为 backup.json"
+        }
+      ],
+      "icons": [
+        "https://raw.githubusercontent.com/xream/scripts/main/surge/modules/gist/asset/icon.png",
+        "https://raw.githubusercontent.com/xream/scripts/main/surge/modules/gist/asset/icon.png"
+      ]
+    }
+  ]
+}
