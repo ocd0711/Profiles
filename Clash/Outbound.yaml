@@ -458,20 +458,6 @@ rule-providers:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMedia/ChinaMedia.yaml
     interval: 86400
 
-  Private_Relay_QUIC:
-    type: http
-    behavior: classical
-    path: ./RuleSet/iCloud_Private_Relay/Private_Relay_QUIC.yaml
-    url: https://raw.githubusercontent.com/VirgilClyne/iRingo/main/RuleSet/Private_Relay.QUIC.yaml
-    interval: 86400
-
-  Private_Relay_Configs:
-    type: http
-    behavior: classical
-    path: ./RuleSet/iCloud_Private_Relay/Private_Relay_Configs.yaml
-    url: https://raw.githubusercontent.com/VirgilClyne/iRingo/main/RuleSet/Private_Relay.Configs.yaml
-    interval: 86400
-
   Wikipedia:
     type: http
     behavior: classical
@@ -559,10 +545,6 @@ rules:
 
   # StreamingSE
   - RULE-SET,StreamingSE,StreamingSE
-
-  # iCloud Private Relay
-  - RULE-SET,Private_Relay_QUIC,DIRECT
-  - RULE-SET,Private_Relay_Configs,PROXY
 
   # Look Up (Only for Wikipedia@macOS, Surge Enhance Mode enabled required)
   - RULE-SET,Wikipedia,PROXY
