@@ -465,13 +465,6 @@ rule-providers:
     url: https://raw.githubusercontent.com/VirgilClyne/iRingo/main/RuleSet/Look_Up.Wikipedia.yaml
     interval: 86400
 
-  WAQI:
-    type: http
-    behavior: classical
-    path: ./RuleSet/WAQI.yaml
-    url: https://raw.githubusercontent.com/OCD0711/Profiles/master/Clash/RuleSet/Extra/WAQI.yaml
-    interval: 86400
-
   Telegram:
     type: http
     behavior: classical
@@ -548,9 +541,6 @@ rules:
 
   # Look Up (Only for Wikipedia@macOS, Surge Enhance Mode enabled required)
   - RULE-SET,Wikipedia,PROXY
-
-  # WAQI
-  - RULE-SET,WAQI,JP
 
   # Telegram
   - RULE-SET,Telegram,PROXY
