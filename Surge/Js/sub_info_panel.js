@@ -1,11 +1,12 @@
 /*
 Surge配置参考注释，感谢@asukanana,感谢@congcong.修改自@mieqq大佬的脚本https://raw.githubusercontent.com/mieqq/mieqq/master/sub_info_panel.js
 
-boxjs中添加订阅https://raw.githubusercontent.com/smartmimi/conf/master/boxjs/cookie.boxjs.json
+boxjs 中添加订阅 https://raw.githubusercontent.com/OCD0711/Profiles/master/boxjs/ocd.boxjs.json
+
 示例↓↓↓ 
 ----------------------------------------
 [Script]
-Sub_info = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/smartmimi/conf/master/surge/sub_info_panel.js,script-update-interval=0
+Sub_info = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/OCD0711/Profiles/master/Surge/Js/sub_info_panel.js,script-update-interval=0
 [Panel]
 Sub_info = script-name=Sub_info
 
@@ -22,7 +23,7 @@ Sub_info = script-name=Sub_info
 
 (async () => {
   let sub_title = $persistentStore.read("airport_title");
-  let resetDay = parseInt($persistentStore.read("airport_rest_day") );
+  let resetDay = parseInt($persistentStore.read("airport_rest_day"));
   let resetLeft = getRmainingDays(resetDay);
   let urlcode = $persistentStore.read("airport_url");
   let usage = await getDataUsage(urlcode);
@@ -43,11 +44,11 @@ Sub_info = script-name=Sub_info
 
   let body = infoList.join("\n");
   $done({
-	title:  sub_title+ "   "+nowtime(),
-	content: body,
-        icon : $persistentStore.read("airport_icon") ||"externaldrive.connected.to.line.below",
-        "icon-color" :$persistentStore.read("airport_color") || "#007aff"
-	});
+    title: sub_title + "   " + nowtime(),
+    content: body,
+    icon: $persistentStore.read("airport_icon") || "externaldrive.connected.to.line.below",
+    "icon-color": $persistentStore.read("airport_color") || "#007aff"
+  });
 })();
 
 
@@ -107,10 +108,10 @@ function getRmainingDays(resetDay) {
   return daysInMonth - today + resetDay;
 }
 
-function nowtime(){
- let now = new Date();
- let time = now.getHours()+":"+now.getMinutes()+":"+now.getSeconds();
- return time
+function nowtime() {
+  let now = new Date();
+  let time = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+  return time
 }
 
 function bytesToSize(bytes) {
@@ -129,13 +130,13 @@ function formatTime(time) {
   return year + "年" + month + "月" + day + "日";
 }
 
-function precent(res,total){
-  let num = Number(((res / total)*10).toFixed(0));
+function precent(res, total) {
+  let num = Number(((res / total) * 10).toFixed(0));
   let precentprint = '';
-  for (var i =1;i<=10;i++){
+  for (var i = 1; i <= 10; i++) {
     if (i <= num) {
       precentprint += '🔴';
-    }else{
+    } else {
       precentprint += '🟢';
     }
   };
