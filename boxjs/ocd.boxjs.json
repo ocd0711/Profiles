@@ -11,6 +11,13 @@
       "keys": [],
       "settings": [
         {
+          "id": "airport_alert",
+          "name": "开启通知",
+          "val": false,
+          "type": "boolean",
+          "desc": "流量用量超过80%、流量重置2天前、流量重置、套餐快到期, 这四种情况会发送通知"
+        },
+        {
           "id": "airport_url",
           "name": "订阅链接",
           "val": "",
