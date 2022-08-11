@@ -539,9 +539,6 @@ rules:
   # StreamingSE
   - RULE-SET,StreamingSE,StreamingSE
 
-  # WAQI
-  - DOMAIN,aqi.waqi.info,JP
-
   # Look Up (Only for Wikipedia@macOS, Surge Enhance Mode enabled required)
   - RULE-SET,Wikipedia,PROXY
 
