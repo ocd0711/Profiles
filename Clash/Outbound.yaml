@@ -195,7 +195,7 @@ proxy-providers:
 
   DlerCloud: #「机场」订阅
     type: http
-    url: "https://xxxxxx?protocols=smart&provider=clash" # 放机场订阅链接
+    url: "https://xxxxxxxxx?protocols=smart&provider=clash" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/List.yaml # 注意此处文件名不可相同
     health-check:
@@ -205,7 +205,7 @@ proxy-providers:
 
   HK: #「机场」订阅香港地区节点
     type: http
-    url: "https://xxxxxx?protocols=smart&provider=clash&type=love&area=hk" # 放机场订阅链接
+    url: "https://xxxxxxxxx?protocols=smart&provider=clash&type=love&area=hk" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/HK.yaml # 注意此处文件名不可相同
     health-check:
@@ -215,7 +215,7 @@ proxy-providers:
   
   TW: #「机场」订阅台湾地区节点
     type: http
-    url: "https://xxxxxx?protocols=smart&provider=clash&type=love&area=tw" # 放机场订阅链接
+    url: "https://xxxxxxxxx?protocols=smart&provider=clash&type=love&area=tw" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/TW.yaml # 注意此处文件名不可相同
     health-check:
@@ -225,7 +225,7 @@ proxy-providers:
 
   US: #「机场」订阅美国地区节点
     type: http
-    url: "https://xxxxxx?protocols=smart&provider=clash&type=love&area=us" # 放机场订阅链接
+    url: "https://xxxxxxxxx?protocols=smart&provider=clash&type=love&area=us" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/US.yaml # 注意此处文件名不可相同
     health-check:
@@ -235,7 +235,7 @@ proxy-providers:
 
   JP: #「机场」订阅日本地区节点
     type: http
-    url: "https://xxxxxx?protocols=smart&provider=clash&type=love&area=jp" # 放机场订阅链接
+    url: "https://xxxxxxxxx?protocols=smart&provider=clash&type=love&area=jp" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/JP.yaml # 注意此处文件名不可相同
     health-check:
@@ -245,7 +245,7 @@ proxy-providers:
 
   SG: #「机场」订阅新加坡地区节点
     type: http
-    url: "https://xxxxxx?protocols=smart&provider=clash&type=love&area=sg" # 放机场订阅链接
+    url: "https://xxxxxxxxx?protocols=smart&provider=clash&type=love&area=sg" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/SG.yaml # 注意此处文件名不可相同
     health-check:
@@ -255,7 +255,7 @@ proxy-providers:
 
   GAMER: #「机场」订阅游戏节点
     type: http
-    url: "https://xxxxxx?protocols=smart&provider=clash&type=gamer" # 放机场订阅链接
+    url: "https://xxxxxxxxx?protocols=smart&provider=clash&type=gamer" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/GAMER.yaml # 注意此处文件名不可相同
     health-check:
@@ -308,6 +308,19 @@ proxy-groups:
     proxies:
       - PROXY
       - DIRECT
+
+  # 国际流媒体服务
+  - name: "YouTube"
+    type: select
+    proxies:
+      - PROXY
+      - HK
+      - TW
+      - JP
+      - US
+      - SG
+    use:
+      - DlerCloud
 
   # 国际流媒体服务
   - name: "Streaming"
@@ -430,6 +443,13 @@ rule-providers:
     url:   https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Game/Game.yaml
     interval: 86400
 
+  YouTube:
+    type: http
+    behavior: classical
+    path: ./RuleSet/YouTube/YouTube.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.yaml
+    interval: 86400
+
   GlobalMedia:
     type: http
     behavior: classical
@@ -525,6 +545,7 @@ rules:
   - RULE-SET,Gamer,GAME
 
   # Streaming Media
+  - RULE-SET,YouTube,YouTube
   - RULE-SET,GlobalMedia,Streaming
   - RULE-SET,GlobalMedia_Domain,Streaming
 
