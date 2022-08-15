@@ -532,6 +532,9 @@ rules:
   # 处理 22 端口转发问题
   - DST-PORT,22,DIRECT
 
+  # Gamer 游戏分流
+  - RULE-SET,Gamer,GAME
+
   # Unbreak
   - RULE-SET,Unbreak,DIRECT
 
@@ -540,9 +543,6 @@ rules:
 
   # Hijacking
   - RULE-SET,Hijacking,Guard
-
-  # Gamer 游戏分流
-  - RULE-SET,Gamer,GAME
 
   # Streaming Media
   - RULE-SET,YouTube,YouTube
