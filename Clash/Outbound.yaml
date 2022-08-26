@@ -194,7 +194,7 @@ proxy-providers:
 
   DlerCloud: #「机场」订阅
     type: http
-    url: "https://xxxxxxxxx?protocols=smart&provider=clash" # 放机场订阅链接
+    url: "xxxxx" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/List.yaml # 注意此处文件名不可相同
     health-check:
@@ -204,9 +204,10 @@ proxy-providers:
 
   HK: #「机场」订阅香港地区节点
     type: http
-    url: "https://xxxxxxxxx?protocols=smart&provider=clash&type=love&area=hk" # 放机场订阅链接
+    url: "xxxxx" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/HK.yaml # 注意此处文件名不可相同
+    filter: '(香港)'
     health-check:
       enable: true
       interval: 600
@@ -214,9 +215,10 @@ proxy-providers:
   
   TW: #「机场」订阅台湾地区节点
     type: http
-    url: "https://xxxxxxxxx?protocols=smart&provider=clash&type=love&area=tw" # 放机场订阅链接
+    url: "xxxxx" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/TW.yaml # 注意此处文件名不可相同
+    filter: '(台湾)'
     health-check:
       enable: true
       interval: 600
@@ -224,9 +226,10 @@ proxy-providers:
 
   US: #「机场」订阅美国地区节点
     type: http
-    url: "https://xxxxxxxxx?protocols=smart&provider=clash&type=love&area=us" # 放机场订阅链接
+    url: "xxxxx" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/US.yaml # 注意此处文件名不可相同
+    filter: '(美国)'
     health-check:
       enable: true
       interval: 600
@@ -234,9 +237,10 @@ proxy-providers:
 
   JP: #「机场」订阅日本地区节点
     type: http
-    url: "https://xxxxxxxxx?protocols=smart&provider=clash&type=love&area=jp" # 放机场订阅链接
+    url: "xxxxx" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/JP.yaml # 注意此处文件名不可相同
+    filter: '(日本)'
     health-check:
       enable: true
       interval: 600
@@ -244,9 +248,10 @@ proxy-providers:
 
   SG: #「机场」订阅新加坡地区节点
     type: http
-    url: "https://xxxxxxxxx?protocols=smart&provider=clash&type=love&area=sg" # 放机场订阅链接
+    url: "xxxxx" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/SG.yaml # 注意此处文件名不可相同
+    filter: '(新加坡)'
     health-check:
       enable: true
       interval: 600
@@ -254,9 +259,10 @@ proxy-providers:
 
   GAMER: #「机场」订阅游戏节点
     type: http
-    url: "https://xxxxxxxxx?protocols=smart&provider=clash&type=gamer" # 放机场订阅链接
+    url: "xxxxx" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/GAMER.yaml # 注意此处文件名不可相同
+    filter: '(Gamer)'
     health-check:
       enable: true
       interval: 600
