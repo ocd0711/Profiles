@@ -1,14 +1,14 @@
 # Port of HTTP(S) proxy server on the local end
-# port: 7890
+port: 7890
 
 # Port of SOCKS5 proxy server on the local end
-# socks-port: 7891
+socks-port: 7891
 
 # Transparent proxy server port for Linux and macOS (Redirect TCP and TProxy UDP)
-# redir-port: 7892
+redir-port: 7892
 
 # Transparent proxy server port for Linux (TProxy TCP and TProxy UDP)
-# tproxy-port: 7893
+tproxy-port: 7893
 
 # HTTP(S) and SOCKS4(A)/SOCKS5 server on the same port
 mixed-port: 7890
@@ -39,7 +39,7 @@ mode: rule
 log-level: info
 
 # When set to false, resolver won't translate hostnames to IPv6 addresses
-ipv6: false
+ipv6: true
 
 # RESTful web API listening address
 external-controller: 127.0.0.1:9090
@@ -53,6 +53,10 @@ external-controller: 127.0.0.1:9090
 # Authenticate by spedifying HTTP header `Authorization: Bearer ${secret}`
 # ALWAYS set a secret if RESTful API is listening on 0.0.0.0
 # secret: ""
+
+# 实验性功能
+experimental:
+  ignore-resolve-fail: true # 忽略 DNS 解析失败，默认值为 true
 
 # Outbound interface name
 # interface-name: en0
@@ -83,14 +87,15 @@ profile:
 # DNS server settings
 # This section is optional. When not present, the DNS server will be disabled.
 dns:
-  enable: false
+  enable: true
   listen: 0.0.0.0:53
-  # ipv6: false # when the false, response to AAAA questions will be empty
+  ipv6: true # when the false, response to AAAA questions will be empty
 
   # These nameservers are used to resolve the DNS nameserver hostnames below.
   # Specify IP addresses only
   default-nameserver:
-    - 119.29.29.29
+    - 223.5.5.5
+    - 223.6.6.6
   enhanced-mode: redir-host # or fake-ip
   fake-ip-range: 198.18.0.1/16 # Fake IP addresses pool CIDR
   # use-hosts: true # lookup hosts and return IP record
@@ -113,8 +118,6 @@ dns:
   # All DNS questions are sent directly to the nameserver, without proxies
   # involved. Clash answers the DNS question with the first result gathered.
   nameserver:
-    - 223.5.5.5
-    - 223.6.6.6
     - dhcp://en0
     - https://dns.alidns.com/dns-query
     # - 114.114.114.114 # default value
@@ -534,9 +537,6 @@ rule-providers:
 
 # 规则
 rules:
-  # 处理 22 端口转发问题
-  - DST-PORT,22,DIRECT
-
   # Gamer 游戏分流
   - RULE-SET,Gamer,GAME
 
