@@ -3,11 +3,11 @@
 #!system=ios
 
 [Script]
-Sub_info = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/OCD0711/Profiles/master/Surge/Js/sub_info_panel.js
+Sub_info = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/ocd0711/Profiles/master/Surge/Js/sub_info_panel.js
 timecard = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/smartmimi/conf/master/surge/timecard.js
 stream-all = type=generic, timeout=15, script-path=https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Module/Panel/Stream-All/Moore/Stream-All.js
-skip_wifi = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/OCD0711/Profiles/master/Surge/Js/skip_wifi.js
-captureMode = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/OCD0711/Profiles/master/Surge/Js/captureMode.js
+skip_wifi = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/ocd0711/Profiles/master/Surge/Js/skip_wifi.js
+captureMode = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/ocd0711/Profiles/master/Surge/Js/captureMode.js
 
 [Panel]
 Sub_info = script-name=Sub_info,update-interval=-1

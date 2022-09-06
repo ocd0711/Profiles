@@ -1,7 +1,7 @@
 /*
 Surge配置参考注释,感谢@congcong.
 
-boxjs 中添加订阅 https://raw.githubusercontent.com/OCD0711/Profiles/master/boxjs/ocd.boxjs.json
+boxjs 中添加订阅 https://raw.githubusercontent.com/ocd0711/Profiles/master/boxjs/ocd.boxjs.json
 
 示例↓↓↓ 
 ----------------------------------------
@@ -10,7 +10,7 @@ boxjs 中添加订阅 https://raw.githubusercontent.com/OCD0711/Profiles/master/
 𝗧𝗿𝗮𝗳𝗳𝗶𝗰𝗜𝗻𝗳𝗼 = select, policy-path=http://sub.info, update-interval=86400
 
 [Script]
-Sub_info = type=http-request,pattern=http://sub\.info,script-path=https://raw.githubusercontent.com/OCD0711/Profiles/master/Surge/Js/sub_info.js,timeout=10
+Sub_info = type=http-request,pattern=http://sub\.info,script-path=https://raw.githubusercontent.com/ocd0711/Profiles/master/Surge/Js/sub_info.js,timeout=10
 ----------------------------------------
 
 脚本不用修改，直接配置就好。

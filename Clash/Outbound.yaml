@@ -207,7 +207,7 @@ proxy-providers:
 
   HK: #「机场」订阅香港地区节点
     type: http
-    url: "https://gist.githubusercontent.com/OCD0711/xxxxxx/raw/OCD-CLASH" # 放机场订阅链接
+    url: "https://gist.githubusercontent.com/ocd0711/xxxxxx/raw/OCD-CLASH" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/HK.yaml # 注意此处文件名不可相同
     filter: '(香港)'
@@ -218,7 +218,7 @@ proxy-providers:
   
   TW: #「机场」订阅台湾地区节点
     type: http
-    url: "https://gist.githubusercontent.com/OCD0711/xxxxxx/raw/OCD-CLASH" # 放机场订阅链接
+    url: "https://gist.githubusercontent.com/ocd0711/xxxxxx/raw/OCD-CLASH" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/TW.yaml # 注意此处文件名不可相同
     filter: '(台湾)'
@@ -229,7 +229,7 @@ proxy-providers:
 
   US: #「机场」订阅美国地区节点
     type: http
-    url: "https://gist.githubusercontent.com/OCD0711/xxxxxx/raw/OCD-CLASH" # 放机场订阅链接
+    url: "https://gist.githubusercontent.com/ocd0711/xxxxxx/raw/OCD-CLASH" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/US.yaml # 注意此处文件名不可相同
     filter: '(美国)'
@@ -240,7 +240,7 @@ proxy-providers:
 
   JP: #「机场」订阅日本地区节点
     type: http
-    url: "https://gist.githubusercontent.com/OCD0711/xxxxxx/raw/OCD-CLASH" # 放机场订阅链接
+    url: "https://gist.githubusercontent.com/ocd0711/xxxxxx/raw/OCD-CLASH" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/JP.yaml # 注意此处文件名不可相同
     filter: '(日本)'
@@ -251,7 +251,7 @@ proxy-providers:
 
   SG: #「机场」订阅新加坡地区节点
     type: http
-    url: "https://gist.githubusercontent.com/OCD0711/xxxxxx/raw/OCD-CLASH" # 放机场订阅链接
+    url: "https://gist.githubusercontent.com/ocd0711/xxxxxx/raw/OCD-CLASH" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/SG.yaml # 注意此处文件名不可相同
     filter: '(新加坡)'
@@ -262,7 +262,7 @@ proxy-providers:
 
   GAMER: #「机场」订阅游戏节点
     type: http
-    url: "https://gist.githubusercontent.com/OCD0711/xxxxxx/raw/OCD-CLASH" # 放机场订阅链接
+    url: "https://gist.githubusercontent.com/ocd0711/xxxxxx/raw/OCD-CLASH" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/GAMER.yaml # 注意此处文件名不可相同
     filter: '(Gamer)'

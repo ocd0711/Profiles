@@ -6,8 +6,8 @@
 
 | 类别 | 配置 |
 | :------------: | :------------: |
-| 出国版 | [Outbound](https://raw.githubusercontent.com/OCD0711/Profiles/master/Clash/Outbound.yaml) |
-| 回国版 | [Inbound](https://raw.githubusercontent.com/OCD0711/Profiles/master/Clash/Inbound.yaml) |
+| 出国版 | [Outbound](https://raw.githubusercontent.com/ocd0711/Profiles/master/Clash/Outbound.yaml) |
+| 回国版 | [Inbound](https://raw.githubusercontent.com/ocd0711/Profiles/master/Clash/Inbound.yaml) |
 
 ## 说明
 

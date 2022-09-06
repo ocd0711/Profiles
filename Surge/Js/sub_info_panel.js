@@ -1,12 +1,12 @@
 /*
 Surge配置参考注释，感谢@asukanana,感谢@congcong.修改自@mieqq大佬的脚本https://raw.githubusercontent.com/mieqq/mieqq/master/sub_info_panel.js
 
-boxjs 中添加订阅 https://raw.githubusercontent.com/OCD0711/Profiles/master/boxjs/ocd.boxjs.json
+boxjs 中添加订阅 https://raw.githubusercontent.com/ocd0711/Profiles/master/boxjs/ocd.boxjs.json
 
 示例↓↓↓ 
 ----------------------------------------
 [Script]
-Sub_info = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/OCD0711/Profiles/master/Surge/Js/sub_info_panel.js,script-update-interval=0
+Sub_info = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/ocd0711/Profiles/master/Surge/Js/sub_info_panel.js,script-update-interval=0
 [Panel]
 Sub_info = script-name=Sub_info
 
