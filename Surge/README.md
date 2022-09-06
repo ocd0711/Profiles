@@ -6,8 +6,8 @@
 
 | 类别 | 配置 |
 | :------------: | :------------: |
-| 出国版 | [Outbound](https://raw.githubusercontent.com/OCD0711/Profiles/master/Surge/Outbound.conf) |
-| 回国版 | [Inbound](https://raw.githubusercontent.com/OCD0711/Profiles/master/Surge/Inbound.conf) |
+| 出国版 | [Outbound](https://raw.githubusercontent.com/ocd0711/Profiles/master/Surge/Outbound.conf) |
+| 回国版 | [Inbound](https://raw.githubusercontent.com/ocd0711/Profiles/master/Surge/Inbound.conf) |
 
 ## 说明
 

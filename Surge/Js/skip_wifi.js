@@ -1,8 +1,8 @@
 /*
 [Script]
-skip_wifi = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/OCD0711/Task/master/Surge/Js/skip_wifi.js
+skip_wifi = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/ocd0711/Task/master/Surge/Js/skip_wifi.js
 // use "module", "title", "icon", "color1", "color2" in "argument":
-// skip_wifi = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/OCD0711/Task/master/Surge/Js/skip_wifi.js,argument=title=Skip WiFi&module=Skip_Wifi_Mode&icon=wifi.square&color1=#008080&color2=#efc56f
+// skip_wifi = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/ocd0711/Task/master/Surge/Js/skip_wifi.js,argument=title=Skip WiFi&module=Skip_Wifi_Mode&icon=wifi.square&color1=#008080&color2=#efc56f
 
 [Panel]
 skip_wifi = script-name=skip_wifi.js,update-interval=43200
