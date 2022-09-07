@@ -260,17 +260,6 @@ proxy-providers:
       interval: 600
       url: http://connectivitycheck.platform.hicloud.com/generate_204
 
-  GAMER: #「机场」订阅游戏节点
-    type: http
-    url: "https://gist.githubusercontent.com/ocd0711/xxxxxx/raw/OCD-CLASH" # 放机场订阅链接
-    interval: 3600
-    path: ./Proxy/GAMER.yaml # 注意此处文件名不可相同
-    filter: '(Gamer)'
-    health-check:
-      enable: true
-      interval: 600
-      url: http://connectivitycheck.platform.hicloud.com/generate_204
-
 proxy-groups:
 # 策略组示例请查阅 Clash 项目 README 以使用最新格式：https://github.com/Dreamacro/clash/wiki/configuration
 
@@ -354,12 +343,6 @@ proxy-groups:
       - HK
       - TW
 
-  - name: "GAME"
-    type: select
-    proxies:
-      - DIRECT
-      - GAMER
-
   - name: "Guard"
     type: select
     proxies:
@@ -408,13 +391,6 @@ proxy-groups:
     url: http://connectivitycheck.platform.hicloud.com/generate_204
     interval: "3600"
 
-  - name: "GAMER"
-    type: fallback # 亦可使用 fallback 或 load-balance
-    use: # 注意此处是「use」
-      - GAMER # 这是上面「proxy-providers」的名称
-    url: http://connectivitycheck.platform.hicloud.com/generate_204
-    interval: "3600"
-
 # 关于 Rule Provider 请查阅：https://lancellc.gitbook.io/clash/clash-config-file/rule-provider
 
 rule-providers:
@@ -444,13 +420,6 @@ rule-providers:
     behavior: classical
     path: ./RuleSet/Hijacking.yaml
     url:   https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Hijacking/Hijacking.yaml
-    interval: 86400
-
-  Gamer:
-    type: http
-    behavior: classical
-    path: ./RuleSet/Gamer.yaml
-    url:   https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Game/Game.yaml
     interval: 86400
 
   YouTube:
@@ -539,9 +508,6 @@ rule-providers:
 
 # 规则
 rules:
-  # Gamer 游戏分流
-  - RULE-SET,Gamer,GAME
-
   # Unbreak
   - RULE-SET,Unbreak,DIRECT
 
