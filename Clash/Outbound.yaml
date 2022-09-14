@@ -96,6 +96,8 @@ dns:
   default-nameserver:
     - 223.5.5.5
     - 223.6.6.6
+    - "[2400:3200::1]:53"
+    - "[2400:3200:baba::1]:53"
   enhanced-mode: redir-host # or fake-ip
   fake-ip-range: 198.18.0.1/16 # Fake IP addresses pool CIDR
   # use-hosts: true # lookup hosts and return IP record
@@ -119,7 +121,7 @@ dns:
   # involved. Clash answers the DNS question with the first result gathered.
   nameserver:
     - dhcp://en0
-    - https://dns.alidns.com/dns-query
+    # - https://dns.alidns.com/dns-query
     # - 114.114.114.114 # default value
     # - 8.8.8.8 # default value
     # - tls://dns.rubyfish.cn:853 # DNS over TLS
@@ -203,7 +205,7 @@ proxy-providers:
     health-check:
       enable: true
       interval: 600
-      url: http://connectivitycheck.platform.hicloud.com/generate_204
+      url: http://cp.cloudflare.com/generate_204
 
   HK: #「机场」订阅香港地区节点
     type: http
@@ -214,7 +216,7 @@ proxy-providers:
     health-check:
       enable: true
       interval: 600
-      url: http://connectivitycheck.platform.hicloud.com/generate_204
+      url: http://cp.cloudflare.com/generate_204
   
   TW: #「机场」订阅台湾地区节点
     type: http
@@ -225,7 +227,7 @@ proxy-providers:
     health-check:
       enable: true
       interval: 600
-      url: http://connectivitycheck.platform.hicloud.com/generate_204
+      url: http://cp.cloudflare.com/generate_204
 
   US: #「机场」订阅美国地区节点
     type: http
@@ -236,7 +238,7 @@ proxy-providers:
     health-check:
       enable: true
       interval: 600
-      url: http://connectivitycheck.platform.hicloud.com/generate_204
+      url: http://cp.cloudflare.com/generate_204
 
   JP: #「机场」订阅日本地区节点
     type: http
@@ -247,7 +249,7 @@ proxy-providers:
     health-check:
       enable: true
       interval: 600
-      url: http://connectivitycheck.platform.hicloud.com/generate_204
+      url: http://cp.cloudflare.com/generate_204
 
   SG: #「机场」订阅新加坡地区节点
     type: http
@@ -258,7 +260,7 @@ proxy-providers:
     health-check:
       enable: true
       interval: 600
-      url: http://connectivitycheck.platform.hicloud.com/generate_204
+      url: http://cp.cloudflare.com/generate_204
 
 proxy-groups:
 # 策略组示例请查阅 Clash 项目 README 以使用最新格式：https://github.com/Dreamacro/clash/wiki/configuration
@@ -353,42 +355,42 @@ proxy-groups:
     type: url-test # 亦可使用 fallback 或 load-balance
     use: # 注意此处是「use」
       - DlerCloud # 这是上面「proxy-providers」的名称
-    url: http://connectivitycheck.platform.hicloud.com/generate_204
+    url: http://cp.cloudflare.com/generate_204
     interval: "3600"
 
   - name: "US"
     type: fallback # 亦可使用 fallback 或 load-balance
     use: # 注意此处是「use」
       - US # 这是上面「proxy-providers」的名称
-    url: http://connectivitycheck.platform.hicloud.com/generate_204
+    url: http://cp.cloudflare.com/generate_204
     interval: "3600"
 
   - name: "TW"
     type: fallback # 亦可使用 fallback 或 load-balance
     use: # 注意此处是「use」
       - TW # 这是上面「proxy-providers」的名称
-    url: http://connectivitycheck.platform.hicloud.com/generate_204
+    url: http://cp.cloudflare.com/generate_204
     interval: "3600"
 
   - name: "HK"
     type: fallback # 亦可使用 fallback 或 load-balance
     use: # 注意此处是「use」
       - HK # 这是上面「proxy-providers」的名称
-    url: http://connectivitycheck.platform.hicloud.com/generate_204
+    url: http://cp.cloudflare.com/generate_204
     interval: "3600"
 
   - name: "JP"
     type: fallback # 亦可使用 fallback 或 load-balance
     use: # 注意此处是「use」
       - JP # 这是上面「proxy-providers」的名称
-    url: http://connectivitycheck.platform.hicloud.com/generate_204
+    url: http://cp.cloudflare.com/generate_204
     interval: "3600"
 
   - name: "SG"
     type: fallback # 亦可使用 fallback 或 load-balance
     use: # 注意此处是「use」
       - SG # 这是上面「proxy-providers」的名称
-    url: http://connectivitycheck.platform.hicloud.com/generate_204
+    url: http://cp.cloudflare.com/generate_204
     interval: "3600"
 
 # 关于 Rule Provider 请查阅：https://lancellc.gitbook.io/clash/clash-config-file/rule-provider
