@@ -345,11 +345,55 @@ proxy-groups:
       - HK
       - TW
 
+  - name: "Telegram"
+    type: select
+    proxies:
+      - PROXY
+      - HK
+      - TW
+      - JP
+      - US
+      - SG
+    use:
+      - DlerCloud
+
+  - name: "Paypal"
+    type: select
+    proxies:
+      - PROXY
+      - HK
+      - TW
+      - JP
+      - US
+      - SG
+      - DIRECT
+    use:
+      - DlerCloud
+
+  - name: "Speedtest"
+    type: select
+    proxies:
+      - PROXY
+      - HK
+      - TW
+      - JP
+      - US
+      - SG
+      - DIRECT
+    use:
+      - DlerCloud
+
   - name: "Guard"
     type: select
     proxies:
-      - REJECT
-      - DIRECT
+      - PROXY
+      - HK
+      - TW
+      - JP
+      - US
+      - SG
+    use:
+      - DlerCloud
 
   - name: "AutoTest"
     type: url-test # 亦可使用 fallback 或 load-balance
@@ -452,13 +496,6 @@ rule-providers:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMedia/ChinaMedia.yaml
     interval: 86400
 
-  Wikipedia:
-    type: http
-    behavior: classical
-    path: ./RuleSet/Wikipedia.yaml
-    url: https://raw.githubusercontent.com/VirgilClyne/iRingo/main/RuleSet/Look_Up.Wikipedia.yaml
-    interval: 86400
-
   Telegram:
     type: http
     behavior: classical
@@ -471,6 +508,13 @@ rule-providers:
     behavior: classical
     path: ./RuleSet/PayPal.yaml
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PayPal/PayPal.yaml
+    interval: 86400
+
+  Speedtest:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Speedtest.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Speedtest/Speedtest.yaml
     interval: 86400
 
   Global:
@@ -527,14 +571,14 @@ rules:
   # StreamingSE
   - RULE-SET,StreamingSE,StreamingSE
 
-  # Look Up (Only for Wikipedia@macOS, Surge Enhance Mode enabled required)
-  - RULE-SET,Wikipedia,PROXY
-
   # Telegram
-  - RULE-SET,Telegram,PROXY
+  - RULE-SET,Telegram,Telegram
 
   # PayPal
-  - RULE-SET,PayPal,PROXY
+  - RULE-SET,PayPal,Paypal
+
+  # Speedtest
+  - RULE-SET,Speedtest,Speedtest
 
   # Global 全球加速
   - RULE-SET,Global,PROXY
