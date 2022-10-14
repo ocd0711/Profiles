@@ -1,17 +1,15 @@
 #!name=OCD used Panel
-#!desc=Sub_info, timecard, 流媒体检测, skip_wifi, captureMode
+#!desc=timecard, 流媒体检测, skip_wifi, captureMode
 #!system=ios
 
 [Script]
-Sub_info = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/ocd0711/Profiles/master/Surge/Js/sub_info_panel.js
 timecard = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/smartmimi/conf/master/surge/timecard.js
 stream-all = type=generic, timeout=15, script-path=https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Module/Panel/Stream-All/Moore/Stream-All.js
 skip_wifi = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/ocd0711/Profiles/master/Surge/Js/skip_wifi.js
 captureMode = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/ocd0711/Profiles/master/Surge/Js/captureMode.js
 
 [Panel]
-Sub_info = script-name=Sub_info,update-interval=-1
-timecard = script-name=timecard,update-interval=-1
+timecard = script-name=timecard,update-interval=43200
 stream-all = script-name=stream-all, title="流媒体解锁检测", content="请刷新面板", update-interval=3600
 skip_wifi = script-name=skip_wifi,update-interval=43200
 captureMode = script-name=captureMode,update-interval=43200
