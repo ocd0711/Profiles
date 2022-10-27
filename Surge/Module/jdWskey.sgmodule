@@ -1,0 +1,9 @@
+#!name=JD 获取 wskey
+#!desc=获取 wskey
+#!system=ios
+
+[Script]
+获取京东 WSKEY = type=http-request,pattern=^https:\/\/api\-dd\.jd\.com\/client\.action\?functionId=getSessionLog,requires-body=1,max-size=0,timeout=1000,script-path=https://raw.githubusercontent.com/FoKit/Scripts/main/scripts/get_jd_wskey.js,script-update-interval=0
+
+[MITM]
+hostname = %APPEND% api-dd.jd.com
