@@ -26,10 +26,29 @@
 # > 云麦好轻
 ^https?:\/\/restapi\.iyunmai\.com\/api\/ios\/ad\/ - reject
 
+# > WeiboLite_微博国际版
+# WeiboLite_微博国际版_sdkad
+^https?:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkad\.php - reject
+# WeiboLite_微博国际版_屏蔽search_suggest
+^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/page\/get_search_suggest - reject
+# WeiboLite_微博国际版_屏蔽searching_info
+^ttps?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*user&a=get_searching_info - reject
+# WeiboLite_微博国际版_屏蔽search_topic
+^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*feed&a=search_topic - reject
+# WeiboLite_微博国际版_屏蔽开屏广告
+^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*ads - reject
+
 [Script]
 # ---(https://gitlab.com/ddgksf2013/Cuttlefish/-/raw/master/Script/coolapk.js)---
+
 # > coolapk
 coolapk_ads = type=http-response,pattern=^https?:\/\/api.coolapk.com\/v6\/(feed\/(replyList|detail)|main\/indexV8|dataList),requires-body=1,max-size=-1,script-path=https://gitlab.com/ddgksf2013/Cuttlefish/-/raw/master/Script/coolapk.js
 
+# > WeiboLite
+WeiboLite_微博国际版_推荐tab|热门tab去广告 = type=http-response,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/statuses\/unread_hot_timeline,requires-body=1,max-size=0,script-path=https://gitlab.com/ddgksf2013/Cuttlefish/-/raw/master/Script/weibo_json.js
+WeiboLite_微博国际版_关注tab去广告 = type=http-response,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/statuses\/friends_timeline,requires-body=1,max-size=0,script-path=https://gitlab.com/ddgksf2013/Cuttlefish/-/raw/master/Script/weibo_json.js
+WeiboLite_微博国际版_趋势tab = type=http-response,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/cardlist,requires-body=1,max-size=0,script-path=https://gitlab.com/ddgksf2013/Cuttlefish/-/raw/master/Script/weibo_json.js
+WeiboLite_微博国际版_趋势tab去广告 = type=http-response,pattern=^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*feed&a=trends,requires-body=1,max-size=0,script-path=https://gitlab.com/ddgksf2013/Cuttlefish/-/raw/master/Script/weibo_json.js
+
 [MITM]
-hostname = %APPEND% api.coolapk.com, gw.alicdn.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, img.meituan.net, p*.meituan.net, s3plus.meituan.net,flowplus.meituan.net, restapi.iyunmai.com
+hostname = %APPEND% api.coolapk.com, gw.alicdn.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, img.meituan.net, p*.meituan.net, s3plus.meituan.net,flowplus.meituan.net, restapi.iyunmai.com, *api.weibo*, sdkapp.uve.weibo.com
