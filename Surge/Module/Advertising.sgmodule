@@ -1,6 +1,12 @@
 #!name=Block Advertising
 #!desc=Block Advertising with Script/Rewrite
 
+[Map Local] 
+# > WeiboLite_微博国际版_屏蔽search_suggest
+^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/page\/get_search_suggest data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
+# > 酷安热搜
+^https?:\/\/api\.coolapk\.com\/v6\/search\?.*type=hotSearch data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
+
 [URL Rewrite]
 # > 饿了么
 ^https?:\/\/elemecdn.com\/.+\/sitemap - reject
@@ -29,8 +35,6 @@
 # > WeiboLite_微博国际版
 # WeiboLite_微博国际版_sdkad
 ^https?:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkad\.php - reject
-# WeiboLite_微博国际版_屏蔽search_suggest
-^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/page\/get_search_suggest - reject
 # WeiboLite_微博国际版_屏蔽searching_info
 ^ttps?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*user&a=get_searching_info - reject
 # WeiboLite_微博国际版_屏蔽search_topic
@@ -38,9 +42,11 @@
 # WeiboLite_微博国际版_屏蔽开屏广告
 ^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*ads - reject
 
+# > coolapk
+^https?://api-access\.pangolin-sdk-toutiao\.com/api/ad/union/sdk url reject
+
 [Script]
 # ---(https://gitlab.com/ddgksf2013/Cuttlefish/-/raw/master/Script/coolapk.js)---
-
 # > coolapk
 coolapk_ads = type=http-response,pattern=^https?:\/\/api.coolapk.com\/v6\/(feed\/(replyList|detail)|main\/indexV8|dataList),requires-body=1,max-size=-1,script-path=https://gitlab.com/ddgksf2013/Cuttlefish/-/raw/master/Script/coolapk.js
 
