@@ -6,6 +6,71 @@
   "repo": "https://github.com/ocd0711/Profiles/tree/master/boxjs",
   "apps": [
     {
+      "id": "debug",
+      "name": "Debug",
+      "author": "@FoKit",
+      "descs_html": [
+        "Debug"
+      ],
+      "icons": [
+        "https://raw.githubusercontent.com/FoKit/Scripts/main/images/debug.png",
+        "https://raw.githubusercontent.com/FoKit/Scripts/main/images/debug.png"
+      ],
+      "keys": [
+        "is_debug"
+      ],
+      "settings": [
+        {
+          "id": "is_debug",
+          "name": "Debug",
+          "val": false,
+          "type": "boolean",
+          "desc": ""
+        }
+      ]
+    },
+    {
+      "id": "wskey",
+      "name": "京东WSKEY",
+      "author": "@FoKit",
+      "descs_html": [
+        "用于自动抓取京东WSKEY"
+      ],
+      "icons": [
+        "https://raw.githubusercontent.com/FoKit/Scripts/main/images/jdjoy.png",
+        "https://raw.githubusercontent.com/FoKit/Scripts/main/images/jdjoy.png"
+      ],
+      "keys": [
+        "WSKEY_TG_BOT_TOKEN",
+        "WSKEY_TG_USER_ID",
+        "wskeyList"
+      ],
+      "settings": [
+        {
+          "id": "WSKEY_TG_BOT_TOKEN",
+          "name": "Telegram机器人Token",
+          "val": "",
+          "type": "text",
+          "desc": "填写 Telegram 机器人的 Token，格式：123456:abcdefgabcdefgabcdefg"
+        },
+        {
+          "id": "WSKEY_TG_USER_ID",
+          "name": "Telegram 会话ID",
+          "val": "[\"-1001701121614\"]",
+          "type": "text",
+          "desc": "填写 Telegram 会话ID，以数组形式保存[\"-1001701121614\"]"
+        },
+        {
+          "id": "wskeyList",
+          "name": "京东WSKEY",
+          "val": "",
+          "type": "textarea",
+          "rows": 10,
+          "desc": "京东WSKEY列表"
+        }
+      ]
+    },
+    {
       "id": "lkJdHelper",
       "name": "京东助手",
       "desc_html": "注：私人使用",
