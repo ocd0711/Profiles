@@ -44,9 +44,8 @@
 ^https?://api-access\.pangolin-sdk-toutiao\.com/api/ad/union/sdk url reject
 
 [Script]
-# ---(https://gitlab.com/ddgksf2013/Cuttlefish/-/raw/master/Script/coolapk.js)---
 # > coolapk
-coolapk_ads = type=http-response,pattern=^https?:\/\/api.coolapk.com\/v6\/(feed\/(replyList|detail)|main\/indexV8|dataList),requires-body=1,max-size=-1,script-path=https://gitlab.com/ddgksf2013/Cuttlefish/-/raw/master/Script/coolapk.js
+coolapk_ads = type=http-response,pattern=^https?:\/\/api\.coolapk\.com\/v6\/(feed\/(replyList|detail)|main\/indexV8|dataList),requires-body=1,max-size=-1,script-path=https://gitlab.com/ddgksf2013/Cuttlefish/-/raw/master/Script/coolapk.js
 
 # > WeiboLite
 WeiboLite_微博国际版_推荐tab|热门tab去广告 = type=http-response,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/statuses\/unread_hot_timeline,requires-body=1,max-size=0,script-path=https://gitlab.com/ddgksf2013/Cuttlefish/-/raw/master/Script/weibo_json.js
