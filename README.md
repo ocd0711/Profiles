@@ -1,6 +1,6 @@
 ⛔️Star ⛔️Fork ⛔️Share
 
-[Telegram Channel](https://t.me/DivineEngine)
+[Telegram Channel](https://t.me/OCD0711)
 
 这已经不是一个适用于大多数人的项目，仅献给我的小伙伴们。
 

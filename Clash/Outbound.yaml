@@ -121,7 +121,8 @@ dns:
   # involved. Clash answers the DNS question with the first result gathered.
   nameserver:
     - dhcp://en0
-    # - https://dns.alidns.com/dns-query
+    - https://dns.alidns.com/dns-query
+    # - h3://dns.alidns.com/dns-query
     # - 114.114.114.114 # default value
     # - 8.8.8.8 # default value
     # - tls://dns.rubyfish.cn:853 # DNS over TLS
@@ -197,9 +198,9 @@ proxy-providers:
 
   # 此处只是订阅示例，如果没有订阅链接的使用需求，此处及 proxy-groups 的相关内容可删除
 
-  DlerCloud: #「机场」订阅
+  Airport: #「机场」订阅
     type: http
-    url: "https://dler.cloud/subscribe/xxxxxx?protocols=smart&provider=clash" # 放机场订阅链接
+    url: "https://gist.githubusercontent.com/ocd0711/xxxxxxx/raw/OCD-CLASH" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/List.yaml # 注意此处文件名不可相同
     health-check:
@@ -209,7 +210,7 @@ proxy-providers:
 
   HK: #「机场」订阅香港地区节点
     type: http
-    url: "https://gist.githubusercontent.com/ocd0711/xxxxxx/raw/OCD-CLASH" # 放机场订阅链接
+    url: "https://gist.githubusercontent.com/ocd0711/xxxxxxx/raw/OCD-CLASH" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/HK.yaml # 注意此处文件名不可相同
     filter: '(香港)'
@@ -220,7 +221,7 @@ proxy-providers:
   
   TW: #「机场」订阅台湾地区节点
     type: http
-    url: "https://gist.githubusercontent.com/ocd0711/xxxxxx/raw/OCD-CLASH" # 放机场订阅链接
+    url: "https://gist.githubusercontent.com/ocd0711/xxxxxxx/raw/OCD-CLASH" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/TW.yaml # 注意此处文件名不可相同
     filter: '(台湾)'
@@ -231,7 +232,7 @@ proxy-providers:
 
   US: #「机场」订阅美国地区节点
     type: http
-    url: "https://gist.githubusercontent.com/ocd0711/xxxxxx/raw/OCD-CLASH" # 放机场订阅链接
+    url: "https://gist.githubusercontent.com/ocd0711/xxxxxxx/raw/OCD-CLASH" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/US.yaml # 注意此处文件名不可相同
     filter: '(美国)'
@@ -242,7 +243,7 @@ proxy-providers:
 
   JP: #「机场」订阅日本地区节点
     type: http
-    url: "https://gist.githubusercontent.com/ocd0711/xxxxxx/raw/OCD-CLASH" # 放机场订阅链接
+    url: "https://gist.githubusercontent.com/ocd0711/xxxxxxx/raw/OCD-CLASH" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/JP.yaml # 注意此处文件名不可相同
     filter: '(日本)'
@@ -253,7 +254,7 @@ proxy-providers:
 
   SG: #「机场」订阅新加坡地区节点
     type: http
-    url: "https://gist.githubusercontent.com/ocd0711/xxxxxx/raw/OCD-CLASH" # 放机场订阅链接
+    url: "https://gist.githubusercontent.com/ocd0711/xxxxxxx/raw/OCD-CLASH" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/SG.yaml # 注意此处文件名不可相同
     filter: '(新加坡)'
@@ -300,8 +301,9 @@ proxy-groups:
       - JP
       - US
       - SG
+      - DIRECT
     use:
-      - DlerCloud
+      - Airport
 
   # 白名单模式 PROXY, 黑名单模式 DIRECT, 不知道别动
   - name: "MATCH"
@@ -310,7 +312,7 @@ proxy-groups:
       - PROXY
       - DIRECT
 
-  # 国际流媒体服务
+  # YouTube
   - name: "YouTube"
     type: select
     proxies:
@@ -320,8 +322,6 @@ proxy-groups:
       - JP
       - US
       - SG
-    use:
-      - DlerCloud
 
   # 国际流媒体服务
   - name: "Streaming"
@@ -333,8 +333,18 @@ proxy-groups:
       - JP
       - US
       - SG
-    use:
-      - DlerCloud
+
+  # Emby 流媒体
+  - name: "Emby"
+    type: select
+    proxies:
+      - DIRECT
+      - PROXY
+      - HK
+      - TW
+      - JP
+      - US
+      - SG
 
   # 中国流媒体服务（面向海外版本）
   # 用于观看部分国内流媒体面向港澳台的地区的限定内容，此处应放港澳台节点，如果没有此需求可删除此处策略组及相关规则
@@ -344,7 +354,11 @@ proxy-groups:
       - DIRECT
       - HK
       - TW
+    use:
+      - HK
+      - TW
 
+  # Telegram 分流
   - name: "Telegram"
     type: select
     proxies:
@@ -354,9 +368,8 @@ proxy-groups:
       - JP
       - US
       - SG
-    use:
-      - DlerCloud
 
+  # Paypal 加速
   - name: "Paypal"
     type: select
     proxies:
@@ -367,9 +380,8 @@ proxy-groups:
       - US
       - SG
       - DIRECT
-    use:
-      - DlerCloud
 
+  # Speedtest 分流
   - name: "Speedtest"
     type: select
     proxies:
@@ -380,25 +392,18 @@ proxy-groups:
       - US
       - SG
       - DIRECT
-    use:
-      - DlerCloud
 
-  - name: "Guard"
+  # 广告
+  - name: "AdBlock"
     type: select
     proxies:
-      - PROXY
-      - HK
-      - TW
-      - JP
-      - US
-      - SG
-    use:
-      - DlerCloud
+      - REJECT
+      - DIRECT
 
   - name: "AutoTest"
     type: url-test # 亦可使用 fallback 或 load-balance
     use: # 注意此处是「use」
-      - DlerCloud # 这是上面「proxy-providers」的名称
+      - Airport # 这是上面「proxy-providers」的名称
     url: http://cp.cloudflare.com/generate_204
     interval: "3600"
 
@@ -447,151 +452,464 @@ rule-providers:
 #   url: # 只有当类型为 HTTP 时才可用，您不需要在本地空间中创建新文件。
 #   interval: # 自动更新间隔，仅在类型为 HTTP 时可用
 
-  Unbreak:
+  Special:
     type: http
     behavior: classical
-    path: ./RuleSet/Unbreak.yaml
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Direct/Direct.yaml
+    path: ./RuleSet/Special.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Special.yaml
     interval: 86400
 
-  Advertising:
+  Reject:
     type: http
     behavior: classical
     path: ./RuleSet/Advertising/Reject.yaml
     url:   https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Reject.yaml
     interval: 86400
 
-  Hijacking:
-    type: http
-    behavior: classical
-    path: ./RuleSet/Hijacking.yaml
-    url:   https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Hijacking/Hijacking.yaml
-    interval: 86400
-
   YouTube:
     type: http
     behavior: classical
-    path: ./RuleSet/YouTube/YouTube.yaml
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.yaml
+    path: ./RuleSet/Media/YouTube.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/YouTube.yaml
     interval: 86400
 
-  GlobalMedia:
+  YouTube_Music:
     type: http
     behavior: classical
-    path: ./RuleSet/StreamingMedia/GlobalMedia.yaml
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia.yaml
+    path: ./RuleSet/Media/YouTube_Music.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/YouTube%20Music.yaml
     interval: 86400
 
-  GlobalMedia_Domain:
-    type: http
-    behavior: domain
-    path: ./RuleSet/StreamingMedia/GlobalMedia_Domain.yaml
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia_Domain.yaml
-    interval: 86400
-
-  StreamingSE:
+  Netflix:
     type: http
     behavior: classical
-    path: ./RuleSet/StreamingMedia/StreamingSE.yaml
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMedia/ChinaMedia.yaml
+    path: ./RuleSet/Media/Netflix.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Netflix.yaml
+    interval: 86400
+
+  Spotify:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Media/Spotify.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Spotify.yaml
+    interval: 86400
+
+  Disney_Plus:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Media/Disney_Plus.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Disney%20Plus.yaml
+    interval: 86400
+
+  ABC:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Media/ABC.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/ABC.yaml
+    interval: 86400
+
+  Abema_TV:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Media/Abema_TV.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Abema%20TV.yaml
+    interval: 86400
+
+  Amazon:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Media/Amazon.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Amazon.yaml
+    interval: 86400
+
+  Apple_Music:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Media/Apple_Music.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Apple%20Music.yaml
+    interval: 86400
+
+  Apple_News:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Media/Apple_News.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Apple%20News.yaml
+    interval: 86400
+
+  Apple_TV:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Media/Apple_TV.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Apple%20TV.yaml
+    interval: 86400
+
+  Bahamut:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Media/Bahamut.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Bahamut.yaml
+    interval: 86400
+
+  BBC_iPlayer:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Media/BBC_iPlayer.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/BBC%20iPlayer.yaml
+    interval: 86400
+
+  DAZN:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Media/DAZN.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/DAZN.yaml
+    interval: 86400
+
+  Discovery_Plus:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Media/Discovery_Plus.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Discovery%20Plus.yaml
+    interval: 86400
+
+  encoreTVB:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Media/encoreTVB.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/encoreTVB.yaml
+    interval: 86400
+
+  F1_TV:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Media/F1_TV.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/F1%20TV.yaml
+    interval: 86400
+
+  Fox_Now:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Media/Fox_Now.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Fox%20Now.yaml
+    interval: 86400
+
+  Fox+:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Media/Fox+.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Fox%2B.yaml
+    interval: 86400
+
+  HBO_Go:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Media/HBO_Go.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/HBO%20Go.yaml
+    interval: 86400
+
+  HBO_Max:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Media/HBO_Max.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/HBO%20Max.yaml
+    interval: 86400
+
+  Hulu_Japan:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Hulu%20Japan.yaml
+    path: ./RuleSet/Media/Hulu_Japan.yaml
+    interval: 86400
+
+  Hulu:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Hulu.yaml
+    path: ./RuleSet/Media/Hulu.yaml
+    interval: 86400
+
+  Japonx:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Japonx.yaml
+    path: ./RuleSet/Media/Japonx.yaml
+    interval: 86400
+
+  JOOX:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/JOOX.yaml
+    path: ./RuleSet/Media/JOOX.yaml
+    interval: 86400
+
+  KKBOX:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/KKBOX.yaml
+    path: ./RuleSet/Media/KKBOX.yaml
+    interval: 86400
+
+  KKTV:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/KKTV.yaml
+    path: ./RuleSet/Media/KKTV.yaml
+    interval: 86400
+
+  Line_TV:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Line%20TV.yaml
+    path: ./RuleSet/Media/Line_TV.yaml
+    interval: 86400
+
+  myTV_SUPER:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/myTV%20SUPER.yaml
+    path: ./RuleSet/Media/myTV_SUPER.yaml
+    interval: 86400
+
+  Niconico:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Niconico.yaml
+    path: ./RuleSet/Media/Niconico.yaml
+    interval: 86400
+
+  Pandora:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Pandora.yaml
+    path: ./RuleSet/Media/Pandora.yaml
+    interval: 86400
+
+  PBS:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/PBS.yaml
+    path: ./RuleSet/Media/PBS.yaml
+    interval: 86400
+
+  Pornhub:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Pornhub.yaml
+    path: ./RuleSet/Media/Pornhub.yaml
+    interval: 86400
+
+  Soundcloud:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Soundcloud.yaml
+    path: ./RuleSet/Media/Soundcloud.yaml
+    interval: 86400
+
+  ViuTV:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/ViuTV.yaml
+    path: ./RuleSet/Media/ViuTV.yaml
+    interval: 86400
+
+  Bilibili:
+    type: http
+    behavior: classical
+    path: ./RuleSet/StreamingMedia/Bilibili.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Bilibili.yaml
+    interval: 86400
+
+  IQ:
+    type: http
+    behavior: classical
+    path: ./RuleSet/StreamingMedia/IQI.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/IQ.yaml
+    interval: 86400
+
+  IQIYI:
+    type: http
+    behavior: classical
+    path: ./RuleSet/StreamingMedia/IQYI.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/IQIYI.yaml
+    interval: 86400
+
+  Letv:
+    type: http
+    behavior: classical
+    path: ./RuleSet/StreamingMedia/Letv.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Letv.yaml
+    interval: 86400
+
+  # MOO:
+  #   type: http
+  #   behavior: classical
+  #   path: ./RuleSet/StreamingMedia/MOO.yaml
+  #   url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/MOO.yaml
+  #   interval: 86400
+
+  Netease_Music:
+    type: http
+    behavior: classical
+    path: ./RuleSet/StreamingMedia/Netease_Music.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Netease%20Music.yaml
+    interval: 86400
+
+  Tencent_Video:
+    type: http
+    behavior: classical
+    path: ./RuleSet/StreamingMedia/Tencent_Video.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Tencent%20Video.yaml
+    interval: 86400
+
+  Youku:
+    type: http
+    behavior: classical
+    path: ./RuleSet/StreamingMedia/Youku.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Youku.yaml
+    interval: 86400
+
+  WeTV:
+    type: http
+    behavior: classical
+    path: ./RuleSet/StreamingMedia/WeTV.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/WeTV.yaml
     interval: 86400
 
   Telegram:
     type: http
     behavior: classical
     path: ./RuleSet/Telegram.yaml
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Telegram.yaml
     interval: 86400
 
   PayPal:
     type: http
     behavior: classical
     path: ./RuleSet/PayPal.yaml
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PayPal/PayPal.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/PayPal.yaml
     interval: 86400
 
   Speedtest:
     type: http
     behavior: classical
     path: ./RuleSet/Speedtest.yaml
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Speedtest/Speedtest.yaml
-    interval: 86400
-
-  Global:
-    type: http
-    behavior: classical
-    path: ./RuleSet/Global/Global.yaml
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Global/Global.yaml
-    interval: 86400
-
-  Global_Domain:
-    type: http
-    behavior: domain
-    path: ./RuleSet/Global/Global_Domain.yaml
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Global/Global_Domain.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Speedtest.yaml
     interval: 86400
 
   Apple:
     type: http
     behavior: classical
-    path: ./RuleSet/Apple.yaml
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple.yaml
+    path: ./RuleSet/Apple/Apple.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Apple.yaml
+    interval: 86400
+
+  Global:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Global/Proxy.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Proxy.yaml
+    interval: 86400
+
+  Domestic:
+    type: http
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Domestic.yaml
+    path: ./RuleSet/Domestic/Domestic.yaml
+    interval: 86400
+
+  Domestic_IPs:
+    type: http
+    behavior: ipcidr
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Domestic%20IPs.yaml
+    path: ./RuleSet/Domestic/Domestic_IPs.yaml
     interval: 86400
 
   LAN:
     type: http
     behavior: classical
     path: ./RuleSet/LAN.yaml
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Lan/Lan.yaml
-    interval: 86400
-
-  China:
-    type: http
-    behavior: classical
-    path: ./RuleSet/China.yaml
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/China/China.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/LAN.yaml
     interval: 86400
 
 # 规则
 rules:
-  # Unbreak
-  - RULE-SET,Unbreak,DIRECT
+  # 直连和广告拦截
+  - RULE-SET,Special,DIRECT
+  - RULE-SET,Reject,AdBlock
 
-  # Advertising
-  - RULE-SET,Advertising,Guard
-
-  # Hijacking
-  - RULE-SET,Hijacking,Guard
-
-  # Streaming Media
+  # YouTube 单独分流
   - RULE-SET,YouTube,YouTube
-  - RULE-SET,GlobalMedia,Streaming
-  - RULE-SET,GlobalMedia_Domain,Streaming
+  - RULE-SET,YouTube_Music,YouTube
 
-  # StreamingSE
-  - RULE-SET,StreamingSE,StreamingSE
+  # Streaming 国际流媒体服务
+  - RULE-SET,Netflix,Streaming
+  - RULE-SET,Spotify,Streaming
+  - RULE-SET,Disney_Plus,Streaming
+  - RULE-SET,ABC,Streaming
+  - RULE-SET,Abema_TV,Streaming
+  - RULE-SET,Amazon,Streaming
+  - RULE-SET,Apple_Music,Streaming
+  - RULE-SET,Apple_News,Streaming
+  - RULE-SET,Apple_TV,Streaming
+  - RULE-SET,Bahamut,Streaming
+  - RULE-SET,BBC_iPlayer,Streaming
+  - RULE-SET,DAZN,Streaming
+  - RULE-SET,Discovery_Plus,Streaming
+  - RULE-SET,encoreTVB,Streaming
+  - RULE-SET,F1_TV,Streaming
+  - RULE-SET,Fox_Now,Streaming
+  - RULE-SET,Fox+,Streaming
+  - RULE-SET,HBO_Go,Streaming
+  - RULE-SET,HBO_Max,Streaming
+  - RULE-SET,Hulu_Japan,Streaming
+  - RULE-SET,Hulu,Streaming
+  - RULE-SET,Japonx,Streaming
+  - RULE-SET,JOOX,Streaming
+  - RULE-SET,KKBOX,Streaming
+  - RULE-SET,KKTV,Streaming
+  - RULE-SET,Line_TV,Streaming
+  - RULE-SET,myTV_SUPER,Streaming
+  - RULE-SET,Niconico,Streaming
+  - RULE-SET,Pandora,Streaming
+  - RULE-SET,PBS,Streaming
+  - RULE-SET,Pornhub,Streaming
+  - RULE-SET,Soundcloud,Streaming
+  - RULE-SET,ViuTV,Streaming
 
-  # Telegram
+  # Emby 流媒体
+  - DOMAIN-SUFFIX,misakaf.org,Emby
+
+  # StreamingSE 中国流媒体服务 (面向海外版本)
+  - RULE-SET,Bilibili,StreamingSE
+  - RULE-SET,IQ,StreamingSE
+  - RULE-SET,IQIYI,StreamingSE
+  - RULE-SET,Letv,StreamingSE
+  # - RULE-SET,MOO,StreamingSE
+  - RULE-SET,Netease_Music,StreamingSE
+  - RULE-SET,Tencent_Video,StreamingSE
+  - RULE-SET,Youku,StreamingSE
+  - RULE-SET,WeTV,StreamingSE
+
+  # Telegram 加速
   - RULE-SET,Telegram,Telegram
 
-  # PayPal
+  # Paypal 加速
   - RULE-SET,PayPal,Paypal
 
-  # Speedtest
+  # Speedtest 分流
   - RULE-SET,Speedtest,Speedtest
-
-  # Global 全球加速
-  - RULE-SET,Global,PROXY
-  - RULE-SET,Global_Domain,PROXY
 
   # Apple 服务
   - RULE-SET,Apple,DIRECT
 
-  # Local Area Network 局域网
-  - RULE-SET,LAN,DIRECT
+  # Global 全球加速
+  - RULE-SET,Global,PROXY
 
   # China 中国直连
-  - RULE-SET,China,DIRECT
+  - RULE-SET,Domestic,DIRECT
+  - RULE-SET,Domestic_IPs,DIRECT
+
+  # Local Area Network 局域网
+  - RULE-SET,LAN,DIRECT
 
   # GeoIP China
   - GEOIP,CN,DIRECT
