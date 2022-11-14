@@ -877,6 +877,7 @@ rules:
 
   # Emby 流媒体
   - DOMAIN-SUFFIX,misakaf.org,Emby
+  - DOMAIN-SUFFIX,poloemby.xyz,Emby
 
   # StreamingSE 中国流媒体服务 (面向海外版本)
   - RULE-SET,Bilibili,StreamingSE
