@@ -351,6 +351,47 @@
         "https://raw.githubusercontent.com/xream/scripts/main/surge/modules/gist/asset/icon.png",
         "https://raw.githubusercontent.com/xream/scripts/main/surge/modules/gist/asset/icon.png"
       ]
+    },
+    {
+      "id": "feng.com",
+      "name": "威锋论坛",
+      "author": "@FoKit@xiaobailian",
+      "script": "https://raw.githubusercontent.com/githubdulong/Script/master/weifeng.js",
+      "descs_html": [
+        ""
+      ],
+      "icons": [
+        "https://raw.githubusercontent.com/Orz-3/mini/master/Alpha/feng.png",
+        "https://raw.githubusercontent.com/Orz-3/mini/master/Color/feng.png"
+      ],
+      "keys": [
+        "feng_username",
+        "feng_password",
+        "feng_token"
+      ],
+      "settings": [
+        {
+          "id": "feng_username",
+          "name": "账号",
+          "val": "",
+          "type": "text",
+          "desc": ""
+        },
+        {
+          "id": "feng_password",
+          "name": "密码",
+          "val": "",
+          "type": "text",
+          "desc": ""
+        },
+        {
+          "id": "feng_token",
+          "name": "Token",
+          "val": "",
+          "type": "text",
+          "desc": ""
+        }
+      ]
     }
   ]
 }
