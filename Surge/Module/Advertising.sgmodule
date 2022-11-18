@@ -8,6 +8,9 @@
 # > 美团
 ^https?:\/\/peisongapi\.meituan\.com\/client\/getInitiateImage data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-200.txt"
 
+# > 微博国际版
+^https:\/\/api\.weibo\.cn\/2\/ad\/weibointl data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
+
 [URL Rewrite]
 # > 饿了么
 ^https?:\/\/elemecdn\.com\/.+\/sitemap - reject
@@ -49,13 +52,16 @@
 
 [Script]
 # > coolapk
-coolapk_ads = type=http-response,pattern=^https?:\/\/api\.coolapk\.com\/v6\/(feed\/(replyList|detail)|main\/indexV8|dataList),requires-body=1,max-size=-1,script-path=https://ocd0522.tk/OCD/Cuttlefish/raw/branch/master/Script/coolapk.js
+coolapk_ads = type=http-response,pattern=^https?:\/\/api\.coolapk\.com\/v6\/(feed\/(replyList|detail)|main\/indexV8|dataList),requires-body=1,max-size=-1,script-path=https://ocd0522.tk/ddgksf2013/Cuttlefish/raw/branch/master/Script/coolapk.js
 
 # > 微博 (https://raw.githubusercontent.com/zmqcherish/proxy-script/main/weibo.conf)
 微博去广告以及去除各部分推广模块 = type=http-response,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/2\/(cardlist|searchall|page|messageflow|statuses\/(unread_)?friends(\/|_)timeline|groups\/timeline|statuses\/(container_timeline|unread_hot_timeline|extend|video_mixtimeline|unread_topic_timeline)|profile\/(me|container_timeline)|video\/(community_tab|remind_info|tiny_stream_video_list)|checkin\/show|\!\/live\/media_homelist|comments\/build_comments|container\/get_item|search\/(finder|container_timeline|container_discover)),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zmqcherish/proxy-script/main/weibo_main.js
 删除微博开屏广告 = type=http-response,pattern=^https?:\/\/(sdk|wb)app\.uve\.weibo\.com(\/interface\/sdk\/sdkad.php|\/wbapplua\/wbpullad.lua),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zmqcherish/proxy-script/main/weibo_launch.js
 自定义tab皮肤 = type=http-response,pattern=^https?:\/\/api\.weibo\.cn\/2\/!\/client\/light_skin,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zmqcherish/proxy-script/main/weibo_main.js
 非会员设置tab皮肤 = type=http-response,pattern=^https?:\/\/new\.vip\.weibo\.cn\/littleskin\/preview,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zmqcherish/proxy-script/main/weibo_main.js
+
+# > 微博国际版
+weibointl_launch = type=http-response,pattern=^https:\/\/weibointl\.api\.weibo\.cn\/portal\.php\?a=get_coopen_ads,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/ocd0711/Profiles/master/Surge/Js/weibointl_launch.js
 
 # > 什么值得买去广告
 开屏去广告 = type=http-response,pattern=^https?:\/\/app-api\.smzdm\.com\/util\/loading,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_remove_ads.js
@@ -68,4 +74,4 @@ coolapk_ads = type=http-response,pattern=^https?:\/\/api\.coolapk\.com\/v6\/(fee
 值会员权益中心banner广告 = type=http-response,pattern=^https?:\/\/zhiyou\.m\.smzdm\.com\/user\/vip\/ajax_get_banner,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_remove_ads.js
 
 [MITM]
-hostname = %APPEND% api.coolapk.com, api-access.pangolin-sdk-toutiao.com, gw.alicdn.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, img.meituan.net, p*.meituan.net, s3plus.meituan.net, flowplus.meituan.net, peisongapi.meituan.com, restapi.iyunmai.com, api.weibo.cn, mapi.weibo.com, *.uve.weibo.com, new.vip.weibo.cn, api.pinduoduo.com, api.yangkeduo.com, app-api.smzdm.com, homepage-api.smzdm.com, haojia-api.smzdm.com, haojia.m.smzdm.com, baike-api.smzdm.com, s-api.smzdm.com, zhiyou.m.smzdm.com, ios.sspai.com
+hostname = %APPEND% api.coolapk.com, api-access.pangolin-sdk-toutiao.com, gw.alicdn.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, img.meituan.net, p*.meituan.net, s3plus.meituan.net, flowplus.meituan.net, peisongapi.meituan.com, restapi.iyunmai.com, api.weibo.cn, mapi.weibo.com, *.uve.weibo.com, new.vip.weibo.cn, api.pinduoduo.com, api.yangkeduo.com, app-api.smzdm.com, homepage-api.smzdm.com, haojia-api.smzdm.com, haojia.m.smzdm.com, baike-api.smzdm.com, s-api.smzdm.com, zhiyou.m.smzdm.com, ios.sspai.com, weibointl.api.weibo.cn
