@@ -36,9 +36,6 @@
 # > 云麦好轻
 ^https?:\/\/restapi\.iyunmai\.com\/api\/ios\/ad\/ - reject
 
-# > coolapk
-^https?:\/\/api-access\.pangolin-sdk-toutiao\.com\/api\/ad\/union\/sdk - reject
-
 # > 什么值得买去广告
 # 好价详情页去广告
 ^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/other_modul - reject
@@ -49,6 +46,16 @@
 
 # > 少数派
 ^https?:\/\/ios\.sspai\.com\/api\/v3\/recommend\/page\/get\?ad\.*ios_home_modal - reject
+
+[Rule]
+# > 字节跳动 穿山甲广告 SDK
+DOMAIN-KEYWORD,sf3-fe-tos.pglstatp-toutiao.com,REJECT
+DOMAIN-KEYWORD,p6-be-pack-sign.pglstatp-toutiao.com,REJECT
+DOMAIN-KEYWORD,sf6-be-pack.pglstatp-toutiao.com,REJECT
+DOMAIN-KEYWORD,v6-be-pack.pglstatp-toutiao.com,REJECT
+DOMAIN-KEYWORD,sf3-be-pack.pglstatp-toutiao.com,REJECT
+DOMAIN-KEYWORD,v3-be-pack.pglstatp-toutiao.com,REJECT
+DOMAIN-KEYWORD,p9-be-pack-sign.pglstatp-toutiao.com,REJECT
 
 [Script]
 # > coolapk
@@ -74,4 +81,4 @@ weibointl_launch = type=http-response,pattern=^https:\/\/weibointl\.api\.weibo\.
 值会员权益中心banner广告 = type=http-response,pattern=^https?:\/\/zhiyou\.m\.smzdm\.com\/user\/vip\/ajax_get_banner,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_remove_ads.js
 
 [MITM]
-hostname = %APPEND% api.coolapk.com, api-access.pangolin-sdk-toutiao.com, gw.alicdn.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, img.meituan.net, p*.meituan.net, s3plus.meituan.net, flowplus.meituan.net, peisongapi.meituan.com, restapi.iyunmai.com, api.weibo.cn, mapi.weibo.com, *.uve.weibo.com, new.vip.weibo.cn, api.pinduoduo.com, api.yangkeduo.com, app-api.smzdm.com, homepage-api.smzdm.com, haojia-api.smzdm.com, haojia.m.smzdm.com, baike-api.smzdm.com, s-api.smzdm.com, zhiyou.m.smzdm.com, ios.sspai.com, weibointl.api.weibo.cn
+hostname = %APPEND% api.coolapk.com, gw.alicdn.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, img.meituan.net, p*.meituan.net, s3plus.meituan.net, flowplus.meituan.net, peisongapi.meituan.com, restapi.iyunmai.com, api.weibo.cn, mapi.weibo.com, *.uve.weibo.com, new.vip.weibo.cn, api.pinduoduo.com, api.yangkeduo.com, app-api.smzdm.com, homepage-api.smzdm.com, haojia-api.smzdm.com, haojia.m.smzdm.com, baike-api.smzdm.com, s-api.smzdm.com, zhiyou.m.smzdm.com, ios.sspai.com, weibointl.api.weibo.cn
