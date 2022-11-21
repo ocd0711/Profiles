@@ -48,7 +48,7 @@
 ^https?:\/\/ios\.sspai\.com\/api\/v3\/recommend\/page\/get\?ad\.*ios_home_modal - reject
 
 # > 字节跳动 穿山甲广告 SDK
-^https?:\/\/.*\.pglstatp-toutiao.com\/api\/ad\/union\/sdk\/get_ads\/ - reject
+^(http|https)?:\/\/.*\.pglstatp-toutiao.com\/api\/ad\/union\/sdk\/get_ads\/ - reject
 # sf3-fe-tos.pglstatp-toutiao.com
 # p6-be-pack-sign.pglstatp-toutiao.com
 # sf6-be-pack.pglstatp-toutiao.com
