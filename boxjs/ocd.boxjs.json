@@ -61,7 +61,8 @@
         "lkJdHelperJfCss",
         "lkJdHelperSidebarHorizontal",
         "lkJdHelperCk",
-        "lkJdHelperCallKey"
+        "lkJdHelperCallKey",
+        "lkJdHelperIsNotifyKey"
       ],
       "settings": [
         {
