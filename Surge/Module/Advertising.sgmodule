@@ -52,8 +52,10 @@
 ^https?:\/\/ios\.sspai\.com\/api\/v3\/recommend\/page\/get\?ad\.*ios_home_modal - reject
 
 # > 字节跳动 穿山甲广告 SDK
-^(http|https)?:\/\/.*\.pglstatp-toutiao\.com - reject
-^(http|https)?:\/\/log-api\.pangolin-sdk-toutiao-b\.com - reject
+^(http|https)?:\/\/.*\.pglstatp-toutiao\.com\/* - reject
+^(http|https)?:\/\/log-api\.pangolin-sdk-toutiao-b\.com\/* - reject
+^(http|https)?:\/\/api-access\.pangolin-sdk-toutiao-b\.com\/* - reject
+^(http|https)?:\/\/api-access\.pangolin-sdk-toutiao\.com\/* - reject
 # sf3-fe-tos.pglstatp-toutiao.com
 # p6-be-pack-sign.pglstatp-toutiao.com
 # sf6-be-pack.pglstatp-toutiao.com
@@ -91,4 +93,4 @@ weibointl_launch = type=http-response,pattern=^https:\/\/weibointl\.api\.weibo\.
 值会员权益中心banner广告 = type=http-response,pattern=^https?:\/\/zhiyou\.m\.smzdm\.com\/user\/vip\/ajax_get_banner,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_remove_ads.js
 
 [MITM]
-hostname = %APPEND% api.coolapk.com, gw.alicdn.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, peisongapi.meituan.com, img.meituan.net, www.meituan.com, s3plus.meituan.net, flowplus.meituan.net, p*.meituan.net, wmapi.meituan.com, restapi.iyunmai.com, api.weibo.cn, mapi.weibo.com, *.uve.weibo.com, new.vip.weibo.cn, api.pinduoduo.com, api.yangkeduo.com, app-api.smzdm.com, homepage-api.smzdm.com, haojia-api.smzdm.com, haojia.m.smzdm.com, baike-api.smzdm.com, s-api.smzdm.com, zhiyou.m.smzdm.com, ios.sspai.com, weibointl.api.weibo.cn, sf3-fe-tos.pglstatp-toutiao.com, p6-be-pack-sign.pglstatp-toutiao.com, sf6-be-pack.pglstatp-toutiao.com, v6-be-pack.pglstatp-toutiao.com, sf3-be-pack.pglstatp-toutiao.com, v3-be-pack.pglstatp-toutiao.com, p9-be-pack-sign.pglstatp-toutiao.com, log-api.pangolin-sdk-toutiao-b.com, adim.pinduoduo.com, pangolin.snssdk.com
+hostname = %APPEND% api.coolapk.com, gw.alicdn.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, peisongapi.meituan.com, img.meituan.net, www.meituan.com, s3plus.meituan.net, flowplus.meituan.net, p*.meituan.net, wmapi.meituan.com, restapi.iyunmai.com, api.weibo.cn, mapi.weibo.com, *.uve.weibo.com, new.vip.weibo.cn, api.pinduoduo.com, api.yangkeduo.com, app-api.smzdm.com, homepage-api.smzdm.com, haojia-api.smzdm.com, haojia.m.smzdm.com, baike-api.smzdm.com, s-api.smzdm.com, zhiyou.m.smzdm.com, ios.sspai.com, weibointl.api.weibo.cn, sf3-fe-tos.pglstatp-toutiao.com, p6-be-pack-sign.pglstatp-toutiao.com, sf6-be-pack.pglstatp-toutiao.com, v6-be-pack.pglstatp-toutiao.com, sf3-be-pack.pglstatp-toutiao.com, v3-be-pack.pglstatp-toutiao.com, p9-be-pack-sign.pglstatp-toutiao.com, log-api.pangolin-sdk-toutiao-b.com, api-access.pangolin-sdk-toutiao-b.com, api-access.pangolin-sdk-toutiao.com, adim.pinduoduo.com, pangolin.snssdk.com
