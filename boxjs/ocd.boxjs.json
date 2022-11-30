@@ -6,6 +6,38 @@
   "repo": "https://github.com/ocd0711/Profiles/tree/master/boxjs",
   "apps": [
     {
+      "id": "bilibili.com",
+      "name": "bilibili",
+      "author": "@MartinsKing",
+      "script": "https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/Task/BiliBili.js",
+      "descs_html": [
+        "bilibili 签到, 可配置投币次数"
+      ],
+      "icons": [
+        "https://raw.githubusercontent.com/Orz-3/mini/master/Alpha/bilibili.png",
+        "https://raw.githubusercontent.com/Orz-3/mini/master/Color/bilibili.png"
+      ],
+      "keys": [
+        "bilibili_headers",
+        "bilibili_watch",
+        "bilibili_share",
+        "bilibili_coins",
+        "bilibili_score",
+        "bilibili_user",
+        "bilibili_key",
+        "bilibili_exec"
+      ],
+      "settings": [
+        {
+          "id": "bilibili_exec",
+          "name": "投币次数",
+          "val": "5",
+          "type": "text",
+          "desc": "投币次数(用户自行设置，默认5次)"
+        }
+      ]
+    },
+    {
       "id": "wskey",
       "name": "京东WSKEY",
       "author": "@FoKit",
