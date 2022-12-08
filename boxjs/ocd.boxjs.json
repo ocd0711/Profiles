@@ -373,6 +373,24 @@
       ]
     },
     {
+      "id": "chavyleung.meituan",
+      "name": "美团",
+      "keys": [
+        "chavy_tokenurl_meituan",
+        "chavy_tokenheader_meituan",
+        "chavy_signurl_meituan",
+        "chavy_signheader_meituan",
+        "chavy_signbody_meituan"
+      ],
+      "author": "@chavyleung",
+      "repo": "https://github.com/chavyleung/scripts/blob/master/meituan/meituan.js",
+      "script": "https://raw.githubusercontent.com/chavyleung/scripts/master/meituan/meituan.js",
+      "icons": [
+        "https://raw.githubusercontent.com/Orz-3/mini/master/Alpha/meituan.png",
+        "https://raw.githubusercontent.com/Orz-3/mini/master/Color/meituan.png"
+      ]
+    },
+    {
       "id": "feng.com",
       "name": "威锋论坛",
       "author": "@FoKit@Xiaobailian",
