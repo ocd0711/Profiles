@@ -847,7 +847,7 @@ rules:
   - RULE-SET,ABC,Streaming
   - RULE-SET,Abema_TV,Streaming
   - RULE-SET,Amazon,Streaming
-  - RULE-SET,Apple_Music,Streaming
+  - RULE-SET,Apple_Music,DIRECT
   - RULE-SET,Apple_News,Streaming
   - RULE-SET,Apple_TV,Streaming
   - RULE-SET,Bahamut,Streaming
