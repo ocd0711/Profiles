@@ -1,15 +1,26 @@
 #!name=Block Advertising
 #!desc=Block Advertising with Script/Rewrite(2022/11/21)
 
+[Rule]
+DOMAIN-SUFFIX,sdkapp.uve.weibo.com,DIRECT
+
 [Map Local]
+# > 微博国际版_hot_search@ddgksf2013
+^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php\?a=hot_search_users data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
+# > 微博国际版_热推荐@ddgksf2013
+^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/ad\/weibointl\? data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
+# > 微博国际版_屏蔽search_suggest@ddgksf2013
+# ^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/page\/get_search_suggest data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
+# > 微博国际版_屏蔽searching_info@ddgksf2013
+^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*user&a=get_searching_info data="https://github.com/ddgksf2013/Scripts/raw/master/weibo_search_info.json"
+# > 微博国际版_屏蔽search_topic@ddgksf2013 
+^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*feed&a=search_topic data="https://github.com/ddgksf2013/Scripts/raw/master/weibo_search_topic.json"
+
 # > 拼多多
 ^https?:\/\/api\.(pinduoduo|yangkeduo)\.com\/api\/cappuccino\/splash data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-200.txt"
 
 # > 美团
 ^https?:\/\/peisongapi\.meituan\.com\/client\/getInitiateImage data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-200.txt"
-
-# > 微博国际版
-^https:\/\/api\.weibo\.cn\/2\/ad\/weibointl data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
 
 [URL Rewrite]
 # > 饿了么
@@ -73,14 +84,28 @@
 # > coolapk
 coolapk_ads = type=http-response,pattern=^https?:\/\/api\.coolapk\.com\/v6\/(feed\/(replyList|detail)|main\/indexV8|dataList),requires-body=1,max-size=-1,script-path=https://raw.githubusercontent.com/ocd0711/Profiles/master/Surge/Js/coolapk.js
 
-# > 微博 (https://raw.githubusercontent.com/zmqcherish/proxy-script/main/weibo.conf)
-微博去广告以及去除各部分推广模块 = type=http-response,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/2\/(cardlist|searchall|page|messageflow|statuses\/(unread_)?friends(\/|_)timeline|groups\/timeline|statuses\/(container_timeline|unread_hot_timeline|extend|video_mixtimeline|unread_topic_timeline)|profile\/(me|container_timeline)|video\/(community_tab|remind_info|tiny_stream_video_list)|checkin\/show|\!\/live\/media_homelist|comments\/build_comments|container\/get_item|search\/(finder|container_timeline|container_discover)),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zmqcherish/proxy-script/main/weibo_main.js
-删除微博开屏广告 = type=http-response,pattern=^https?:\/\/(sdk|wb)app\.uve\.weibo\.com(\/interface\/sdk\/sdkad.php|\/wbapplua\/wbpullad.lua),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zmqcherish/proxy-script/main/weibo_launch.js
-自定义tab皮肤 = type=http-response,pattern=^https?:\/\/api\.weibo\.cn\/2\/!\/client\/light_skin,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zmqcherish/proxy-script/main/weibo_main.js
-非会员设置tab皮肤 = type=http-response,pattern=^https?:\/\/new\.vip\.weibo\.cn\/littleskin\/preview,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zmqcherish/proxy-script/main/weibo_main.js
-
-# > 微博国际版
-weibointl_launch = type=http-response,pattern=^https:\/\/weibointl\.api\.weibo\.cn\/portal\.php\?a=get_coopen_ads,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/ocd0711/Profiles/master/Surge/Js/weibointl_launch.js
+# > 微博_自定义tab皮肤@zmqcherish
+weibo_json = type=http-response,pattern=^https://api.weibo.cn/2/!/client/light_skin,requires-body=1,max-size=0,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
+# > 微博_非会员设置tab皮肤@zmqcherish
+weibo_json = type=http-response,pattern=^https://new.vip.weibo.cn/littleskin/preview,requires-body=1,max-size=0,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
+# > 微博_去广告以及去除各部分推广模块@zmqcherish
+weibo_json = type=http-response,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/(searchall|page\?|messageflow),requires-body=1,max-size=0,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
+weibo_json = type=http-response,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/statuses/(unread_)?friends(/|_)timeline,requires-body=1,max-size=0,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
+weibo_json = type=http-response,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/groups/timeline,requires-body=1,max-size=0,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
+weibo_json = type=http-response,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/statuses/(container_timeline|unread_hot_timeline|extend|video_mixtimeline|unread_topic_timeline),requires-body=1,max-size=0,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
+weibo_json = type=http-response,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/profile/(me|container_timeline),requires-body=1,max-size=0,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
+weibo_json = type=http-response,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/video/(community_tab|remind_info|tiny_stream_video_list),requires-body=1,max-size=0,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
+weibo_json = type=http-response,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/search/(finder|container_timeline|container_discover),requires-body=1,max-size=0,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
+weibo_json = type=http-response,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/(checkin/show|\!/live/media_homelist|comments/build_comments|container/get_item),requires-body=1,max-size=0,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
+weibo_json = type=http-response,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/cardlist,requires-body=1,max-size=0,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
+# > 微博国际版_屏蔽开屏广告@ddgksf2013 
+weibo_json = type=http-response,pattern=^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*get_coopen_ads,requires-body=1,max-size=0,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
+# > 微博&国际版_sdkad@ddgksf2013
+weibo_json = type=http-response,pattern=^https?://(sdk|wb)app\.uve\.weibo\.com(/interface/sdk/sdkad.php|/wbapplua/wbpullad.lua),requires-body=1,max-size=0,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
+# > 微博国际版_趋势顶部CARD去广告@ddgksf2013
+weibo_json = type=http-response,pattern=^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*feed&a=trends,requires-body=1,max-size=0,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
+# > 微博国际版_用户中心@ddgksf2013
+weibo_json = type=http-response,pattern=^https?:\/\/weibointl\.api\.weibo\.cn\/portal\.php\?a=user_center,requires-body=1,max-size=0,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
 
 # > 什么值得买去广告
 开屏去广告 = type=http-response,pattern=^https?:\/\/app-api\.smzdm\.com\/util\/loading,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_remove_ads.js
@@ -93,4 +118,4 @@ weibointl_launch = type=http-response,pattern=^https:\/\/weibointl\.api\.weibo\.
 值会员权益中心banner广告 = type=http-response,pattern=^https?:\/\/zhiyou\.m\.smzdm\.com\/user\/vip\/ajax_get_banner,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_remove_ads.js
 
 [MITM]
-hostname = %APPEND% api.coolapk.com, gw.alicdn.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, peisongapi.meituan.com, img.meituan.net, www.meituan.com, s3plus.meituan.net, flowplus.meituan.net, p*.meituan.net, wmapi.meituan.com, restapi.iyunmai.com, api.weibo.cn, mapi.weibo.com, *.uve.weibo.com, new.vip.weibo.cn, api.pinduoduo.com, api.yangkeduo.com, app-api.smzdm.com, homepage-api.smzdm.com, haojia-api.smzdm.com, haojia.m.smzdm.com, baike-api.smzdm.com, s-api.smzdm.com, zhiyou.m.smzdm.com, ios.sspai.com, weibointl.api.weibo.cn, sf3-fe-tos.pglstatp-toutiao.com, p6-be-pack-sign.pglstatp-toutiao.com, sf6-be-pack.pglstatp-toutiao.com, v6-be-pack.pglstatp-toutiao.com, sf3-be-pack.pglstatp-toutiao.com, v3-be-pack.pglstatp-toutiao.com, p9-be-pack-sign.pglstatp-toutiao.com, log-api.pangolin-sdk-toutiao-b.com, api-access.pangolin-sdk-toutiao-b.com, api-access.pangolin-sdk-toutiao.com, adim.pinduoduo.com, pangolin.snssdk.com
+hostname = %APPEND% api.coolapk.com, gw.alicdn.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, peisongapi.meituan.com, img.meituan.net, www.meituan.com, s3plus.meituan.net, flowplus.meituan.net, p*.meituan.net, wmapi.meituan.com, restapi.iyunmai.com, *api.weibo*, *uve.weibo.com, new.vip.weibo.cn, api.pinduoduo.com, api.yangkeduo.com, app-api.smzdm.com, homepage-api.smzdm.com, haojia-api.smzdm.com, haojia.m.smzdm.com, baike-api.smzdm.com, s-api.smzdm.com, zhiyou.m.smzdm.com, ios.sspai.com, sf3-fe-tos.pglstatp-toutiao.com, p6-be-pack-sign.pglstatp-toutiao.com, sf6-be-pack.pglstatp-toutiao.com, v6-be-pack.pglstatp-toutiao.com, sf3-be-pack.pglstatp-toutiao.com, v3-be-pack.pglstatp-toutiao.com, p9-be-pack-sign.pglstatp-toutiao.com, log-api.pangolin-sdk-toutiao-b.com, api-access.pangolin-sdk-toutiao-b.com, api-access.pangolin-sdk-toutiao.com, adim.pinduoduo.com, pangolin.snssdk.com
