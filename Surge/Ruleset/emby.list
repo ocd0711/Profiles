@@ -10,3 +10,5 @@ DOMAIN-SUFFIX,ddnsjp.titams.xyz
 DOMAIN-SUFFIX,nebula-emby.com
 DOMAIN-SUFFIX,misty.ltd
 DOMAIN-SUFFIX,emby.wtf
+IP-CIDR,194.9.62.134/24
+IP-CIDR,194.9.62.121/24
