@@ -2,7 +2,6 @@ DOMAIN-SUFFIX,misakaf.org
 DOMAIN-SUFFIX,poloemby.xyz
 DOMAIN-SUFFIX,loseremby.org
 DOMAIN-SUFFIX,emby.ml
-DOMAIN-SUFFIX,magpie.eu.org
 DOMAIN-SUFFIX,xmss.vip
 DOMAIN-SUFFIX,infinityfly.top
 DOMAIN-SUFFIX,emby.o9o.nl
@@ -12,3 +11,4 @@ DOMAIN-SUFFIX,misty.ltd
 DOMAIN-SUFFIX,emby.wtf
 IP-CIDR,194.9.62.134/24
 IP-CIDR,194.9.62.121/24
+IP-CIDR,194.87.169.15/24
