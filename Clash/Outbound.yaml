@@ -830,6 +830,13 @@ rule-providers:
     url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/LAN.yaml
     interval: 86400
 
+  Emby:
+    type: http
+    behavior: classical
+    path: ./RuleSet/emby.yaml
+    url: https://raw.githubusercontent.com/ocd0711/Profiles/master/Clash/Ruleset/emby.yaml
+    interval: 86400
+
 # 规则
 rules:
   # 直连和广告拦截
@@ -876,8 +883,7 @@ rules:
   - RULE-SET,ViuTV,Streaming
 
   # Emby 流媒体
-  - DOMAIN-SUFFIX,misakaf.org,Emby
-  - DOMAIN-SUFFIX,poloemby.xyz,Emby
+  - RULE-SET,Emby,Emby
 
   # StreamingSE 中国流媒体服务 (面向海外版本)
   - RULE-SET,Bilibili,StreamingSE
