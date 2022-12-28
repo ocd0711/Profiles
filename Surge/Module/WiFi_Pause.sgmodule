@@ -1,0 +1,5 @@
+#!name=Pause Wifi Mode
+#!desc=在连接特定 Wi-Fi 时暂停使用
+
+[SSID Setting]
+SSID:OCD_AP* suspend=true
