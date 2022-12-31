@@ -1,5 +1,5 @@
 #!name=Block Advertising
-#!desc=Block Advertising with Script/Rewrite(2022/11/21)
+#!desc=Block Advertising with Script/Rewrite(2022/12/31)
 
 [Rule]
 # > 微博_请手动添加以下分流至本地
@@ -19,37 +19,72 @@ DOMAIN-SUFFIX,sdkapp.uve.weibo.com,DIRECT
 # > 微博国际版_屏蔽search_topic@ddgksf2013 
 ^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*feed&a=search_topic data="https://github.com/ddgksf2013/Scripts/raw/master/weibo_search_topic.json"
 
+# > 飞猪
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.fliggy\.crm\.screen\.allresource data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-200.txt"
+
+# > 京东
+^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=start data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
+
 # > 拼多多
 ^https?:\/\/api\.(pinduoduo|yangkeduo)\.com\/api\/cappuccino\/splash data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-200.txt"
 
 # > 美团
 ^https?:\/\/peisongapi\.meituan\.com\/client\/getInitiateImage data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-200.txt"
 
+# > 顺丰
+^https?:\/\/ccsp-egmas\.sf-express\.com\/cx-app-base\/base\/app\/appVersion\/detectionUpgrade data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
+https://ccsp-egmas.sf-express.com/cx-app-base/base/app/ad/queryAdImages data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
+
+# > 招商银行
+^https?:\/\/webappcfg\.paas\.cmbchina\.com\/v1\/func\/getmarketconfig data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-200.txt"
+
+# > 中国联通
+^https?:\/\/m\.client\.10010\.com\/mobileService\/(activity|customer)\/(accountListData|get_client_adv|get_startadv) data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-200.txt"
+^https?:\/\/m\.client\.10010\.com\/uniAdmsInterface\/(getHomePageAd|getWelcomeAd) data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-200.txt"
+
 [URL Rewrite]
-# > 饿了么
-^https?:\/\/elemecdn\.com\/.+\/sitemap - reject
-^https?:\/\/fuss10\.elemecdn\.com\/.+\/w\/640\/h\/\d{3,4} - reject
-^https?:\/\/fuss10\.elemecdn\.com\/.+\/w\/750\/h\/\d{3,4} - reject
-^https?:\/\/fuss10\.elemecdn\.com\/.+.mp4 - reject
-^https?:\/\/www1\.elecfans\.com\/www\/delivery\/ - reject
+# > 叮咚买菜
+^https?:\/\/maicai\.api\.ddxq\.mobi\/advert\/ - reject
 
-# > 飞猪
-^https?:\/\/gw\.alicdn\.com\/imgextra\/\w{2}\/[\w!]+-\d-tps-\d{3}-\d{4}\.(jpg|png)$ - reject
+# > elema
+^https?:\/\/elemecdn.com\/.+\/sitemap - reject
+^https?:\/\/fuss10.elemecdn.com\/.+\/w\/640\/h\/\d{3,4} - reject
+^https?:\/\/fuss10.elemecdn.com\/.+\/w\/750\/h\/\d{3,4} - reject
+^https?:\/\/fuss10.elemecdn.com\/.+.mp4 - reject
+^https?:\/\/www1.elecfans.com\/www\/delivery\/ - reject
 
-# > 美团应用
+# > 航旅纵横
+^http?:\/\/(discardrp|startup)\.umetrip\.com\/gateway\/api\/umetrip\/native - reject
+
+# > 京东
+^https?:\/\/api\.m\.jd.com\/client\.action\?functionId=queryMaterialAdverts - reject
+^https?:\/\/(bdsp-x|dsp-x)\.jd\.com\/adx\/ - reject
+
+# > 京东金融
+^https?:\/\/ms\.jr\.jd\.com\/gw\/generic\/aladdin\/(new)?na\/m\/getLoadingPicture - reject
+
+# > 美团
 ^https?:\/\/img\.meituan\.net\/(adunion|display|midas)\/\w+\.(gif|jpg|jpg\.webp)$ - reject
 ^https?:\/\/(s3plus|flowplus)\.meituan\.net\/v\d\/\w+\/linglong\/\w+\.(gif|jpg|mp4) - reject
 ^https?:\/\/p\d\.meituan\.net\/(bizad|wmbanner)\/\w+\.jpg - reject
 ^https?:\/\/p\d\.meituan\.net\/movie\/\w+\.jpg\?may_covertWebp - reject
+
+# > 美团外卖
 ^https?:\/\/img\.meituan\.net\/(bizad|brandCpt)\/\w+\.(png|jpg) - reject
 ^https?:\/\/wmapi\.meituan\.com\/api\/v\d+\/loadInfo\? - reject
 ^https?:\/\/wmapi\.meituan\.com\/api\/v\d\/startpicture - reject
 ^https?:\/\/www\.meituan\.com\/api\/v\d\/appstatus\?ad - reject
 
+# > 顺丰优选
+^https://mapi.sfbest.com\/brokerservice-server\/cms\/getPositionById.* - reject
+
+# > 顺丰
+^https?:\/\/shopic\.sf-express\.com\/crm\/mobile\/common\/flashscreen - reject
+
 # > 闲鱼
-^https?:\/\/gw\.alicdn\.com\/mt\/ - reject
-^https?:\/\/gw\.alicdn\.com\/tfs\/.+\d{3,4}-\d{4} - reject
-^https?:\/\/gw\.alicdn\.com\/tps\/.+\d{3,4}-\d{4} - reject
+^https:\/\/gw.alicdn.com\/mt\/ - reject
+^https:\/\/gw.alicdn.com\/tfs\/.+\d{3,4}-\d{4} - reject
+^https:\/\/gw.alicdn.com\/tps\/.+\d{3,4}-\d{4} - reject
 
 # > 云麦好轻
 ^https?:\/\/restapi\.iyunmai\.com\/api\/ios\/ad\/ - reject
@@ -63,29 +98,36 @@ DOMAIN-SUFFIX,sdkapp.uve.weibo.com,DIRECT
 ^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/wiki_related_modul - reject
 
 # > 少数派
-^https?:\/\/ios\.sspai\.com\/api\/v3\/recommend\/page\/get\?ad\.*ios_home_modal - reject
+https://ios.sspai.com/api/v3/recommend/page/get\?ad.*ios_home_modal - reject
 
 # > 字节跳动 穿山甲广告 SDK
-^(http|https)?:\/\/.*\.pglstatp-toutiao\.com\/* - reject
-^(http|https)?:\/\/log-api\.pangolin-sdk-toutiao-b\.com\/* - reject
-^(http|https)?:\/\/api-access\.pangolin-sdk-toutiao-b\.com\/* - reject
-^(http|https)?:\/\/api-access\.pangolin-sdk-toutiao\.com\/* - reject
-# sf3-fe-tos.pglstatp-toutiao.com
-# p6-be-pack-sign.pglstatp-toutiao.com
-# sf6-be-pack.pglstatp-toutiao.com
-# v6-be-pack.pglstatp-toutiao.com
-# sf3-be-pack.pglstatp-toutiao.com
-# v3-be-pack.pglstatp-toutiao.com
-# p9-be-pack-sign.pglstatp-toutiao.com
-# log-api.pangolin-sdk-toutiao-b.com
+^https?://api-access\.pangolin-sdk-toutiao\.com/api/ad/union/sdk - reject
 
-# > 拼多多第三方投放
-^(http|https)?:\/\/adim\.pinduoduo\.com - reject
-^(http|https)?:\/\/pangolin\.snssdk\.com - reject
+# > 淘票票
+^https://acs.m.taobao.com\/gw\/mtop.film.mtopadvertiseapi.queryadvertise\/5.0.* - reject
+
+# > 小米
+^https?:\/\/api\.m\.mi\.com\/v1\/app\/start - reject
+
+# > 知乎
+^https?:\/\/static\.zhihu\.com\/[^\/]+\/(main|column)\.signflow\.[^.]+.js - reject
 
 [Script]
+# > 12306
+12306 = type=http-response,pattern=^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/12306.js
+
+# > 京东
+京东 = type=http-response,pattern=^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=hotWords,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/jd_json.js
+京东 = type=http-response,pattern=^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=hotSearchTerms,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/jd_json.js
+
+# > 京喜
+京喜 = type=http-response,pattern=^https?:\/\/api\.m\.jd\.com\/api\?functionId=delivery_show,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/startup.js
+
+# > 顺丰
+顺丰 = type=http-response,pattern=https://ccsp-egmas.sf-express.com/cx-app-base/base/app/ad/queryInfoFlow,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/shunfeng_json.js
+
 # > coolapk
-coolapk_ads = type=http-response,pattern=^https?:\/\/api\.coolapk\.com\/v6\/(feed\/(replyList|detail)|main\/indexV8|dataList),requires-body=1,max-size=-1,script-path=https://raw.githubusercontent.com/ocd0711/Profiles/master/Surge/Js/coolapk.js
+coolapk_ads = type=http-response,pattern=^https?:\/\/api\.coolapk\.com\/v6\/(feed\/(replyList|detail)|main\/indexV8|dataList),requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/coolapk.js
 
 # > 微博_自定义tab皮肤@zmqcherish
 weibo_json = type=http-response,pattern=^https://api.weibo.cn/2/!/client/light_skin,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
@@ -121,4 +163,4 @@ weibo_json = type=http-response,pattern=^https?:\/\/weibointl\.api\.weibo\.cn\/p
 值会员权益中心banner广告 = type=http-response,pattern=^https?:\/\/zhiyou\.m\.smzdm\.com\/user\/vip\/ajax_get_banner,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_remove_ads.js
 
 [MITM]
-hostname = %APPEND% api.coolapk.com, gw.alicdn.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, peisongapi.meituan.com, img.meituan.net, www.meituan.com, s3plus.meituan.net, flowplus.meituan.net, p*.meituan.net, wmapi.meituan.com, restapi.iyunmai.com, *api.weibo*, *uve.weibo.com, new.vip.weibo.cn, api.pinduoduo.com, api.yangkeduo.com, app-api.smzdm.com, homepage-api.smzdm.com, haojia-api.smzdm.com, haojia.m.smzdm.com, baike-api.smzdm.com, s-api.smzdm.com, zhiyou.m.smzdm.com, ios.sspai.com, sf3-fe-tos.pglstatp-toutiao.com, p6-be-pack-sign.pglstatp-toutiao.com, sf6-be-pack.pglstatp-toutiao.com, v6-be-pack.pglstatp-toutiao.com, sf3-be-pack.pglstatp-toutiao.com, v3-be-pack.pglstatp-toutiao.com, p9-be-pack-sign.pglstatp-toutiao.com, log-api.pangolin-sdk-toutiao-b.com, api-access.pangolin-sdk-toutiao-b.com, api-access.pangolin-sdk-toutiao.com, adim.pinduoduo.com, pangolin.snssdk.com
+hostname = %APPEND% api.m.jd.com, bdsp-x.jd.com, dsp-x.jd.com, ms.jr.jd.com, ccsp-egmas.sf-express.com, webappcfg.paas.cmbchina.com, maicai.api.ddxq.mobi, m.client.10010.com, discardrp.umetrip.com, startup.umetrip.com, api.coolapk.com, gw.alicdn.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, peisongapi.meituan.com, img.meituan.net, www.meituan.com, s3plus.meituan.net, flowplus.meituan.net, p*.meituan.net, wmapi.meituan.com, restapi.iyunmai.com, *api.weibo*, *uve.weibo.com, new.vip.weibo.cn, api.pinduoduo.com, api.yangkeduo.com, app-api.smzdm.com, homepage-api.smzdm.com, haojia-api.smzdm.com, haojia.m.smzdm.com, baike-api.smzdm.com, s-api.smzdm.com, zhiyou.m.smzdm.com, ios.sspai.com, api-access.pangolin-sdk-toutiao.com, adim.pinduoduo.com, pangolin.snssdk.com, mapi.sfbest.com, shopic.sf-express.com, acs.m.taobao.com, api.m.mi.com, static.zhihu.com, ad.12306.cn
