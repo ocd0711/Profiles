@@ -312,6 +312,18 @@ proxy-groups:
       - PROXY
       - DIRECT
 
+  # Steam 流媒体
+  - name: "Steam"
+    type: select
+    proxies:
+      - DIRECT
+      - PROXY
+      - HK
+      - TW
+      - JP
+      - US
+      - SG
+
   # YouTube
   - name: "YouTube"
     type: select
@@ -464,6 +476,13 @@ rule-providers:
     behavior: classical
     path: ./RuleSet/Advertising/Reject.yaml
     url:   https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Reject.yaml
+    interval: 86400
+
+  Steam:
+    type: http
+    behavior: classical
+    path: ./RuleSet/Steam.yaml
+    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Steam.yaml
     interval: 86400
 
   YouTube:
@@ -842,6 +861,9 @@ rules:
   # 直连和广告拦截
   - RULE-SET,Special,DIRECT
   - RULE-SET,Reject,AdBlock
+
+  # Steam 单独分流
+  - RULE-SET,Steam,Steam
 
   # YouTube 单独分流
   - RULE-SET,YouTube,YouTube
