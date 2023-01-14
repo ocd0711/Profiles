@@ -430,7 +430,6 @@
       ]
     },
     {
-
       "id": "Auto_join_TF",
       "name": "TestFlight自动加入",
       "author": "@MuTu888",
@@ -455,7 +454,6 @@
           "val": "",
           "type": "text",
           "desc": ""
-       
         }
       ]
     }
