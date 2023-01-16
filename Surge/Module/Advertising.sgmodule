@@ -1,5 +1,5 @@
 #!name=Block Advertising
-#!desc=Block Advertising with Script/Rewrite(2023/01/11)
+#!desc=Block Advertising with Script/Rewrite(2023/01/17)
 
 [Rule]
 # > 微博_请手动添加以下分流至本地
@@ -17,26 +17,6 @@ DOMAIN-SUFFIX,sdkapp.uve.weibo.com,DIRECT
 # > 微博国际版_屏蔽search_topic 
 ^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*feed&a=search_topic data="https://github.com/ddgksf2013/Scripts/raw/master/weibo_search_topic.json"
 
-# > 飞猪
-^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.fliggy\.crm\.screen\.allresource data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-200.txt"
-
-# > 京东
-^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(hotWords|hotSearchTerms) data="https://github.com/ddgksf2013/Scripts/raw/master/jd_json.js"
-
-# > 拼多多
-^https?:\/\/api\.(pinduoduo|yangkeduo)\.com\/api\/cappuccino\/splash data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-200.txt"
-
-# > 美团
-^https?:\/\/peisongapi\.meituan\.com\/client\/getInitiateImage data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-200.txt"
-
-# > 顺丰
-^https?:\/\/ccsp-egmas\.sf-express\.com\/cx-app-base\/base\/app\/appVersion\/detectionUpgrade data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
-https://ccsp-egmas.sf-express.com/cx-app-base/base/app/ad/queryAdImages data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
-
-# > 中国联通
-^https?:\/\/m\.client\.10010\.com\/mobileService\/(activity|customer)\/(accountListData|get_client_adv|get_startadv) data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-200.txt"
-^https?:\/\/m\.client\.10010\.com\/uniAdmsInterface\/(getHomePageAd|getWelcomeAd) data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-200.txt"
-
 # ～ BiliBili_哔哩哔哩_屏蔽直播间商品广告浮窗
 ^https?:\/\/api\.live\.bilibili\.com\/xlive\/e-commerce-interface\/v\d\/ecommerce-user\/get_shopping_info\? data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
 # ～ BiliBili_哔哩哔哩_屏蔽广告浮窗
@@ -51,50 +31,40 @@ https://ccsp-egmas.sf-express.com/cx-app-base/base/app/ad/queryAdImages data="ht
 ^https://api.bilibili.com/pgc/season/player/cards data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
 # ～ BiliBili_哔哩哔哩_漫画去广告
 ^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Comic\/(Flash|ListFlash|GetActivityTab) data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
-# ～ BiliBili_哔哩哔哩_屏蔽首页右上活动
-^https?:\/\/app\.bilibili\.com\/x\/resource\/top\/activity data="https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js"
-# ～ BiliBili_哔哩哔哩_观影页面去广告
-^https?:\/\/api\.(bilibili|biliapi)\.(com|net)\/pgc\/page\/cinema\/tab\? data="https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js"
-# ～ BiliBili_哔哩哔哩_应用开屏广告预加载
-^https:\/\/app\.bilibili\.com\/x\/v2\/splash\/list data="https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js"
-# ～ BiliBili_哔哩哔哩_1080P高码率+4K画质(番剧和影视除外)
-^https?:\/\/app\.bilibili\.com\/x\/v2\/account\/myinfo\? data="https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js"
-# ～ BiliBili_哔哩哔哩_热搜发现
-^https://app.bilibili.com/x/v2/search/square data="https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js"
-# ～ BiliBili_哔哩哔哩_推荐去广告
-^https?:\/\/app\.bilibili\.com\/x\/v2\/feed\/index data="https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js"
-# ～ BiliBili_哔哩哔哩_追番去广告
-^https?:\/\/api\.(bilibili|biliapi)\.(com|net)\/pgc\/page\/bangumi data="https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js"
-# ～ BiliBili_哔哩哔哩_直播去广告
-^https?:\/\/api\.live\.bilibili\.com\/xlive\/app-room\/v1\/index\/getInfoByRoom data="https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js"
-# ～ BiliBili_哔哩哔哩_标签页处理
-^https?:\/\/app\.bilibili\.com\/x\/resource\/show\/tab data="https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js"
-# ～ BiliBili_哔哩哔哩_我的页面处理
-^https?:\/\/app\.bilibili\.com\/x\/v2\/account\/mine data="https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js"
-# ～ BiliBili_哔哩哔哩_Proto去广告
-^https:\/\/app\.bilibili\.com\/bilibili\.app\.(view\.v1\.View\/View|dynamic\.v2\.Dynamic\/DynAll)$ data="https://github.com/ddgksf2013/Scripts/raw/master/bilibili_proto.js"
 
 [URL Rewrite]
 # > 叮咚买菜
 ^https?:\/\/maicai\.api\.ddxq\.mobi\/advert\/ - reject
 
-# > elema
+# > 饿了么
 ^https?:\/\/elemecdn.com\/.+\/sitemap - reject
 ^https?:\/\/fuss10.elemecdn.com\/.+\/w\/640\/h\/\d{3,4} - reject
 ^https?:\/\/fuss10.elemecdn.com\/.+\/w\/750\/h\/\d{3,4} - reject
 ^https?:\/\/fuss10.elemecdn.com\/.+.mp4 - reject
 ^https?:\/\/www1.elecfans.com\/www\/delivery\/ - reject
 
+# > 飞猪
+^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.fliggy\.crm\.screen\.allresource - reject
+
 # > 航旅纵横
-^http?:\/\/(discardrp|startup)\.umetrip\.com\/gateway\/api\/umetrip\/native - reject
+^https?:\/\/(discardrp|startup)\.umetrip\.com\/gateway\/api\/umetrip\/native - reject
 
 # > 京东
 ^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(start|queryMaterialAdverts) - reject
+^https?:\/\/(bdsp-x|dsp-x)\.jd\.com\/adx\/ - reject
 
 # > 京东金融
 ^https?:\/\/ms\.jr\.jd\.com\/gw\/generic\/aladdin\/(new)?na\/m\/getLoadingPicture - reject
 
+# > 中国联通
+^https?:\/\/m\.client\.10010\.com\/mobileService\/(activity|customer)\/(accountListData|get_client_adv|get_startadv) - reject
+^https?:\/\/m\.client\.10010\.com\/uniAdmsInterface\/(getHomePageAd|getWelcomeAd) - reject
+
+# > 拼多多
+^https?:\/\/api\.(pinduoduo|yangkeduo)\.com\/api\/cappuccino\/splash - reject
+
 # > 美团
+^https?:\/\/peisongapi\.meituan\.com\/client\/getInitiateImage - reject
 ^https?:\/\/img\.meituan\.net\/(adunion|display|midas)\/\w+\.(gif|jpg|jpg\.webp)$ - reject
 ^https?:\/\/(s3plus|flowplus)\.meituan\.net\/v\d\/\w+\/linglong\/\w+\.(gif|jpg|mp4) - reject
 ^https?:\/\/p\d\.meituan\.net\/(bizad|wmbanner)\/\w+\.jpg - reject
@@ -110,6 +80,8 @@ https://ccsp-egmas.sf-express.com/cx-app-base/base/app/ad/queryAdImages data="ht
 ^https://mapi.sfbest.com\/brokerservice-server\/cms\/getPositionById.* - reject
 
 # > 顺丰
+^https?:\/\/ccsp-egmas\.sf-express\.com\/cx-app-base\/base\/app\/appVersion\/detectionUpgrade - reject
+https://ccsp-egmas.sf-express.com/cx-app-base/base/app/ad/queryAdImages - reject
 ^https?:\/\/shopic\.sf-express\.com\/crm\/mobile\/common\/flashscreen - reject
 
 # > 云麦好轻
@@ -129,12 +101,6 @@ https://ios.sspai.com/api/v3/recommend/page/get\?ad.*ios_home_modal - reject
 # > 字节跳动 穿山甲广告 SDK
 ^https?://api-access\.pangolin-sdk-toutiao\.com/api/ad/union/sdk - reject
 
-# > 淘票票
-^https://acs.m.taobao.com\/gw\/mtop.film.mtopadvertiseapi.queryadvertise\/5.0.* - reject
-
-# > 小米
-^https?:\/\/api\.m\.mi\.com\/v1\/app\/start - reject
-
 # > 知乎
 ^https?:\/\/static\.zhihu\.com\/[^\/]+\/(main|column)\.signflow\.[^.]+.js - reject
 
@@ -149,21 +115,20 @@ https://ios.sspai.com/api/v3/recommend/page/get\?ad.*ios_home_modal - reject
 ^https?:\/\/app\.bilibili\.com\/bilibili\.app\.interface\.v1\.Search\/Default - reject
 
 [Script]
-# > 12306
-12306 = type=http-response,pattern=^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/12306.js
-
 # > 京东
-京东 = type=http-response,pattern=^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=hotWords,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/jd_json.js
-京东 = type=http-response,pattern=^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=hotSearchTerms,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/jd_json.js
+京东 = type=http-response,pattern=^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(hotWords|hotSearchTerms),requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/jd_json.js
 
 # > 京喜
 京喜 = type=http-response,pattern=^https?:\/\/api\.m\.jd\.com\/api\?functionId=delivery_show,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/startup.js
 
-# > 顺丰
-顺丰 = type=http-response,pattern=https://ccsp-egmas.sf-express.com/cx-app-base/base/app/ad/queryInfoFlow,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/shunfeng_json.js
+# > 12306
+12306 = type=http-response,pattern=^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/12306.js
 
 # > coolapk
 coolapk_ads = type=http-response,pattern=^https?:\/\/api\.coolapk\.com\/v6\/(feed\/(replyList|detail)|main\/indexV8|dataList),requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/coolapk.js
+
+# > 顺丰
+coolapk_ads = type=http-response,pattern=https://ccsp-egmas.sf-express.com/cx-app-base/base/app/ad/queryInfoFlow,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/shunfeng_json.js
 
 # > 微博_屏蔽发现页面搜索框热词
 weibo_json = type=http-response,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/\w{5}\/cardlist,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
@@ -192,6 +157,29 @@ weibo_json = type=http-response,pattern=^https?:\/\/weibointl\.api\.weibo\.cn\/p
 # > 微博国际版_热搜处理
 weibo_json = type=http-response,pattern=^https?:\/\/weibointl\.api\.weibo\.cn\/portal\.php\?a=search_topic,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
 
+# ～ BiliBili_哔哩哔哩_屏蔽首页右上活动
+bilibili_json = type=http-response,pattern=^https?:\/\/app\.bilibili\.com\/x\/resource\/top\/activity,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js
+# ～ BiliBili_哔哩哔哩_观影页面去广告
+bilibili_json = type=http-response,pattern=^https?:\/\/api\.(bilibili|biliapi)\.(com|net)\/pgc\/page\/cinema\/tab\?,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js
+# ～ BiliBili_哔哩哔哩_应用开屏广告预加载
+bilibili_json = type=http-response,pattern=^https:\/\/app\.bilibili\.com\/x\/v2\/splash\/list,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js
+# ～ BiliBili_哔哩哔哩_1080P高码率+4K画质(番剧和影视除外)
+bilibili_json = type=http-response,pattern=^https?:\/\/app\.bilibili\.com\/x\/v2\/account\/myinfo\?,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js
+# ～ BiliBili_哔哩哔哩_热搜发现
+bilibili_json = type=http-response,pattern=^https://app.bilibili.com/x/v2/search/square,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js
+# ～ BiliBili_哔哩哔哩_推荐去广告
+bilibili_json = type=http-response,pattern=^https?:\/\/app\.bilibili\.com\/x\/v2\/feed\/index,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js
+# ～ BiliBili_哔哩哔哩_追番去广告
+bilibili_json = type=http-response,pattern=^https?:\/\/api\.(bilibili|biliapi)\.(com|net)\/pgc\/page\/bangumi,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js
+# ～ BiliBili_哔哩哔哩_直播去广告
+bilibili_json = type=http-response,pattern=^https?:\/\/api\.live\.bilibili\.com\/xlive\/app-room\/v1\/index\/getInfoByRoom,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js
+# ～ BiliBili_哔哩哔哩_标签页处理
+bilibili_json = type=http-response,pattern=^https?:\/\/app\.bilibili\.com\/x\/resource\/show\/tab,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js
+# ～ BiliBili_哔哩哔哩_我的页面处理
+bilibili_json = type=http-response,pattern=^https?:\/\/app\.bilibili\.com\/x\/v2\/account\/mine,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js
+# ～ BiliBili_哔哩哔哩_Proto去广告
+bilibili_json = type=http-response,pattern=^https:\/\/app\.bilibili\.com\/bilibili\.app\.(view\.v1\.View\/View|dynamic\.v2\.Dynamic\/DynAll)$,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_proto.js
+
 # > 什么值得买去广告
 开屏去广告 = type=http-response,pattern=^https?:\/\/app-api\.smzdm\.com\/util\/loading,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_remove_ads.js
 首页去广告 = type=http-response,pattern=^https?:\/\/homepage-api\.smzdm\.com\/v3\/home,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_remove_ads.js
@@ -203,4 +191,4 @@ weibo_json = type=http-response,pattern=^https?:\/\/weibointl\.api\.weibo\.cn\/p
 值会员权益中心banner广告 = type=http-response,pattern=^https?:\/\/zhiyou\.m\.smzdm\.com\/user\/vip\/ajax_get_banner,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_remove_ads.js
 
 [MITM]
-hostname = %APPEND% api.m.jd.com, bdsp-x.jd.com, dsp-x.jd.com, ms.jr.jd.com, ccsp-egmas.sf-express.com, maicai.api.ddxq.mobi, m.client.10010.com, discardrp.umetrip.com, startup.umetrip.com, api.coolapk.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, peisongapi.meituan.com, img.meituan.net, www.meituan.com, s3plus.meituan.net, flowplus.meituan.net, p*.meituan.net, wmapi.meituan.com, restapi.iyunmai.com, *api.weibo*, *uve.weibo.com, new.vip.weibo.cn, api.pinduoduo.com, api.yangkeduo.com, app-api.smzdm.com, homepage-api.smzdm.com, haojia-api.smzdm.com, haojia.m.smzdm.com, baike-api.smzdm.com, s-api.smzdm.com, zhiyou.m.smzdm.com, ios.sspai.com, api-access.pangolin-sdk-toutiao.com, adim.pinduoduo.com, pangolin.snssdk.com, mapi.sfbest.com, shopic.sf-express.com, acs.m.taobao.com, api.m.mi.com, static.zhihu.com, ad.12306.cn, app.bilibili.com, api.live.bilibili.com, api.vc.bilibili.com, *.bilibili.com, *.bilibili.*, grpc.biliapi.net,api.biliapi.net
+hostname = %APPEND% api.m.jd.com, bdsp-x.jd.com, dsp-x.jd.com, ms.jr.jd.com, ccsp-egmas.sf-express.com, maicai.api.ddxq.mobi, m.client.10010.com, discardrp.umetrip.com, startup.umetrip.com, api.coolapk.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, peisongapi.meituan.com, img.meituan.net, www.meituan.com, s3plus.meituan.net, flowplus.meituan.net, p*.meituan.net, wmapi.meituan.com, restapi.iyunmai.com, *api.weibo*, *uve.weibo.com, new.vip.weibo.cn, api.pinduoduo.com, api.yangkeduo.com, app-api.smzdm.com, homepage-api.smzdm.com, haojia-api.smzdm.com, haojia.m.smzdm.com, baike-api.smzdm.com, s-api.smzdm.com, zhiyou.m.smzdm.com, ios.sspai.com, api-access.pangolin-sdk-toutiao.com, adim.pinduoduo.com, pangolin.snssdk.com, mapi.sfbest.com, shopic.sf-express.com, static.zhihu.com, ad.12306.cn, app.bilibili.com, api.live.bilibili.com, api.vc.bilibili.com, *.bilibili.com, *.bilibili.*, grpc.biliapi.net,api.biliapi.net
