@@ -12,8 +12,6 @@ DOMAIN-SUFFIX,sdkapp.uve.weibo.com,DIRECT
 ^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php\?a=hot_search_users data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
 # > 微博国际版_屏蔽热推荐
 ^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/ad\/weibointl\? data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
-# > 微博国际版_屏蔽search_suggest
-# ^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/page\/get_search_suggest data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
 # > 微博国际版_屏蔽searching_info
 ^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*user&a=get_searching_info data="https://github.com/ddgksf2013/Scripts/raw/master/weibo_search_info.json"
 # > 微博国际版_屏蔽search_topic 
