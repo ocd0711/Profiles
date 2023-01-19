@@ -316,13 +316,13 @@ proxy-groups:
   - name: "Steam"
     type: select
     proxies:
-      - DIRECT
       - PROXY
       - HK
       - TW
       - JP
       - US
       - SG
+      - DIRECT
 
   # YouTube
   - name: "YouTube"
