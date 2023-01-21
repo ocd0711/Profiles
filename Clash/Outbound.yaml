@@ -94,10 +94,13 @@ dns:
   # These nameservers are used to resolve the DNS nameserver hostnames below.
   # Specify IP addresses only
   default-nameserver:
+    - 119.29.29.29
+    - 119.28.28.28
     - 223.5.5.5
     - 223.6.6.6
-    - "[2400:3200::1]:53"
-    - "[2400:3200:baba::1]:53"
+    - 114.114.114.114
+    # - "[2400:3200::1]:53"
+    # - "[2400:3200:baba::1]:53"
   enhanced-mode: redir-host # or fake-ip
   fake-ip-range: 198.18.0.1/16 # Fake IP addresses pool CIDR
   # use-hosts: true # lookup hosts and return IP record
@@ -106,22 +109,28 @@ dns:
   # i.e. questions to these domain names will always be answered with their
   # real IP addresses
   fake-ip-filter:
+    - '*.lan'
+    - 'xncsi.xboxlive.cn'
+    - 'xbox.ipv6.microsoft.com'
     - '*.msftconnecttest.com'
     - '*.msftncsi.com'
     - '*.srv.nintendo.net'
     - '*.stun.playstation.net'
     - 'xbox.*.microsoft.com'
     - '*.xboxlive.com'
-    - '*.logon.battlenet.com.cn'
-    - '*.logon.battle.net'
     - 'stun.l.google.com'
+    - '*.battlenet.com.cn'
+    - '*.battlenet.com'
+    - '*.blzstatic.cn'
+    - '*.battle.net'
   
   # Supports UDP, TCP, DoT, DoH. You can specify the port to connect to.
   # All DNS questions are sent directly to the nameserver, without proxies
   # involved. Clash answers the DNS question with the first result gathered.
   nameserver:
-    - dhcp://en0
+    # - dhcp://en0
     - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
     # - h3://dns.alidns.com/dns-query
     # - 114.114.114.114 # default value
     # - 8.8.8.8 # default value
@@ -198,9 +207,9 @@ proxy-providers:
 
   # 此处只是订阅示例，如果没有订阅链接的使用需求，此处及 proxy-groups 的相关内容可删除
 
-  Airport: #「机场」订阅
+  Airport: &Airport #「机场」订阅
     type: http
-    url: "https://gist.githubusercontent.com/ocd0711/xxxxxxx/raw/OCD-CLASH" # 放机场订阅链接
+    url: "https://ghproxy.com/https://gist.githubusercontent.com/ocd0711/xxxxx/raw/OCD-CLASH" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/List.yaml # 注意此处文件名不可相同
     health-check:
@@ -209,59 +218,24 @@ proxy-providers:
       url: http://cp.cloudflare.com/generate_204
 
   HK: #「机场」订阅香港地区节点
-    type: http
-    url: "https://gist.githubusercontent.com/ocd0711/xxxxxxx/raw/OCD-CLASH" # 放机场订阅链接
-    interval: 3600
-    path: ./Proxy/HK.yaml # 注意此处文件名不可相同
+    <<: *Airport #引用锚点内容
     filter: '(香港)'
-    health-check:
-      enable: true
-      interval: 600
-      url: http://cp.cloudflare.com/generate_204
   
   TW: #「机场」订阅台湾地区节点
-    type: http
-    url: "https://gist.githubusercontent.com/ocd0711/xxxxxxx/raw/OCD-CLASH" # 放机场订阅链接
-    interval: 3600
-    path: ./Proxy/TW.yaml # 注意此处文件名不可相同
+    <<: *Airport #引用锚点内容
     filter: '(台湾)'
-    health-check:
-      enable: true
-      interval: 600
-      url: http://cp.cloudflare.com/generate_204
 
   US: #「机场」订阅美国地区节点
-    type: http
-    url: "https://gist.githubusercontent.com/ocd0711/xxxxxxx/raw/OCD-CLASH" # 放机场订阅链接
-    interval: 3600
-    path: ./Proxy/US.yaml # 注意此处文件名不可相同
+    <<: *Airport #引用锚点内容
     filter: '(美国)'
-    health-check:
-      enable: true
-      interval: 600
-      url: http://cp.cloudflare.com/generate_204
 
   JP: #「机场」订阅日本地区节点
-    type: http
-    url: "https://gist.githubusercontent.com/ocd0711/xxxxxxx/raw/OCD-CLASH" # 放机场订阅链接
-    interval: 3600
-    path: ./Proxy/JP.yaml # 注意此处文件名不可相同
+    <<: *Airport #引用锚点内容
     filter: '(日本)'
-    health-check:
-      enable: true
-      interval: 600
-      url: http://cp.cloudflare.com/generate_204
 
   SG: #「机场」订阅新加坡地区节点
-    type: http
-    url: "https://gist.githubusercontent.com/ocd0711/xxxxxxx/raw/OCD-CLASH" # 放机场订阅链接
-    interval: 3600
-    path: ./Proxy/SG.yaml # 注意此处文件名不可相同
+    <<: *Airport #引用锚点内容
     filter: '(新加坡)'
-    health-check:
-      enable: true
-      interval: 600
-      url: http://cp.cloudflare.com/generate_204
 
 proxy-groups:
 # 策略组示例请查阅 Clash 项目 README 以使用最新格式：https://github.com/Dreamacro/clash/wiki/configuration
@@ -468,265 +442,265 @@ rule-providers:
     type: http
     behavior: classical
     path: ./RuleSet/Special.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Special.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Special.yaml
     interval: 86400
 
   Reject:
     type: http
     behavior: classical
     path: ./RuleSet/Advertising/Reject.yaml
-    url:   https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Reject.yaml
+    url:   https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Reject.yaml
     interval: 86400
 
   Steam:
     type: http
     behavior: classical
     path: ./RuleSet/Steam.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Steam.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Steam.yaml
     interval: 86400
 
   YouTube:
     type: http
     behavior: classical
     path: ./RuleSet/Media/YouTube.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/YouTube.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/YouTube.yaml
     interval: 86400
 
   YouTube_Music:
     type: http
     behavior: classical
     path: ./RuleSet/Media/YouTube_Music.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/YouTube%20Music.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/YouTube%20Music.yaml
     interval: 86400
 
   Netflix:
     type: http
     behavior: classical
     path: ./RuleSet/Media/Netflix.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Netflix.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Netflix.yaml
     interval: 86400
 
   Spotify:
     type: http
     behavior: classical
     path: ./RuleSet/Media/Spotify.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Spotify.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Spotify.yaml
     interval: 86400
 
   Disney_Plus:
     type: http
     behavior: classical
     path: ./RuleSet/Media/Disney_Plus.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Disney%20Plus.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Disney%20Plus.yaml
     interval: 86400
 
   ABC:
     type: http
     behavior: classical
     path: ./RuleSet/Media/ABC.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/ABC.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/ABC.yaml
     interval: 86400
 
   Abema_TV:
     type: http
     behavior: classical
     path: ./RuleSet/Media/Abema_TV.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Abema%20TV.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Abema%20TV.yaml
     interval: 86400
 
   Amazon:
     type: http
     behavior: classical
     path: ./RuleSet/Media/Amazon.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Amazon.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Amazon.yaml
     interval: 86400
 
   Apple_Music:
     type: http
     behavior: classical
     path: ./RuleSet/Media/Apple_Music.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Apple%20Music.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Apple%20Music.yaml
     interval: 86400
 
   Apple_News:
     type: http
     behavior: classical
     path: ./RuleSet/Media/Apple_News.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Apple%20News.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Apple%20News.yaml
     interval: 86400
 
   Apple_TV:
     type: http
     behavior: classical
     path: ./RuleSet/Media/Apple_TV.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Apple%20TV.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Apple%20TV.yaml
     interval: 86400
 
   Bahamut:
     type: http
     behavior: classical
     path: ./RuleSet/Media/Bahamut.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Bahamut.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Bahamut.yaml
     interval: 86400
 
   BBC_iPlayer:
     type: http
     behavior: classical
     path: ./RuleSet/Media/BBC_iPlayer.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/BBC%20iPlayer.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/BBC%20iPlayer.yaml
     interval: 86400
 
   DAZN:
     type: http
     behavior: classical
     path: ./RuleSet/Media/DAZN.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/DAZN.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/DAZN.yaml
     interval: 86400
 
   Discovery_Plus:
     type: http
     behavior: classical
     path: ./RuleSet/Media/Discovery_Plus.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Discovery%20Plus.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Discovery%20Plus.yaml
     interval: 86400
 
   encoreTVB:
     type: http
     behavior: classical
     path: ./RuleSet/Media/encoreTVB.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/encoreTVB.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/encoreTVB.yaml
     interval: 86400
 
   F1_TV:
     type: http
     behavior: classical
     path: ./RuleSet/Media/F1_TV.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/F1%20TV.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/F1%20TV.yaml
     interval: 86400
 
   Fox_Now:
     type: http
     behavior: classical
     path: ./RuleSet/Media/Fox_Now.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Fox%20Now.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Fox%20Now.yaml
     interval: 86400
 
   Fox+:
     type: http
     behavior: classical
     path: ./RuleSet/Media/Fox+.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Fox%2B.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Fox%2B.yaml
     interval: 86400
 
   HBO_Go:
     type: http
     behavior: classical
     path: ./RuleSet/Media/HBO_Go.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/HBO%20Go.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/HBO%20Go.yaml
     interval: 86400
 
   HBO_Max:
     type: http
     behavior: classical
     path: ./RuleSet/Media/HBO_Max.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/HBO%20Max.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/HBO%20Max.yaml
     interval: 86400
 
   Hulu_Japan:
     type: http
     behavior: classical
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Hulu%20Japan.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Hulu%20Japan.yaml
     path: ./RuleSet/Media/Hulu_Japan.yaml
     interval: 86400
 
   Hulu:
     type: http
     behavior: classical
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Hulu.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Hulu.yaml
     path: ./RuleSet/Media/Hulu.yaml
     interval: 86400
 
   Japonx:
     type: http
     behavior: classical
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Japonx.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Japonx.yaml
     path: ./RuleSet/Media/Japonx.yaml
     interval: 86400
 
   JOOX:
     type: http
     behavior: classical
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/JOOX.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/JOOX.yaml
     path: ./RuleSet/Media/JOOX.yaml
     interval: 86400
 
   KKBOX:
     type: http
     behavior: classical
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/KKBOX.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/KKBOX.yaml
     path: ./RuleSet/Media/KKBOX.yaml
     interval: 86400
 
   KKTV:
     type: http
     behavior: classical
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/KKTV.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/KKTV.yaml
     path: ./RuleSet/Media/KKTV.yaml
     interval: 86400
 
   Line_TV:
     type: http
     behavior: classical
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Line%20TV.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Line%20TV.yaml
     path: ./RuleSet/Media/Line_TV.yaml
     interval: 86400
 
   myTV_SUPER:
     type: http
     behavior: classical
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/myTV%20SUPER.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/myTV%20SUPER.yaml
     path: ./RuleSet/Media/myTV_SUPER.yaml
     interval: 86400
 
   Niconico:
     type: http
     behavior: classical
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Niconico.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Niconico.yaml
     path: ./RuleSet/Media/Niconico.yaml
     interval: 86400
 
   Pandora:
     type: http
     behavior: classical
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Pandora.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Pandora.yaml
     path: ./RuleSet/Media/Pandora.yaml
     interval: 86400
 
   PBS:
     type: http
     behavior: classical
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/PBS.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/PBS.yaml
     path: ./RuleSet/Media/PBS.yaml
     interval: 86400
 
   Pornhub:
     type: http
     behavior: classical
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Pornhub.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Pornhub.yaml
     path: ./RuleSet/Media/Pornhub.yaml
     interval: 86400
 
   Soundcloud:
     type: http
     behavior: classical
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Soundcloud.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Soundcloud.yaml
     path: ./RuleSet/Media/Soundcloud.yaml
     interval: 86400
 
   ViuTV:
     type: http
     behavior: classical
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/ViuTV.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/ViuTV.yaml
     path: ./RuleSet/Media/ViuTV.yaml
     interval: 86400
 
@@ -734,111 +708,111 @@ rule-providers:
     type: http
     behavior: classical
     path: ./RuleSet/StreamingMedia/Bilibili.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Bilibili.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Bilibili.yaml
     interval: 86400
 
   IQ:
     type: http
     behavior: classical
     path: ./RuleSet/StreamingMedia/IQI.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/IQ.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/IQ.yaml
     interval: 86400
 
   IQIYI:
     type: http
     behavior: classical
     path: ./RuleSet/StreamingMedia/IQYI.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/IQIYI.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/IQIYI.yaml
     interval: 86400
 
   Letv:
     type: http
     behavior: classical
     path: ./RuleSet/StreamingMedia/Letv.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Letv.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Letv.yaml
     interval: 86400
 
   # MOO:
   #   type: http
   #   behavior: classical
   #   path: ./RuleSet/StreamingMedia/MOO.yaml
-  #   url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/MOO.yaml
+  #   url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/MOO.yaml
   #   interval: 86400
 
   Netease_Music:
     type: http
     behavior: classical
     path: ./RuleSet/StreamingMedia/Netease_Music.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Netease%20Music.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Netease%20Music.yaml
     interval: 86400
 
   Tencent_Video:
     type: http
     behavior: classical
     path: ./RuleSet/StreamingMedia/Tencent_Video.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Tencent%20Video.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Tencent%20Video.yaml
     interval: 86400
 
   Youku:
     type: http
     behavior: classical
     path: ./RuleSet/StreamingMedia/Youku.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Youku.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Youku.yaml
     interval: 86400
 
   WeTV:
     type: http
     behavior: classical
     path: ./RuleSet/StreamingMedia/WeTV.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/WeTV.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/WeTV.yaml
     interval: 86400
 
   Telegram:
     type: http
     behavior: classical
     path: ./RuleSet/Telegram.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Telegram.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Telegram.yaml
     interval: 86400
 
   PayPal:
     type: http
     behavior: classical
     path: ./RuleSet/PayPal.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/PayPal.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/PayPal.yaml
     interval: 86400
 
   Speedtest:
     type: http
     behavior: classical
     path: ./RuleSet/Speedtest.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Speedtest.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Speedtest.yaml
     interval: 86400
 
   Apple:
     type: http
     behavior: classical
     path: ./RuleSet/Apple/Apple.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Apple.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Apple.yaml
     interval: 86400
 
   Global:
     type: http
     behavior: classical
     path: ./RuleSet/Global/Proxy.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Proxy.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Proxy.yaml
     interval: 86400
 
   Domestic:
     type: http
     behavior: classical
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Domestic.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Domestic.yaml
     path: ./RuleSet/Domestic/Domestic.yaml
     interval: 86400
 
   Domestic_IPs:
     type: http
     behavior: ipcidr
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Domestic%20IPs.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Domestic%20IPs.yaml
     path: ./RuleSet/Domestic/Domestic_IPs.yaml
     interval: 86400
 
@@ -846,14 +820,14 @@ rule-providers:
     type: http
     behavior: classical
     path: ./RuleSet/LAN.yaml
-    url: https://fastly.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/LAN.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/LAN.yaml
     interval: 86400
 
   Emby:
     type: http
     behavior: classical
     path: ./RuleSet/emby.yaml
-    url: https://fastly.jsdelivr.net/gh/ocd0711/Profiles@master/Clash/Ruleset/emby.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/ocd0711/Profiles/master/Clash/Ruleset/emby.yaml
     interval: 86400
 
 # 规则
