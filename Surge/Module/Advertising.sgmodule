@@ -1,11 +1,13 @@
 #!name=Block Advertising
-#!desc=Block Advertising with Script/Rewrite(2023/01/18)
+#!desc=Block Advertising with Script/Rewrite(2023/01/24)
 
 [Rule]
 # > 微博_请手动添加以下分流至本地
 DOMAIN-SUFFIX,sdkapp.uve.weibo.com,DIRECT
 
 [Map Local]
+# > 微博_去除底部超话栏表层浮icon及tips
+^https?:\/\/api\.weibo\.cn\/\d\/!\/huati\/discovery_home_bottom_getdotinfo data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
 # > 微博_屏蔽首页左上角每日的弹窗tips
 ^https?:\/\/m?api\.weibo\.c(n|om)\/\d/push/daily data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
 # > 微博_Spotlight
@@ -19,19 +21,17 @@ DOMAIN-SUFFIX,sdkapp.uve.weibo.com,DIRECT
 # > 微博国际版_屏蔽search_topic 
 ^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*feed&a=search_topic data="https://github.com/ddgksf2013/Scripts/raw/master/weibo_search_topic.json"
 
-# ～ BiliBili_哔哩哔哩_屏蔽直播间商品广告浮窗
-^https?:\/\/api\.live\.bilibili\.com\/xlive\/e-commerce-interface\/v\d\/ecommerce-user\/get_shopping_info\? data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
-# ～ BiliBili_哔哩哔哩_屏蔽广告浮窗
+# > BiliBili_哔哩哔哩_屏蔽广告浮窗
 ^https?:\/\/api\.bilibili\.com\/pgc\/activity\/deliver\/material\/receive data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
-# ～ BiliBili_哔哩哔哩_应用开屏去广告
+# > BiliBili_哔哩哔哩_应用开屏去广告
 ^https://app.bilibili.com/x/v2/splash/show data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
-# ～ BiliBili_哔哩哔哩_Defaultword
+# > BiliBili_哔哩哔哩_Defaultword
 ^https://app.bilibili.com/x/v2/search/defaultwords data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
-# ～ BiliBili_哔哩哔哩_Material_Ad
+# > BiliBili_哔哩哔哩_Material_Ad
 ^https?:\/\/api\.bilibili\.com\/x\/vip\/ads\/material\/report data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
-# ～ BiliBili_哔哩哔哩_小卡片广告
+# > BiliBili_哔哩哔哩_小卡片广告
 ^https://api.bilibili.com/pgc/season/player/cards data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
-# ～ BiliBili_哔哩哔哩_漫画去广告
+# > BiliBili_哔哩哔哩_漫画去广告
 ^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Comic\/(Flash|ListFlash|GetActivityTab) data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
 
 [URL Rewrite]
@@ -108,9 +108,9 @@ https://ios.sspai.com/api/v3/recommend/page/get\?ad.*ios_home_modal - reject
 # > 微博_屏蔽sdkconfig请求
 ^https?:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkconfig\.php - reject
 
-# ～ BiliBili_哔哩哔哩_屏蔽IP请求
+# > BiliBili_哔哩哔哩_屏蔽IP请求
 ^https?:\/\/app\.bilibili\.com\/x\/resource\/ip - reject
-# ～ BiliBili_哔哩哔哩_屏蔽DefaultWord
+# > BiliBili_哔哩哔哩_屏蔽DefaultWord
 ^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Search\/Default - reject
 
 [Script]
@@ -153,29 +153,31 @@ weibo_json = type=http-response,pattern=^https?:\/\/weibointl\.api\.weibo\.cn\/p
 # > 微博国际版_热搜处理
 weibo_json = type=http-response,pattern=^https?:\/\/weibointl\.api\.weibo\.cn\/portal\.php\?a=search_topic,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
 
-# ～ BiliBili_哔哩哔哩_屏蔽直播页顶部轮播图
+# > BiliBili_哔哩哔哩_屏蔽直播页顶部轮播图
 bilibili_json = type=http-response,pattern=^https?:\/\/api\.live\.bilibili\.com\/xlive\/app-interface\/v2\/index\/feed,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js
-# ～ BiliBili_哔哩哔哩_屏蔽首页右上活动
+# > BiliBili_哔哩哔哩_屏蔽首页右上活动
 bilibili_json = type=http-response,pattern=^https?:\/\/app\.bilibili\.com\/x\/resource\/top\/activity,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js
-# ～ BiliBili_哔哩哔哩_观影页面去广告
+# > BiliBili_哔哩哔哩_观影页面去广告
 bilibili_json = type=http-response,pattern=^https?:\/\/api\.(bilibili|biliapi)\.(com|net)\/pgc\/page\/cinema\/tab\?,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js
-# ～ BiliBili_哔哩哔哩_应用开屏广告预加载
+# > BiliBili_哔哩哔哩_应用开屏广告预加载
 bilibili_json = type=http-response,pattern=^https:\/\/app\.bilibili\.com\/x\/v2\/splash\/list,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js
-# ～ BiliBili_哔哩哔哩_1080P高码率+4K画质[番剧和影视除外]
+# > BiliBili_哔哩哔哩_1080P高码率+4K画质[番剧和影视除外]
 bilibili_json = type=http-response,pattern=^https?:\/\/app\.bilibili\.com\/x\/v2\/account\/myinfo\?,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js
-# ～ BiliBili_哔哩哔哩_热搜发现
+# > BiliBili_哔哩哔哩_热搜发现
 bilibili_json = type=http-response,pattern=^https://app.bilibili.com/x/v2/search/square,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js
-# ～ BiliBili_哔哩哔哩_推荐去广告
+# > BiliBili_哔哩哔哩_推荐去广告
 bilibili_json = type=http-response,pattern=^https?:\/\/app\.bilibili\.com\/x\/v2\/feed\/index,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js
-# ～ BiliBili_哔哩哔哩_追番去广告
+# > BiliBili_哔哩哔哩_追番去广告
 bilibili_json = type=http-response,pattern=^https?:\/\/api\.(bilibili|biliapi)\.(com|net)\/pgc\/page\/bangumi,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js
-# ～ BiliBili_哔哩哔哩_直播去广告
+# > BiliBili_哔哩哔哩_直播去广告
 bilibili_json = type=http-response,pattern=^https?:\/\/api\.live\.bilibili\.com\/xlive\/app-room\/v1\/index\/getInfoByRoom,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js
-# ～ BiliBili_哔哩哔哩_标签页处理
+# > BiliBili_哔哩哔哩_标签页处理
 bilibili_json = type=http-response,pattern=^https?:\/\/app\.bilibili\.com\/x\/resource\/show\/tab,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js
-# ～ BiliBili_哔哩哔哩_我的页面处理
+# > BiliBili_哔哩哔哩_我的页面处理
 bilibili_json = type=http-response,pattern=^https?:\/\/app\.bilibili\.com\/x\/v2\/account\/mine,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js
-# ～ BiliBili_哔哩哔哩_Proto去广告
+# > BiliBili_哔哩哔哩_屏蔽直播间商品广告浮窗
+bilibili_json = type=http-response,pattern=^https?:\/\/api\.live\.bilibili\.com\/xlive\/e-commerce-interface\/v\d\/ecommerce-user\/get_shopping_info\?,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js
+# > BiliBili_哔哩哔哩_Proto去广告
 bilibili_proto = type=http-response,pattern=^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.(view\.v1\.View\/View|dynamic\.v2\.Dynamic\/DynAll)$,requires-body=1,max-size=-1,binary-body-mode=1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_proto.js
 
 # > 什么值得买去广告
