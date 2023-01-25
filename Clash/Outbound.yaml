@@ -102,7 +102,7 @@ dns:
     # - "[2400:3200::1]:53"
     # - "[2400:3200:baba::1]:53"
   enhanced-mode: redir-host # or fake-ip
-  fake-ip-range: 198.18.0.1/16 # Fake IP addresses pool CIDR
+  fake-ip-range: 10.123.0.0/16 # Fake IP addresses pool CIDR
   # use-hosts: true # lookup hosts and return IP record
   
   # Hostnames in this list will not be resolved with fake IPs
@@ -114,6 +114,7 @@ dns:
     - 'xbox.ipv6.microsoft.com'
     - '*.msftconnecttest.com'
     - '*.msftncsi.com'
+    - '*.xbox.com'
     - '*.srv.nintendo.net'
     - '*.stun.playstation.net'
     - 'xbox.*.microsoft.com'
@@ -142,8 +143,10 @@ dns:
   # to the servers in this section along with servers in `nameservers`.
   # The answers from fallback servers are used when the GEOIP country
   # is not `CN`.
-  # fallback:
-  #   - tcp://1.1.1.1
+  fallback:
+    - tls://8.8.8.8:853 # Google
+    - tls://1.1.1.1 # cloudflare
+    - https://1.1.1.1/dns-query # cloudflare
 
   # If IP addresses resolved with servers in `nameservers` are in the specified
   # subnets below, they are considered invalid and results from `fallback`
@@ -156,15 +159,18 @@ dns:
   # are always used if not match `fallback-filter.ipcidr`.
   #
   # This is a countermeasure against DNS pollution attacks.
-  # fallback-filter:
-  #   geoip: true
-  #   geoip-code: CN
-  #   ipcidr:
-  #     - 240.0.0.0/4
-  #   domain:
-  #     - '+.google.com'
-  #     - '+.facebook.com'
-  #     - '+.youtube.com'
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    ipcidr:
+      - 240.0.0.0/4
+    domain:
+      - '+.google.com'
+      - '+.facebook.com'
+      - '+.youtube.com'
+      - '*.msftconnecttest.com'
+      - '*.msftncsi.com'
+      - '*.xbox.com'
   
   # Lookup domains via specific nameservers
   # nameserver-policy:
