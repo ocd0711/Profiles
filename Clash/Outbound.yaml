@@ -225,23 +225,23 @@ proxy-providers:
 
   HK: #「机场」订阅香港地区节点
     <<: *Airport #引用锚点内容
-    filter: '(香港)'
+    filter: '(香港|HK)'
   
   TW: #「机场」订阅台湾地区节点
     <<: *Airport #引用锚点内容
-    filter: '(台湾)'
+    filter: '(台湾|TW)'
 
   US: #「机场」订阅美国地区节点
     <<: *Airport #引用锚点内容
-    filter: '(美国)'
+    filter: '(美国|US)'
 
   JP: #「机场」订阅日本地区节点
     <<: *Airport #引用锚点内容
-    filter: '(日本)'
+    filter: '(日本|JP)'
 
   SG: #「机场」订阅新加坡地区节点
     <<: *Airport #引用锚点内容
-    filter: '(新加坡)'
+    filter: '(新加坡|SG)'
 
 proxy-groups:
 # 策略组示例请查阅 Clash 项目 README 以使用最新格式：https://github.com/Dreamacro/clash/wiki/configuration
