@@ -1,5 +1,5 @@
 #!name=Block Advertising
-#!desc=Block Advertising with Script/Rewrite(2023/02/01 10:14)
+#!desc=Block Advertising with Script/Rewrite(2023/02/01 10:34)
 
 [Rule]
 # > 微博_请手动添加以下分流至本地
@@ -44,6 +44,9 @@ RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/s
 ^https?:\/\/(api\.zhihu\.com|(103\.41\.167\.(226|234|235|236)))\/(notifications\/v\d\/count|v\d\/package|me\/guides|drama\/living-info|ad|fringe|commercial|market\/popovers|.*featured-comment-ad|ad-style-service) data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
 
 [URL Rewrite]
+# > 12123
+^https:\/\/gab\.122\.gov\.cn\/eapp\/m\/sysquery - reject
+
 # > 叮咚买菜
 ^https?:\/\/maicai\.api\.ddxq\.mobi\/advert\/ - reject
 
@@ -53,6 +56,13 @@ RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/s
 ^https?:\/\/fuss10.elemecdn.com\/.+\/w\/750\/h\/\d{3,4} - reject
 ^https?:\/\/fuss10.elemecdn.com\/.+.mp4 - reject
 ^https?:\/\/www1.elecfans.com\/www\/delivery\/ - reject
+
+# > 菜鸟
+^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads\.(show|mshow)\.cn\/ - reject
+
+# > 滴滴出行
+https?://res\.xiaojukeji\.com\/resapi\/activity\/mget - reject
+https?:\/\/res\.xiaojukeji\.com\/resapi\/activity\/get(Ruled|Preload|PasMultiNotices) - reject
 
 # > 飞猪
 ^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.fliggy\.crm\.screen\.allresource - reject
@@ -213,4 +223,4 @@ bilibili_proto = type=http-response,pattern=^https?:\/\/(app\.bilibili\.com|grpc
 知乎_优化软件配置 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/appcloud2\.zhihu\.com\/v\d+\/config,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/zhihu/zhihu.js
 
 [MITM]
-hostname = %APPEND% api.m.jd.com, bdsp-x.jd.com, dsp-x.jd.com, ms.jr.jd.com, ccsp-egmas.sf-express.com, maicai.api.ddxq.mobi, m.client.10010.com, discardrp.umetrip.com, startup.umetrip.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, peisongapi.meituan.com, img.meituan.net, www.meituan.com, s3plus.meituan.net, flowplus.meituan.net, p*.meituan.net, wmapi.meituan.com, restapi.iyunmai.com, *api.weibo*, *uve.weibo.com, new.vip.weibo.cn, api.pinduoduo.com, api.yangkeduo.com, app-api.smzdm.com, homepage-api.smzdm.com, haojia-api.smzdm.com, haojia.m.smzdm.com, baike-api.smzdm.com, s-api.smzdm.com, zhiyou.m.smzdm.com, ios.sspai.com, adim.pinduoduo.com, pangolin.snssdk.com, mapi.sfbest.com, shopic.sf-express.com, static.zhihu.com, ad.12306.cn, app.bilibili.com, api.live.bilibili.com, api.vc.bilibili.com, *.bilibili.com, *.bilibili.*, grpc.biliapi.net, *biliapi.net, -*cdn*.biliapi.net, -*tracker*.biliapi.net, tiebac.baidu.com, www.zhihu.com, api.zhihu.com, zhuanlan.zhihu.com
+hostname = %APPEND% api.m.jd.com, bdsp-x.jd.com, dsp-x.jd.com, ms.jr.jd.com, ccsp-egmas.sf-express.com, maicai.api.ddxq.mobi, m.client.10010.com, discardrp.umetrip.com, startup.umetrip.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, peisongapi.meituan.com, img.meituan.net, www.meituan.com, s3plus.meituan.net, flowplus.meituan.net, p*.meituan.net, wmapi.meituan.com, restapi.iyunmai.com, *api.weibo*, *uve.weibo.com, new.vip.weibo.cn, api.pinduoduo.com, api.yangkeduo.com, app-api.smzdm.com, homepage-api.smzdm.com, haojia-api.smzdm.com, haojia.m.smzdm.com, baike-api.smzdm.com, s-api.smzdm.com, zhiyou.m.smzdm.com, ios.sspai.com, adim.pinduoduo.com, pangolin.snssdk.com, mapi.sfbest.com, shopic.sf-express.com, static.zhihu.com, ad.12306.cn, app.bilibili.com, api.live.bilibili.com, api.vc.bilibili.com, *.bilibili.com, *.bilibili.*, grpc.biliapi.net, *biliapi.net, -*cdn*.biliapi.net, -*tracker*.biliapi.net, tiebac.baidu.com, www.zhihu.com, api.zhihu.com, zhuanlan.zhihu.com, gab.122.gov.cn, cn-acs.m.cainiao.com, res.xiaojukeji.com
