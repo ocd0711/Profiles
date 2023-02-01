@@ -1,9 +1,15 @@
 #!name=Block Advertising
-#!desc=Block Advertising with Script/Rewrite(2023/01/30 01:48)
+#!desc=Block Advertising with Script/Rewrite(2023/02/01 10:14)
 
 [Rule]
 # > 微博_请手动添加以下分流至本地
 DOMAIN-SUFFIX,sdkapp.uve.weibo.com,DIRECT
+
+# > 贴吧
+RULE-SET,https://raw.githubusercontent.com/app2smile/rules/master/rule/tieba-ad.list,REJECT-DROP
+
+# 知乎广告拦截
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/zhihu/zhihu_remove_ads.list,REJECT-NO-DROP
 
 [Map Local]
 # > 微博_去除底部超话栏表层浮icon及tips
@@ -33,6 +39,9 @@ DOMAIN-SUFFIX,sdkapp.uve.weibo.com,DIRECT
 ^https://api.bilibili.com/pgc/season/player/cards data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
 # > BiliBili_哔哩哔哩_漫画去广告
 ^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Comic\/(Flash|ListFlash|GetActivityTab) data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
+
+# 知乎其他广告拦截
+^https?:\/\/(api\.zhihu\.com|(103\.41\.167\.(226|234|235|236)))\/(notifications\/v\d\/count|v\d\/package|me\/guides|drama\/living-info|ad|fringe|commercial|market\/popovers|.*featured-comment-ad|ad-style-service) data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
 
 [URL Rewrite]
 # > 叮咚买菜
@@ -89,12 +98,11 @@ https://ccsp-egmas.sf-express.com/cx-app-base/base/app/ad/queryAdImages - reject
 # > 云麦好轻
 ^https?:\/\/restapi\.iyunmai\.com\/api\/ios\/ad\/ - reject
 
-# > 什么值得买去广告
-# 好价详情页去广告
+# > 什么值得买_好价详情页去广告
 ^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/other_modul - reject
-# 好价详情页红包小助手
+# > 什么值得买_好价详情页红包小助手
 ^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/user_related_modul - reject
-# Wiki(618晒物活动推广, 将来可能不是广告)
+# > 什么值得买_Wiki(618晒物活动推广，将来可能不是广告)
 ^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/wiki_related_modul - reject
 
 # > 少数派
@@ -181,14 +189,28 @@ bilibili_json = type=http-response,pattern=xlive\/e-commerce-interface\/v\d\/eco
 bilibili_proto = type=http-response,pattern=^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.(view\.v1\.View\/View|dynamic\.v2\.Dynamic\/DynAll)$,requires-body=1,max-size=-1,binary-body-mode=1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_proto.js
 
 # > 什么值得买去广告
-开屏去广告 = type=http-response,pattern=^https?:\/\/app-api\.smzdm\.com\/util\/loading,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_remove_ads.js
-首页去广告 = type=http-response,pattern=^https?:\/\/homepage-api\.smzdm\.com\/v3\/home,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_remove_ads.js
-好价去广告 = type=http-response,pattern=^https?:\/\/haojia-api\.smzdm\.com\/home\/list,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_remove_ads.js
-好价详情页去广告 = type=http-response,pattern=^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/article_releated_modul,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_remove_ads.js
-百科去广告 = type=http-response,pattern=^https?:\/\/baike-api\.smzdm\.com\/home_v3\/list,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_remove_ads.js
-搜索结果去广告 = type=http-response,pattern=^https?:\/\/s-api\.smzdm\.com\/sou\/list_v10,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_remove_ads.js
-搜索标签去广告 = type=http-response,pattern=^https?:\/\/s-api\.smzdm\.com\/sou\/filter\/tags\/hot_tags,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_remove_ads.js
-值会员权益中心banner广告 = type=http-response,pattern=^https?:\/\/zhiyou\.m\.smzdm\.com\/user\/vip\/ajax_get_banner,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_remove_ads.js
+什么值得买_开屏去广告 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/app-api\.smzdm\.com\/util\/loading,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_remove_ads.js
+什么值得买_首页去广告 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/homepage-api\.smzdm\.com\/v3\/home,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_remove_ads.js
+什么值得买_好价去广告 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/haojia-api\.smzdm\.com\/home\/list,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_remove_ads.js
+什么值得买_好价详情页去广告 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/article_releated_modul,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_remove_ads.js
+什么值得买_百科去广告 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/baike-api\.smzdm\.com\/home_v3\/list,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_remove_ads.js
+什么值得买_搜索结果去广告 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/s-api\.smzdm\.com\/sou\/list_v10,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_remove_ads.js
+什么值得买_搜索标签去广告 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/s-api\.smzdm\.com\/sou\/filter\/tags\/hot_tags,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_remove_ads.js
+什么值得买_值会员权益中心banner去广告 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/zhiyou\.m\.smzdm\.com\/user\/vip\/ajax_get_banner,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_remove_ads.js
+
+# > 贴吧
+贴吧json = type=http-response,pattern=^http(s:\/\/tiebac|:\/\/c\.tieba)\.baidu\.com\/(c\/(s\/sync|f\/(frs\/(page|threadlist|generalTabList)|pb\/(pic)?page|excellent\/personalized))$|tiebaads\/commonbatch\?),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/tieba-json.js,script-update-interval=0
+贴吧proto = type=http-response,pattern=^http(s:\/\/tiebac|:\/\/c\.tieba)\.baidu\.com\/c\/f\/(frs\/(page|threadlist|generalTabList)|pb\/page|excellent\/personalized)\?cmd,requires-body=1,binary-body-mode=1,max-size=0,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/tieba-proto.js,script-update-interval=0
+
+# > 知乎
+知乎_处理用户信息 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/(api\.zhihu\.com|(103\.41\.167\.(226|234|235|236)))\/people\/,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/zhihu/zhihu.js
+知乎_信息流去广告 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/(api\.zhihu\.com|(103\.41\.167\.(226|234|235|236)))\/(moments|topstory)(\/|\?)?(recommend|action=|feed_type=)(?!\/people),script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/zhihu/zhihu.js
+知乎_回答列表去广告 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/(api\.zhihu\.com|(103\.41\.167\.(226|234|235|236)))\/(v4\/)?questions\/\d+,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/zhihu/zhihu.js
+知乎_预置关键词去广告 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/(api\.zhihu\.com|(103\.41\.167\.(226|234|235|236)))\/search\/preset_words\?,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/zhihu/zhihu.js
+知乎_热搜去广告 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/(api\.zhihu\.com|(103\.41\.167\.(226|234|235|236)))\/search\/top_search\/tabs\/hot\/items,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/zhihu/zhihu.js
+知乎_热榜去广告 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/(api\.zhihu\.com|(103\.41\.167\.(226|234|235|236)))\/topstory\/hot-lists?(\?|\/),script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/zhihu/zhihu.js
+知乎_评论去广告 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/(api\.zhihu\.com|(103\.41\.167\.(226|234|235|236)))\/(comment_v5\/)?(answers|comments?|articles|pins)\/\d+\/(root_|child_)?comments?,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/zhihu/zhihu.js
+知乎_优化软件配置 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/appcloud2\.zhihu\.com\/v\d+\/config,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/zhihu/zhihu.js
 
 [MITM]
-hostname = %APPEND% api.m.jd.com, bdsp-x.jd.com, dsp-x.jd.com, ms.jr.jd.com, ccsp-egmas.sf-express.com, maicai.api.ddxq.mobi, m.client.10010.com, discardrp.umetrip.com, startup.umetrip.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, peisongapi.meituan.com, img.meituan.net, www.meituan.com, s3plus.meituan.net, flowplus.meituan.net, p*.meituan.net, wmapi.meituan.com, restapi.iyunmai.com, *api.weibo*, *uve.weibo.com, new.vip.weibo.cn, api.pinduoduo.com, api.yangkeduo.com, app-api.smzdm.com, homepage-api.smzdm.com, haojia-api.smzdm.com, haojia.m.smzdm.com, baike-api.smzdm.com, s-api.smzdm.com, zhiyou.m.smzdm.com, ios.sspai.com, adim.pinduoduo.com, pangolin.snssdk.com, mapi.sfbest.com, shopic.sf-express.com, static.zhihu.com, ad.12306.cn, app.bilibili.com, api.live.bilibili.com, api.vc.bilibili.com, *.bilibili.com, *.bilibili.*, grpc.biliapi.net, *biliapi.net, -*cdn*.biliapi.net, -*tracker*.biliapi.net
+hostname = %APPEND% api.m.jd.com, bdsp-x.jd.com, dsp-x.jd.com, ms.jr.jd.com, ccsp-egmas.sf-express.com, maicai.api.ddxq.mobi, m.client.10010.com, discardrp.umetrip.com, startup.umetrip.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, peisongapi.meituan.com, img.meituan.net, www.meituan.com, s3plus.meituan.net, flowplus.meituan.net, p*.meituan.net, wmapi.meituan.com, restapi.iyunmai.com, *api.weibo*, *uve.weibo.com, new.vip.weibo.cn, api.pinduoduo.com, api.yangkeduo.com, app-api.smzdm.com, homepage-api.smzdm.com, haojia-api.smzdm.com, haojia.m.smzdm.com, baike-api.smzdm.com, s-api.smzdm.com, zhiyou.m.smzdm.com, ios.sspai.com, adim.pinduoduo.com, pangolin.snssdk.com, mapi.sfbest.com, shopic.sf-express.com, static.zhihu.com, ad.12306.cn, app.bilibili.com, api.live.bilibili.com, api.vc.bilibili.com, *.bilibili.com, *.bilibili.*, grpc.biliapi.net, *biliapi.net, -*cdn*.biliapi.net, -*tracker*.biliapi.net, tiebac.baidu.com, www.zhihu.com, api.zhihu.com, zhuanlan.zhihu.com
