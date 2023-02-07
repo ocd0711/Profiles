@@ -1,46 +1,20 @@
-/*
-version     v0.0.1
-updatetime  2022-11-04
-tgchannel   https://t.me/ddgksf2021
-function    酷安去首页广告、信息流广告、评论广告
-author      kk pp
-
-
+/***********************************
 [rewrite_local]
-^https?:\/\/api.coolapk.com\/v6\/(feed\/(replyList|detail)|main\/indexV8|dataList) url script-response-body https://codeberg.org/ddgksf2013/Cuttlefish/raw/branch/master/Script/coolapk.js
 
-[mitm]
-hostname = api.coolapk.com
+# > 酷安_推广广告
+^https?:\/\/api.coolapk.com\/v6\/page\/dataList url script-response-body https://github.com/ddgksf2013/Scripts/raw/master/coolapk.js
+# > 酷安_首页广告
+^https?:\/\/api.coolapk.com\/v6\/main\/indexV8 url script-response-body https://github.com/ddgksf2013/Scripts/raw/master/coolapk.js
+# > 酷安_评论广告
+^https?:\/\/api.coolapk.com\/v6\/feed\/replyList url script-response-body https://github.com/ddgksf2013/Scripts/raw/master/coolapk.js
+# > 酷安_商品推广
+^https?:\/\/api.coolapk.com\/v6\/feed\/detail url script-response-body https://github.com/ddgksf2013/Scripts/raw/master/coolapk.js
 
-*/
+[Script]
+coolapk = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/api\.coolapk\.com\/v6\/(feed\/(replyList|detail)|main\/indexV8|page\/dataList),script-path=coolapk.js
 
-if ($request.url.indexOf("replyList") != -1) {
-    var bodyObj = JSON.parse($response.body);
-    bodyObj.data = Object.values(bodyObj.data).filter((item) => item.id);
-    $done({
-        body: JSON.stringify(bodyObj),
-    });
-} else if ($request.url.indexOf("indexV8") != -1) {
-    var bodyObj = JSON.parse($response.body);
-    bodyObj.data = Object.values(bodyObj.data).filter((item) => !(item["entityTemplate"] == "sponsorCard" || item.entityId == 8639 || item.entityId == 33006 || item.entityId == 32557 || item.title.indexOf("值得买") != -1));
-    //去除头条信息流推广和首页轮转
-    $done({
-        body: JSON.stringify(bodyObj),
-    });
-} else if ($request.url.indexOf("dataList") != -1) {
-    var bodyObj = JSON.parse($response.body);
-    bodyObj.data = Object.values(bodyObj.data).filter((item) => !(item["entityTemplate"] == "sponsorCard" || item.title == "精选配件"));
-    $done({
-        body: JSON.stringify(bodyObj),
-    });
-} else if ($request.url.indexOf("detail") != -1) {
-    var bodyObj = JSON.parse($response.body);
-    bodyObj.data.hotReplyRows = Object.values(bodyObj.data.hotReplyRows).filter((item) => item["id"]);
-    bodyObj.data.include_goods_ids = [];
-    bodyObj.data.include_goods = [];
-    $done({
-        body: JSON.stringify(bodyObj),
-    });
-} else {
-    $done($response);
-}
+[MITM]
+hostname = %APPEND% api.coolapk.com
+***********************************/
+
+if(-1!=$request.url.indexOf("replyList")){var t=JSON.parse($response.body);t.data.length&&(t.data=t.data.filter(t=>t.id)),$done({body:JSON.stringify(t)})}else if(-1!=$request.url.indexOf("indexV8")){var t=JSON.parse($response.body);t.data=t.data.filter(t=>!("sponsorCard"==t.entityTemplate||-1!=t.title.indexOf("值得买")||-1!=t.title.indexOf("红包"))),$done({body:JSON.stringify(t)})}else if(-1!=$request.url.indexOf("dataList")){var t=JSON.parse($response.body);t.data=t.data.filter(t=>!("sponsorCard"==t.entityTemplate||-1!=t.title.indexOf("精选配件"))),$done({body:JSON.stringify(t)})}else if(-1!=$request.url.indexOf("detail")){var t=JSON.parse($response.body);t.data?.hotReplyRows?.length&&(t.data.hotReplyRows=t.data.hotReplyRows.filter(t=>t.id)),t.data?.topReplyRows?.length&&(t.data.topReplyRows=t.data.topReplyRows.filter(t=>t.id)),t.data?.include_goods_ids&&(t.data.include_goods_ids=[]),t.data?.include_goods&&(t.data.include_goods=[]),t.data?.detailSponsorCard&&(t.data.detailSponsorCard=[]),$done({body:JSON.stringify(t)})}else $done($response);

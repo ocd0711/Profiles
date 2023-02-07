@@ -1,5 +1,5 @@
 #!name=Block Advertising
-#!desc=Block Advertising with Script/Rewrite(2023/02/01 10:34)
+#!desc=Block Advertising with Script/Rewrite(2023/02/07 10:05)
 
 [Rule]
 # > 微博_请手动添加以下分流至本地
@@ -84,15 +84,12 @@ DOMAIN,appcloud2.in.zhihu.com,REJECT
 # 暂不清楚作用
 ^https?:\/\/api\.zhihu\.com\/commercial_api\/banners_v3\/app_topstory_banner data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
 
-# > 酷安
-^https?:\/\/api\.coolapk\.com\/v6\/search\?.*type=hotSearch data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
-
 # > 菜鸟裹裹_通用广告请求[包含开屏广告]
 ^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads\.(show|mshow)\.cn data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-200.json"
 
 [URL Rewrite]
-# > 酷安
-^https?://api-access\.pangolin-sdk-toutiao\.com/api/ad/union/sdk - reject
+# > 穿山甲平台开屏广告屏蔽
+^https:\/\/api-access\.*\/api\/ad\/union\/sdk\/get_ads\/ - reject
 
 # > 12123
 ^https:\/\/gab\.122\.gov\.cn\/eapp\/m\/sysquery - reject
@@ -256,7 +253,7 @@ bilibili_proto = type=http-response,pattern=^https?:\/\/(app\.bilibili\.com|grpc
 什么值得买_值会员权益中心banner去广告 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/zhiyou\.m\.smzdm\.com\/user\/vip\/ajax_get_banner,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_remove_ads.js
 
 # > 酷安
-coolapk = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/api\.coolapk\.com\/v6\/(feed\/(replyList|detail)|main\/indexV8|dataList),script-path=https://github.com/ddgksf2013/Scripts/raw/master/coolapk.js
+coolapk = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/api\.coolapk\.com\/v6\/(feed\/(replyList|detail)|main\/indexV8|page\/dataList),script-path=https://raw.githubusercontent.com/ocd0711/Profiles/master/Surge/Js/coolapk.js
 
 # > 贴吧
 贴吧json = type=http-response,pattern=^http(s:\/\/tiebac|:\/\/c\.tieba)\.baidu\.com\/(c\/(s\/sync|f\/(frs\/(page|threadlist|generalTabList)|pb\/(pic)?page|excellent\/personalized))$|tiebaads\/commonbatch\?),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/tieba-json.js,script-update-interval=0
@@ -308,4 +305,4 @@ cainiao_json = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\
 cainiao_json = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/cn-acs\.m\.cainiao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads\.index\.cn,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/master/cainiao_json.js
 
 [MITM]
-hostname = %APPEND% api-access.pangolin-sdk-toutiao.com, api.coolapk.com, api.m.jd.com, bdsp-x.jd.com, dsp-x.jd.com, ms.jr.jd.com, ccsp-egmas.sf-express.com, maicai.api.ddxq.mobi, m.client.10010.com, discardrp.umetrip.com, startup.umetrip.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, peisongapi.meituan.com, img.meituan.net, www.meituan.com, s3plus.meituan.net, flowplus.meituan.net, p*.meituan.net, wmapi.meituan.com, restapi.iyunmai.com, *api.weibo*, *uve.weibo.com, new.vip.weibo.cn, api.pinduoduo.com, api.yangkeduo.com, app-api.smzdm.com, homepage-api.smzdm.com, haojia-api.smzdm.com, haojia.m.smzdm.com, baike-api.smzdm.com, s-api.smzdm.com, zhiyou.m.smzdm.com, ios.sspai.com, adim.pinduoduo.com, pangolin.snssdk.com, mapi.sfbest.com, shopic.sf-express.com, static.zhihu.com, ad.12306.cn, -broadcast.chat.bilibili.com, -*cdn*.biliapi.net, -*tracker*.biliapi.net, app.bilibili.com, api.live.bilibili.com, *bili*, api.vc.bilibili.com, *.bilibili.com, *.bilibili.*, grpc.biliapi.net, *biliapi.net, tiebac.baidu.com, gab.122.gov.cn, cn-acs.m.cainiao.com, res.xiaojukeji.com, 118.89.204.198, 103.41.167.237, 2402:4e00:1200:ed00:0:9089:6dac:96b6, www.zhihu.com, api.zhihu.com, zhuanlan.zhihu.com, appcloud2.zhihu.com, m-cloud.zhihu.com, 103.41.167.236, 103.41.167.234, 103.41.167.235, 103.41.167.226
+hostname = %APPEND% api-access.*, api.coolapk.com, api.m.jd.com, bdsp-x.jd.com, dsp-x.jd.com, ms.jr.jd.com, ccsp-egmas.sf-express.com, maicai.api.ddxq.mobi, m.client.10010.com, discardrp.umetrip.com, startup.umetrip.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, peisongapi.meituan.com, img.meituan.net, www.meituan.com, s3plus.meituan.net, flowplus.meituan.net, p*.meituan.net, wmapi.meituan.com, restapi.iyunmai.com, *api.weibo*, *uve.weibo.com, new.vip.weibo.cn, api.pinduoduo.com, api.yangkeduo.com, app-api.smzdm.com, homepage-api.smzdm.com, haojia-api.smzdm.com, haojia.m.smzdm.com, baike-api.smzdm.com, s-api.smzdm.com, zhiyou.m.smzdm.com, ios.sspai.com, adim.pinduoduo.com, pangolin.snssdk.com, mapi.sfbest.com, shopic.sf-express.com, static.zhihu.com, ad.12306.cn, -broadcast.chat.bilibili.com, -*cdn*.biliapi.net, -*tracker*.biliapi.net, app.bilibili.com, api.live.bilibili.com, *bili*, api.vc.bilibili.com, *.bilibili.com, *.bilibili.*, grpc.biliapi.net, *biliapi.net, tiebac.baidu.com, gab.122.gov.cn, cn-acs.m.cainiao.com, res.xiaojukeji.com, 118.89.204.198, 103.41.167.237, 2402:4e00:1200:ed00:0:9089:6dac:96b6, www.zhihu.com, api.zhihu.com, zhuanlan.zhihu.com, appcloud2.zhihu.com, m-cloud.zhihu.com, 103.41.167.236, 103.41.167.234, 103.41.167.235, 103.41.167.226
