@@ -1,5 +1,5 @@
 #!name=Block Advertising
-#!desc=Block Advertising with Script/Rewrite(2023/02/08 17:05)
+#!desc=Block Advertising with Script/Rewrite(2023/02/10 14:02)
 
 [Rule]
 # > 微博_请手动添加以下分流至本地
@@ -242,8 +242,8 @@ bilibili_json = type=http-response,pattern=^https?:\/\/api\.live\.bilibili\.com\
 # > BiliBili_哔哩哔哩_UP主推荐广告[适配ipad端]
 bilibili_proto = type=http-response,pattern=^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.view\.v1\.View\/View$,requires-body=1,max-size=-1,binary-body-mode=1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_proto.js
  url script-response-body https://github.com/ddgksf2013/Scripts/raw/master/bilibili_proto.js
-# > BiliBili_哔哩哔哩_动态页面去广告[#out=DynAll]
-# bilibili_proto = type=http-response,pattern=^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.dynamic\.v2\.Dynamic\/DynAll$,requires-body=1,max-size=-1,binary-body-mode=1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_proto.js
+# > BiliBili_哔哩哔哩_动态页面去广告
+bilibili_proto = type=http-response,pattern=^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.dynamic\.v2\.Dynamic\/DynAll$,requires-body=1,max-size=-1,binary-body-mode=1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_proto.js
 
 # > 什么值得买去广告
 什么值得买_开屏去广告 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/app-api\.smzdm\.com\/util\/loading,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/smzdm/smzdm_remove_ads.js
