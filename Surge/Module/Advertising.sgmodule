@@ -1,5 +1,5 @@
 #!name=Block Advertising
-#!desc=Block Advertising with Script/Rewrite(2023/02/10 14:02)
+#!desc=Block Advertising with Script/Rewrite(2023/02/17 11:02)
 
 [Rule]
 # > 微博_请手动添加以下分流至本地
@@ -141,6 +141,8 @@ https://ios.sspai.com/api/v3/recommend/page/get\?ad.*ios_home_modal - reject
 # > 顺丰
 shunfeng_json = type=http-response,pattern=https://ccsp-egmas.sf-express.com/cx-app-base/base/app/ad/queryInfoFlow,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/shunfeng_json.js
 
+# > 微博_视频信息处理
+weibo_json = type=http-response,pattern=^https?:\/\/api\.weibo\.cn\/\d\/video\/tiny_stream_mid_detail,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
 # > 微博_屏蔽发现页面搜索框热词
 weibo_json = type=http-response,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/\w{5}\/cardlist,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
 # > 微博_自定义tab皮肤
