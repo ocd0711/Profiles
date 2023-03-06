@@ -338,6 +338,18 @@ proxy-groups:
       - US
       - SG
 
+  # ChatGPT
+  - name: "ChatGPT"
+    type: select
+    proxies:
+      - DIRECT
+      - PROXY
+      - HK
+      - TW
+      - JP
+      - US
+      - SG
+
   # 中国流媒体服务（面向海外版本）
   # 用于观看部分国内流媒体面向港澳台的地区的限定内容，此处应放港澳台节点，如果没有此需求可删除此处策略组及相关规则
   - name: "StreamingSE"
@@ -836,6 +848,13 @@ rule-providers:
     url: https://ghproxy.com/https://raw.githubusercontent.com/ocd0711/Profiles/master/Clash/Ruleset/emby.yaml
     interval: 86400
 
+  ChatGPT:
+    type: http
+    behavior: classical
+    path: ./RuleSet/ChatGPT.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/ocd0711/Profiles/master/Clash/Ruleset/chatgpt.yaml
+    interval: 86400
+
 # 规则
 rules:
   # 直连和广告拦截
@@ -886,6 +905,9 @@ rules:
 
   # Emby 流媒体
   - RULE-SET,Emby,Emby
+
+  # ChatGPT
+  - RULE-SET,ChatGPT,ChatGPT
 
   # StreamingSE 中国流媒体服务 (面向海外版本)
   - RULE-SET,Bilibili,StreamingSE
