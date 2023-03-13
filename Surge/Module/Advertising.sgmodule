@@ -1,5 +1,5 @@
 #!name=Block Advertising
-#!desc=Block Advertising with Script/Rewrite(2023/03/10 12:22)
+#!desc=Block Advertising with Script/Rewrite(2023/03/13 11:52)
 
 [Rule]
 # > 微博_请手动添加以下分流至本地
@@ -98,6 +98,11 @@ https?:\/\/res\.xiaojukeji\.com\/resapi\/activity\/get(Ruled|Preload|PasMultiNot
 ^https?:\/\/(s3plus|flowplus)\.meituan\.net\/v\d\/\w+\/linglong\/\w+\.(gif|jpg|mp4) - reject
 ^https?:\/\/p\d\.meituan\.net\/(bizad|wmbanner)\/\w+\.jpg - reject
 ^https?:\/\/p\d\.meituan\.net\/movie\/\w+\.jpg\?may_covertWebp - reject
+
+# > 美团外卖
+^https?:\/\/img\.meituan\.net\/(bizad|brandCpt)\/\w+\.(png|jpg) - reject
+^https?:\/\/.*\.meituan\.com\/api\/v\d\/(openscreen\?ad|appstatus\?ad|loadInfo\?|startpicture) - reject
+^http:\/\/s3plus\.meituan\.net\/.*\/brandcpt-vedio\/.*\?time - reject
 
 # > 顺丰优选
 ^https://mapi.sfbest.com\/brokerservice-server\/cms\/getPositionById.* - reject
