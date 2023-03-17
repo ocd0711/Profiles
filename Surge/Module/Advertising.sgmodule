@@ -1,5 +1,5 @@
 #!name=Block Advertising
-#!desc=Block Advertising with Script/Rewrite(2023/03/13 11:52)
+#!desc=Block Advertising with Script/Rewrite(2023/03/17 09:43)
 
 [Rule]
 # > 微博_请手动添加以下分流至本地
@@ -78,13 +78,6 @@ https?:\/\/res\.xiaojukeji\.com\/resapi\/activity\/get(Ruled|Preload|PasMultiNot
 # > 航旅纵横
 ^https?:\/\/(discardrp|startup)\.umetrip\.com\/gateway\/api\/umetrip\/native - reject
 
-# > 京东
-^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(start|queryMaterialAdverts) - reject
-^https?:\/\/(bdsp-x|dsp-x)\.jd\.com\/adx\/ - reject
-
-# > 京东金融
-^https?:\/\/ms\.jr\.jd\.com\/gw\/generic\/aladdin\/(new)?na\/m\/getLoadingPicture - reject
-
 # > 中国联通
 ^https?:\/\/m\.client\.10010\.com\/mobileService\/(activity|customer)\/(accountListData|get_client_adv|get_startadv) - reject
 ^https?:\/\/m\.client\.10010\.com\/uniAdmsInterface\/(getHomePageAd|getWelcomeAd) - reject
@@ -136,12 +129,6 @@ https://ios.sspai.com/api/v3/recommend/page/get\?ad.*ios_home_modal - reject
 ^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.interface\.v1\.Search\/Default - reject
 
 [Script]
-# > 京东
-京东 = type=http-response,pattern=^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(hotWords|hotSearchTerms),requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/jd_json.js
-
-# > 京喜
-京喜 = type=http-response,pattern=^https?:\/\/api\.m\.jd\.com\/api\?functionId=delivery_show,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/startup.js
-
 # > 12306
 12306 = type=http-response,pattern=^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/12306.js
 
@@ -225,4 +212,4 @@ cainiao_json = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\
 cainiao_json = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads\.mshow,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/master/cainiao_json.js
 
 [MITM]
-hostname = %APPEND% api.m.jd.com, bdsp-x.jd.com, dsp-x.jd.com, ms.jr.jd.com, ccsp-egmas.sf-express.com, maicai.api.ddxq.mobi, m.client.10010.com, discardrp.umetrip.com, startup.umetrip.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, peisongapi.meituan.com, img.meituan.net, www.meituan.com, s3plus.meituan.net, flowplus.meituan.net, p*.meituan.net, wmapi.meituan.com, restapi.iyunmai.com, api.weibo.*, *.api.weibo.*, mapi.weibo.*, *.uve.weibo.com, new.vip.weibo.cn, boot.biz.weibo.com, api.pinduoduo.com, api.yangkeduo.com, ios.sspai.com, adim.pinduoduo.com, pangolin.snssdk.com, mapi.sfbest.com, shopic.sf-express.com, ad.12306.cn, -broadcast.chat.bilibili.com, -*cdn*.biliapi.net, -*tracker*.biliapi.net, app.bilibili.com, api.live.bilibili.com, *.bilibili.com, *.bilibili.*, grpc.biliapi.net, *biliapi.net, tiebac.baidu.com, gab.122.gov.cn, cn-acs.m.cainiao.com, guide-acs.m.taobao.com, res.xiaojukeji.com
+hostname = %APPEND% ccsp-egmas.sf-express.com, maicai.api.ddxq.mobi, m.client.10010.com, discardrp.umetrip.com, startup.umetrip.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, peisongapi.meituan.com, img.meituan.net, www.meituan.com, s3plus.meituan.net, flowplus.meituan.net, p*.meituan.net, wmapi.meituan.com, restapi.iyunmai.com, api.weibo.*, *.api.weibo.*, mapi.weibo.*, *.uve.weibo.com, new.vip.weibo.cn, boot.biz.weibo.com, api.pinduoduo.com, api.yangkeduo.com, ios.sspai.com, adim.pinduoduo.com, pangolin.snssdk.com, mapi.sfbest.com, shopic.sf-express.com, ad.12306.cn, -broadcast.chat.bilibili.com, -*cdn*.biliapi.net, -*tracker*.biliapi.net, app.bilibili.com, api.live.bilibili.com, *.bilibili.com, *.bilibili.*, grpc.biliapi.net, *biliapi.net, tiebac.baidu.com, gab.122.gov.cn, cn-acs.m.cainiao.com, guide-acs.m.taobao.com, res.xiaojukeji.com
