@@ -1,5 +1,5 @@
 #!name=Block Advertising
-#!desc=Block Advertising with Script/Rewrite(2023/03/17 09:43)
+#!desc=Block Advertising with Script/Rewrite(2023/03/21 09:22)
 
 [Rule]
 # > 微博_请手动添加以下分流至本地
@@ -97,23 +97,8 @@ https?:\/\/res\.xiaojukeji\.com\/resapi\/activity\/get(Ruled|Preload|PasMultiNot
 ^https?:\/\/.*\.meituan\.com\/api\/v\d\/(openscreen\?ad|appstatus\?ad|loadInfo\?|startpicture) - reject
 ^http:\/\/s3plus\.meituan\.net\/.*\/brandcpt-vedio\/.*\?time - reject
 
-# > 顺丰优选
-^https://mapi.sfbest.com\/brokerservice-server\/cms\/getPositionById.* - reject
-
-# > 顺丰
-^https?:\/\/ccsp-egmas\.sf-express\.com\/cx-app-base\/base\/app\/appVersion\/detectionUpgrade - reject
-https://ccsp-egmas.sf-express.com/cx-app-base/base/app/ad/queryAdImages - reject
-^https?:\/\/shopic\.sf-express\.com\/crm\/mobile\/common\/flashscreen - reject
-
 # > 云麦好轻
 ^https?:\/\/restapi\.iyunmai\.com\/api\/ios\/ad\/ - reject
-
-# > 什么值得买_好价详情页去广告
-^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/other_modul - reject
-# > 什么值得买_好价详情页红包小助手
-^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/user_related_modul - reject
-# > 什么值得买_Wiki(618晒物活动推广，将来可能不是广告)
-^https?:\/\/haojia\.m\.smzdm\.com\/detail_modul\/wiki_related_modul - reject
 
 # > 少数派
 https://ios.sspai.com/api/v3/recommend/page/get\?ad.*ios_home_modal - reject
@@ -131,9 +116,6 @@ https://ios.sspai.com/api/v3/recommend/page/get\?ad.*ios_home_modal - reject
 [Script]
 # > 12306
 12306 = type=http-response,pattern=^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/12306.js
-
-# > 顺丰
-shunfeng_json = type=http-response,pattern=https://ccsp-egmas.sf-express.com/cx-app-base/base/app/ad/queryInfoFlow,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/shunfeng_json.js
 
 # > 微博_未登陆状态下首页信息流处理
 weibo_json = type=http-response,pattern=^https?:\/\/api\.weibo\.cn\/\d\/\w{5}\/(statuses_unread_hot_timeline|timeline),requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
@@ -212,4 +194,4 @@ cainiao_json = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\
 cainiao_json = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads\.mshow,script-path=https://raw.githubusercontent.com/ddgksf2013/Scripts/master/cainiao_json.js
 
 [MITM]
-hostname = %APPEND% ccsp-egmas.sf-express.com, maicai.api.ddxq.mobi, m.client.10010.com, discardrp.umetrip.com, startup.umetrip.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, peisongapi.meituan.com, img.meituan.net, www.meituan.com, s3plus.meituan.net, flowplus.meituan.net, p*.meituan.net, wmapi.meituan.com, restapi.iyunmai.com, api.weibo.*, *.api.weibo.*, mapi.weibo.*, *.uve.weibo.com, new.vip.weibo.cn, boot.biz.weibo.com, api.pinduoduo.com, api.yangkeduo.com, ios.sspai.com, adim.pinduoduo.com, pangolin.snssdk.com, mapi.sfbest.com, shopic.sf-express.com, ad.12306.cn, -broadcast.chat.bilibili.com, -*cdn*.biliapi.net, -*tracker*.biliapi.net, app.bilibili.com, api.live.bilibili.com, *.bilibili.com, *.bilibili.*, grpc.biliapi.net, *biliapi.net, tiebac.baidu.com, gab.122.gov.cn, cn-acs.m.cainiao.com, guide-acs.m.taobao.com, res.xiaojukeji.com
+hostname = %APPEND% maicai.api.ddxq.mobi, m.client.10010.com, discardrp.umetrip.com, startup.umetrip.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, peisongapi.meituan.com, img.meituan.net, www.meituan.com, s3plus.meituan.net, flowplus.meituan.net, p*.meituan.net, wmapi.meituan.com, restapi.iyunmai.com, api.weibo.*, *.api.weibo.*, mapi.weibo.*, *.uve.weibo.com, new.vip.weibo.cn, boot.biz.weibo.com, api.pinduoduo.com, api.yangkeduo.com, ios.sspai.com, adim.pinduoduo.com, pangolin.snssdk.com, ad.12306.cn, -broadcast.chat.bilibili.com, -*cdn*.biliapi.net, -*tracker*.biliapi.net, app.bilibili.com, api.live.bilibili.com, *.bilibili.com, *.bilibili.*, grpc.biliapi.net, *biliapi.net, tiebac.baidu.com, gab.122.gov.cn, cn-acs.m.cainiao.com, guide-acs.m.taobao.com, res.xiaojukeji.com
