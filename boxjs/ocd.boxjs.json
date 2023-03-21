@@ -49,11 +49,19 @@
         "https://raw.githubusercontent.com/FoKit/Scripts/main/images/jdjoy.png"
       ],
       "keys": [
+        "WSKEY_AUTO_UPLOAD",
         "WSKEY_TG_BOT_TOKEN",
         "WSKEY_TG_USER_ID",
         "wskeyList"
       ],
       "settings": [
+        {
+          "id": "WSKEY_AUTO_UPLOAD",
+          "name": "自动提交WSKEY",
+          "val": true,
+          "type": "boolean",
+          "desc": "启用后，重写抓取的WSKEY会自动提交（上车）"
+        },
         {
           "id": "WSKEY_TG_BOT_TOKEN",
           "name": "Telegram机器人Token",
@@ -64,7 +72,7 @@
         {
           "id": "WSKEY_TG_USER_ID",
           "name": "Telegram 会话ID",
-          "val": "[\"-1001701121614\"]",
+          "val": "",
           "type": "text",
           "desc": "填写 Telegram 会话ID，以数组形式保存[\"-1001701121614\"]"
         },
@@ -73,6 +81,7 @@
           "name": "京东WSKEY",
           "val": "",
           "type": "textarea",
+          "autoGrow": false,
           "rows": 10,
           "desc": "京东WSKEY列表"
         }
