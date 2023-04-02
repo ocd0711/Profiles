@@ -23,14 +23,6 @@ RULE-SET,https://raw.githubusercontent.com/app2smile/rules/master/rule/tieba-ad.
 ^https?:\/\/m?api\.weibo\.c(n|om)\/\d/push/daily data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
 # > 微博_Spotlight
 ^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/hot\/hours_spotlight data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
-# > 微博国际版_屏蔽hotsearch
-^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php\?a=hot_search_users data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
-# > 微博国际版_屏蔽热推荐
-^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/ad\/weibointl\? data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
-# > 微博国际版_屏蔽searching_info
-^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*user&a=get_searching_info data="https://github.com/ddgksf2013/Scripts/raw/master/weibo_search_info.json"
-# > 微博国际版_屏蔽search_topic 
-^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*feed&a=search_topic data="https://github.com/ddgksf2013/Scripts/raw/master/weibo_search_topic.json"
 
 # > BiliBili_哔哩哔哩_屏蔽广告浮窗
 ^https?:\/\/api\.bilibili\.com\/pgc\/activity\/deliver\/material\/receive data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
@@ -137,16 +129,6 @@ weibo_json = type=http-response,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/v
 weibo_json = type=http-response,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/search/(finder|container_timeline|container_discover),requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
 weibo_json = type=http-response,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/(checkin/show|\!/live/media_homelist|comments/build_comments|container/get_item),requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
 weibo_json = type=http-response,pattern=^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/cardlist,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
-# > 微博国际版_屏蔽开屏广告 
-weibo_json = type=http-response,pattern=^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*get_coopen_ads,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
-# > 微博国际版_屏蔽sdkad
-weibo_json = type=http-response,pattern=^https?://(sdk|wb)app\.uve\.weibo\.com(/interface/sdk/sdkad.php|/wbapplua/wbpullad.lua),requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
-# > 微博国际版_趋势顶部Card去广告
-weibo_json = type=http-response,pattern=^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*feed&a=trends,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
-# > 微博国际版_屏蔽用户VIP栏
-weibo_json = type=http-response,pattern=^https?:\/\/weibointl\.api\.weibo\.cn\/portal\.php\?a=user_center,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
-# > 微博国际版_热搜处理
-weibo_json = type=http-response,pattern=^https?:\/\/weibointl\.api\.weibo\.cn\/portal\.php\?a=search_topic,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
 
 # > BiliBili_哔哩哔哩_视频播放下方商品推广
 bilibili_json = type=http-response,pattern=^https?:\/\/api\.bili(api|bili)\.(net|com)\/pgc\/season\/app\/related\/recommend\?,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js
@@ -176,7 +158,6 @@ bilibili_json = type=http-response,pattern=^https?:\/\/app\.bilibili\.com\/x\/v2
 bilibili_json = type=http-response,pattern=^https?:\/\/api\.live\.bilibili\.com\/xlive\/e-commerce-interface\/v\d\/ecommerce-user\/get_shopping_info\?,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js
 # > BiliBili_哔哩哔哩_UP主推荐广告[适配ipad端]
 bilibili_proto = type=http-response,pattern=^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.view\.v1\.View\/View$,requires-body=1,max-size=-1,binary-body-mode=1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_proto.js
- url script-response-body https://github.com/ddgksf2013/Scripts/raw/master/bilibili_proto.js
 # > BiliBili_哔哩哔哩_动态页面去广告
 bilibili_proto = type=http-response,pattern=^https?:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.app\.dynamic\.v2\.Dynamic\/DynAll$,requires-body=1,max-size=-1,binary-body-mode=1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_proto.js
 
