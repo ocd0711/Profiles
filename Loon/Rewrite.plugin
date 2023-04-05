@@ -6,10 +6,10 @@
 #!icon=https://avatars.githubusercontent.com/u/25606004?v=4
 # 现已添加更多用于屏蔽广告的重写规则并将继续添加
 # 建议使用的 Loon 版本大于 2.1.19(382)
-# 2023年03月21日 09:22 UTC/GMT +8
+# 2023年04月05日 10:40 UTC/GMT +8
 
 [MITM]
-hostname = *.google.cn, maicai.api.ddxq.mobi, m.client.10010.com, discardrp.umetrip.com, startup.umetrip.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, peisongapi.meituan.com, img.meituan.net, www.meituan.com, s3plus.meituan.net, flowplus.meituan.net, p*.meituan.net, wmapi.meituan.com, restapi.iyunmai.com, api.weibo.*, *.api.weibo.*, mapi.weibo.*, *.uve.weibo.com, new.vip.weibo.cn, boot.biz.weibo.com, api.pinduoduo.com, api.yangkeduo.com, ios.sspai.com, adim.pinduoduo.com, pangolin.snssdk.com, ad.12306.cn, -broadcast.chat.bilibili.com, -*cdn*.biliapi.net, -*tracker*.biliapi.net, app.bilibili.com, api.live.bilibili.com, *.bilibili.com, *.bilibili.*, grpc.biliapi.net, *biliapi.net, tiebac.baidu.com, gab.122.gov.cn, cn-acs.m.cainiao.com, guide-acs.m.taobao.com, res.xiaojukeji.com
+hostname = *.google.cn, maicai.api.ddxq.mobi, m.client.10010.com, discardrp.umetrip.com, startup.umetrip.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, peisongapi.meituan.com, img.meituan.net, www.meituan.com, s3plus.meituan.net, flowplus.meituan.net, p*.meituan.net, wmapi.meituan.com, restapi.iyunmai.com, api.weibo.*, *.api.weibo.*, mapi.weibo.*, *.uve.weibo.com, new.vip.weibo.cn, boot.biz.weibo.com, api.pinduoduo.com, api.yangkeduo.com, ios.sspai.com, adim.pinduoduo.com, pangolin.snssdk.com, ad.12306.cn, -broadcast.chat.bilibili.com, -*cdn*.biliapi.net, -*tracker*.biliapi.net, app.bilibili.com, api.live.bilibili.com, *.bilibili.com, *.bilibili.*, grpc.biliapi.net, *biliapi.net, tiebac.baidu.com, gab.122.gov.cn, cn-acs.m.cainiao.com, guide-acs.m.taobao.com, res.xiaojukeji.com, edith.xiaohongshu.com, www.xiaohongshu.com, pages.xiaohongshu.com, referee.xiaohongshu.com
 
 [Rule]
 # > 微博_请手动添加以下分流至本地
