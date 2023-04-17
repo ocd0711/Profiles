@@ -1,5 +1,5 @@
 #!name=Block Advertising
-#!desc=Block Advertising with Script/Rewrite(2023/04/06 01:40)
+#!desc=Block Advertising with Script/Rewrite(2023/04/17 20:07)
 
 [Rule]
 # > 微博_请手动添加以下分流至本地
@@ -113,6 +113,8 @@ https://ios.sspai.com/api/v3/recommend/page/get\?ad.*ios_home_modal - reject
 # > 12306
 12306 = type=http-response,pattern=^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/12306.js
 
+# > 微博_开屏广告预加载处理
+weibo_json = type=http-response,pattern=^https?:\/\/boot.*weibo\.com\/v\d\/ad\/preload,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
 # > 微博_未登陆状态下首页信息流处理
 weibo_json = type=http-response,pattern=^https?:\/\/api\.weibo\.cn\/\d\/\w{5}\/(statuses_unread_hot_timeline|timeline),requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
 # > 微博_视频信息处理
