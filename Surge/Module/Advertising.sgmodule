@@ -112,6 +112,11 @@ https://ios.sspai.com/api/v3/recommend/page/get\?ad.*ios_home_modal - reject
 ^https:\/\/ma-adx\.ctrip\.com\/_ma\.gif - reject
 ^https:\/\/mbd\.baidu\.com\/newspage\/api\/getmobads\?page\=landingshare - reject
 
+# > 顺丰
+^https?:\/\/ccsp-egmas\.sf-express\.com\/cx-app-base\/base\/app\/appVersion\/detectionUpgrade - reject
+https://ccsp-egmas.sf-express.com/cx-app-base/base/app/ad/queryAdImages - reject
+^https?:\/\/shopic\.sf-express\.com\/crm\/mobile\/common\/flashscreen - reject
+
 [Script]
 # > 12306
 12306 = type=http-response,pattern=^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/12306.js
@@ -179,5 +184,8 @@ redbook_json = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\
 # > 小红书_猜你想搜
 redbook_json = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/search\/trending,script-path=https://github.com/ddgksf2013/Scripts/raw/master/redbook_json.js
 
+# > 顺丰
+shunfeng_json = type=http-response,requires-body=1,max-size=0,pattern=https://ccsp-egmas.sf-express.com/cx-app-base/base/app/ad/queryInfoFlow,script-path=https://github.com/ddgksf2013/Scripts/raw/master/shunfeng_json.js
+
 [MITM]
-hostname = %APPEND% maicai.api.ddxq.mobi, m.client.10010.com, discardrp.umetrip.com, startup.umetrip.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, peisongapi.meituan.com, img.meituan.net, www.meituan.com, s3plus.meituan.net, flowplus.meituan.net, p*.meituan.net, wmapi.meituan.com, restapi.iyunmai.com, api.weibo.*, *.api.weibo.*, mapi.weibo.*, *.uve.weibo.com, new.vip.weibo.cn, boot.biz.weibo.com, api.pinduoduo.com, api.yangkeduo.com, ios.sspai.com, adim.pinduoduo.com, pangolin.snssdk.com, ad.12306.cn, tiebac.baidu.com, gab.122.gov.cn, cn-acs.m.cainiao.com, amdc.m.taobao.com, acs.m.taobao.com, guide-acs.m.taobao.com, res.xiaojukeji.com, edith.xiaohongshu.com, www.xiaohongshu.com, pages.xiaohongshu.com, referee.xiaohongshu.com, mbd.baidu.com, m.ctrip.com
+hostname = %APPEND% maicai.api.ddxq.mobi, m.client.10010.com, discardrp.umetrip.com, startup.umetrip.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, peisongapi.meituan.com, img.meituan.net, www.meituan.com, s3plus.meituan.net, flowplus.meituan.net, p*.meituan.net, wmapi.meituan.com, restapi.iyunmai.com, api.weibo.*, *.api.weibo.*, mapi.weibo.*, *.uve.weibo.com, new.vip.weibo.cn, boot.biz.weibo.com, api.pinduoduo.com, api.yangkeduo.com, ios.sspai.com, adim.pinduoduo.com, pangolin.snssdk.com, ad.12306.cn, tiebac.baidu.com, gab.122.gov.cn, cn-acs.m.cainiao.com, amdc.m.taobao.com, acs.m.taobao.com, guide-acs.m.taobao.com, res.xiaojukeji.com, edith.xiaohongshu.com, www.xiaohongshu.com, pages.xiaohongshu.com, referee.xiaohongshu.com, mbd.baidu.com, m.ctrip.com, ccsp-egmas.sf-express.com, shopic.sf-express.com
