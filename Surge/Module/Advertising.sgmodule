@@ -8,6 +8,9 @@ DOMAIN-SUFFIX,sdkapp.uve.weibo.com,DIRECT
 # > 穿山甲平台开屏广告屏蔽
 DOMAIN-SUFFIX,pangolin-sdk-toutiao.com,REJECT
 
+# > 快手联盟
+DOMAIN-SUFFIX,open.e.kuaishou.com,REJECT
+
 # > 贴吧
 RULE-SET,https://raw.githubusercontent.com/app2smile/rules/master/rule/tieba-ad.list,REJECT-DROP
 
