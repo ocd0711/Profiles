@@ -337,6 +337,18 @@ proxy-groups:
       - US
       - SG
 
+  # Spotify
+  - name: "Spotify"
+    type: select
+    proxies:
+      - DIRECT
+      - PROXY
+      - HK
+      - TW
+      - JP
+      - US
+      - SG
+
   # 国际流媒体服务
   - name: "Streaming"
     type: select
@@ -889,9 +901,11 @@ rules:
   - RULE-SET,YouTube,YouTube
   - RULE-SET,YouTube_Music,YouTube
 
+  # Spotify 单独分流
+  - RULE-SET,Spotify,Spotify
+
   # Streaming 国际流媒体服务
   - RULE-SET,Netflix,Streaming
-  - RULE-SET,Spotify,Streaming
   - RULE-SET,Disney_Plus,Streaming
   - RULE-SET,ABC,Streaming
   - RULE-SET,Abema_TV,Streaming
