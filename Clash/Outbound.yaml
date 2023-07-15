@@ -372,8 +372,8 @@ proxy-groups:
       - US
       - SG
 
-  # ChatGPT
-  - name: "ChatGPT"
+  # OpenAI
+  - name: "OpenAI"
     type: select
     proxies:
       - PROXY
@@ -881,11 +881,11 @@ rule-providers:
     url: https://raw.githubusercontent.com/ocd0711/Profiles/master/Clash/Ruleset/emby.yaml
     interval: 86400
 
-  ChatGPT:
+  OpenAI:
     type: http
     behavior: classical
-    path: ./RuleSet/ChatGPT.yaml
-    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/ChatGPT.yaml
+    path: ./RuleSet/OpenAI.yaml
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/OpenAI.yaml
     interval: 86400
 
 # 规则
@@ -941,8 +941,8 @@ rules:
   # Emby 流媒体
   - RULE-SET,Emby,Emby
 
-  # ChatGPT
-  - RULE-SET,ChatGPT,ChatGPT
+  # OpenAI
+  - RULE-SET,OpenAI,OpenAI
 
   # StreamingSE 中国流媒体服务 (面向海外版本)
   - RULE-SET,Bilibili,StreamingSE
