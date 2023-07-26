@@ -108,6 +108,8 @@ dns:
     - '*.lan'
     - '*.linksys.com'
     - '*.linksyssmartwifi.com'
+    - 'homeassistant.local'
+    - 'router.asus.com'
     # Apple
     - 'swscan.apple.com'
     - 'mesu.apple.com'
@@ -247,8 +249,8 @@ dns:
   #   'www.baidu.com': '114.114.114.114'
   #   '+.internal.crop.com': '10.0.0.1'
 
-# Sniff TLS SNI
 experimental:
+  # Sniff TLS SNI
   sniff-tls-sni: true
 
 proxies:
@@ -795,13 +797,6 @@ rule-providers:
     url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Letv.yaml
     interval: 86400
 
-  # MOO:
-  #   type: http
-  #   behavior: classical
-  #   path: ./RuleSet/StreamingMedia/MOO.yaml
-  #   url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/MOO.yaml
-  #   interval: 86400
-
   Netease_Music:
     type: http
     behavior: classical
@@ -961,7 +956,6 @@ rules:
   - RULE-SET,IQ,StreamingSE
   - RULE-SET,IQIYI,StreamingSE
   - RULE-SET,Letv,StreamingSE
-  # - RULE-SET,MOO,StreamingSE
   - RULE-SET,Netease_Music,StreamingSE
   - RULE-SET,Tencent_Video,StreamingSE
   - RULE-SET,Youku,StreamingSE
@@ -993,6 +987,27 @@ rules:
   - GEOIP,CN,DIRECT
 
   - MATCH,MATCH
+
+# interface-name: en0 # 与 `tun.auto-detect-interface` 冲突
+
+# tun:
+#   enable: true
+#   stack: system # or gvisor
+#   dns-hijack:
+#   # - 198.18.0.2:53 # 当 `fake-ip-range` 是 198.18.0.1/16, 应该劫持 198.18.0.2:53 - windows - gvisor
+#     - 8.8.8.8:53
+#     - tcp://8.8.8.8:53
+#   #   - any:53
+#   #   - tcp://any:53
+#   auto-route: true # manage `ip route` and `ip rules`
+#   auto-redir: true # manage nftable REDIRECT
+#   # 推荐使用 `interface-name`
+#   # auto-detect-interface: true # 与 `interface-name` 冲突
+
+# eBPF 重定向到 TUN(https://dreamacro.github.io/clash/premium/ebpf.html)
+# ebpf:
+#   redirect-to-tun:
+#     - eth0
 
 script:
   code: |
@@ -1041,7 +1056,6 @@ script:
             "IQ": "StreamingSE",
             "IQIYI": "StreamingSE",
             "Letv": "StreamingSE",
-            "MOO": "StreamingSE",
             "Netease_Music": "StreamingSE",
             "Tencent_Video": "StreamingSE",
             "Youku": "StreamingSE",
