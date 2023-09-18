@@ -1,9 +1,9 @@
 #!name=Block Advertising
-#!desc=Block Advertising with Script/Rewrite(2023/06/10 17:32)
+#!desc=Block Advertising with Script/Rewrite(2023/09/18 10:36)
 
 [Rule]
 # > 微博_请手动添加以下分流至本地
-DOMAIN-SUFFIX,sdkapp.uve.weibo.com,DIRECT
+# DOMAIN-SUFFIX,sdkapp.uve.weibo.com,DIRECT
 
 # > 穿山甲平台开屏广告屏蔽
 DOMAIN-SUFFIX,pangolin-sdk-toutiao.com,REJECT
@@ -15,6 +15,8 @@ DOMAIN-SUFFIX,open.e.kuaishou.com,REJECT
 RULE-SET,https://raw.githubusercontent.com/app2smile/rules/master/rule/tieba-ad.list,REJECT-DROP
 
 [Map Local]
+# > 微博国际版_趋势页热门影片
+^https?:\/\/api\.weibo\.cn\/\d\/cardlist\?v_f=.*Weibo_intl data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
 # > 微博_用户推荐弹窗
 ^https?:\/\/api\.weibo\.cn\/\d\/profile\/recommend_popuser data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
 # > 微博_每日一次的开屏广告请求
@@ -31,7 +33,7 @@ RULE-SET,https://raw.githubusercontent.com/app2smile/rules/master/rule/tieba-ad.
 ^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/ad\/weibointl\? data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
 # > 微博国际版_屏蔽searching_info
 ^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*user&a=get_searching_info data="https://github.com/ddgksf2013/Scripts/raw/master/weibo_search_info.json"
-# > 微博国际版_屏蔽search_topic 
+# > 微博国际版_屏蔽search_topic
 ^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*feed&a=search_topic data="https://github.com/ddgksf2013/Scripts/raw/master/weibo_search_topic.json"
 
 # > 菜鸟裹裹_通用广告请求[包含开屏广告]
@@ -54,12 +56,17 @@ RULE-SET,https://raw.githubusercontent.com/app2smile/rules/master/rule/tieba-ad.
 # > 小红书_启动引导
 ^https?:\/\/edith\.xiaohongshu\.com\/api\/sns\/v\d\/guide\/home_guide data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
 
+# > 酷安
+^https?:\/\/api\.coolapk\.com\/v6\/search\?.*type=hotSearch data="https://raw.githubusercontent.com/ocd0711/Profiles/master/reject-dict.json"
+
 [URL Rewrite]
+# > 微博_应用内弹窗广告
+^https?:\/\/(preload-click|preload-impression)\.uve\.weibo\.com\/(interface\/wbpullad\/wbpullad_click\.php|wbapplua\/get_wbpullad_log\.lua) - reject
+# > 微博_屏蔽sdkconfig请求
+^https?:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkconfig\.php - reject
+
 # > 12123
 ^https:\/\/gab\.122\.gov\.cn\/eapp\/m\/sysquery - reject
-
-# > 叮咚买菜
-^https?:\/\/maicai\.api\.ddxq\.mobi\/advert\/ - reject
 
 # > 饿了么
 ^https?:\/\/elemecdn.com\/.+\/sitemap - reject
@@ -76,7 +83,7 @@ https?:\/\/res\.xiaojukeji\.com\/resapi\/activity\/get(Ruled|Preload|PasMultiNot
 ^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.fliggy\.crm\.screen\.allresource - reject
 
 # > 淘票票
-^https://acs.m.taobao.com\/gw\/mtop.film.mtopadvertiseapi.queryadvertise\/5.0.* - reject
+^https?:\/\/acs\.m\.taobao\.com\/gw\/mtop\.film\.mtopadvertiseapi\.queryadvertise\/ - reject
 
 # > 航旅纵横
 ^https?:\/\/(discardrp|startup)\.umetrip\.com\/gateway\/api\/umetrip\/native - reject
@@ -106,20 +113,21 @@ https?:\/\/res\.xiaojukeji\.com\/resapi\/activity\/get(Ruled|Preload|PasMultiNot
 # > 少数派
 https://ios.sspai.com/api/v3/recommend/page/get\?ad.*ios_home_modal - reject
 
-# > 微博_应用内弹窗广告
-^https?:\/\/(preload-click|preload-impression)\.uve\.weibo\.com\/(interface\/wbpullad\/wbpullad_click\.php|wbapplua\/get_wbpullad_log\.lua) - reject
-# > 微博_屏蔽sdkconfig请求
-^https?:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkconfig\.php - reject
-
 # > 顺丰
 ^https?:\/\/ccsp-egmas\.sf-express\.com\/cx-app-base\/base\/app\/appVersion\/detectionUpgrade - reject
 https://ccsp-egmas.sf-express.com/cx-app-base/base/app/ad/queryAdImages - reject
 ^https?:\/\/shopic\.sf-express\.com\/crm\/mobile\/common\/flashscreen - reject
 
-[Script]
-# > 12306
-12306 = type=http-response,pattern=^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/12306.js
+# > 同城旅行
+^https?:\/\/tcmobileapi\.17usoft\.com\/appindexnew\/index\/getappindexconfig - reject
 
+# > 瑞幸
+^https?:\/\/capi\.lkcoffee\.com\/resource\/m\/sys\/(homePage\/contactor\/modules|app\/adposNew) - reject
+
+# > 库迪
+^https?:\/\/gateway\.abite\.com\/cotti-capi\/customer\/position\/list\?code=cotti-launch-window - reject
+
+[Script]
 # > 微博_开屏广告预加载处理
 weibo_json = type=http-response,pattern=^https?:\/\/boot.*weibo\.com\/v\d\/ad\/preload,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
 # > 微博_未登陆状态下首页信息流处理
@@ -152,6 +160,9 @@ weibo_json = type=http-response,pattern=^https?:\/\/weibointl\.api\.weibo\.c(n|o
 weibo_json = type=http-response,pattern=^https?:\/\/weibointl\.api\.weibo\.cn\/portal\.php\?a=user_center,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
 # > 微博国际版_热搜处理
 weibo_json = type=http-response,pattern=^https?:\/\/weibointl\.api\.weibo\.cn\/portal\.php\?a=search_topic,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/weibo_json.js
+
+# > 12306
+12306 = type=http-response,pattern=^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList,requires-body=1,max-size=-1,script-path=https://github.com/ddgksf2013/Scripts/raw/master/12306.js
 
 # > 贴吧
 贴吧json = type=http-response,pattern=^http(s:\/\/tiebac|:\/\/c\.tieba)\.baidu\.com\/(c\/(s\/sync|f\/(frs\/(page|threadlist|generalTabList)|pb\/(pic)?page|excellent\/personalized))$|tiebaads\/commonbatch\?),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/tieba-json.js,script-update-interval=0
@@ -194,5 +205,9 @@ redbook_json = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\
 # > 顺丰
 shunfeng_json = type=http-response,requires-body=1,max-size=0,pattern=https://ccsp-egmas.sf-express.com/cx-app-base/base/app/ad/queryInfoFlow,script-path=https://github.com/ddgksf2013/Scripts/raw/master/shunfeng_json.js
 
+# > 酷安
+coolapk = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/api\.coolapk\.com\/v6\/(feed\/(replyList|detail)|main\/indexV8|dataList),script-path=https://github.com/ddgksf2013/Scripts/raw/master/coolapk.js
+coolapk = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/api.coolapk.com\/v6\/main\/init,script-path=https://github.com/ddgksf2013/Scripts/raw/master/coolapk.js
+
 [MITM]
-hostname = %APPEND% maicai.api.ddxq.mobi, m.client.10010.com, discardrp.umetrip.com, startup.umetrip.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, peisongapi.meituan.com, img.meituan.net, www.meituan.com, s3plus.meituan.net, flowplus.meituan.net, p*.meituan.net, wmapi.meituan.com, restapi.iyunmai.com, open.e.kuaishou.com, api.weibo.*, *.api.weibo.*, mapi.weibo.*, *.uve.weibo.com, new.vip.weibo.cn, boot.biz.weibo.com, api.pinduoduo.com, api.yangkeduo.com, ios.sspai.com, adim.pinduoduo.com, pangolin.snssdk.com, ad.12306.cn, tiebac.baidu.com, gab.122.gov.cn, cn-acs.m.cainiao.com, amdc.m.taobao.com, acs.m.taobao.com, guide-acs.m.taobao.com, res.xiaojukeji.com, edith.xiaohongshu.com, www.xiaohongshu.com, pages.xiaohongshu.com, referee.xiaohongshu.com, ccsp-egmas.sf-express.com, shopic.sf-express.com
+hostname = %APPEND% gateway.abite.com, capi.lkcoffee.com, tcmobileapi.17usoft.com, api.coolapk.com, m.client.10010.com, discardrp.umetrip.com, startup.umetrip.com, elemecdn.com, fuss10.elemecdn.com, www1.elecfans.com, peisongapi.meituan.com, img.meituan.net, www.meituan.com, s3plus.meituan.net, flowplus.meituan.net, p*.meituan.net, wmapi.meituan.com, restapi.iyunmai.com, open.e.kuaishou.com, api.weibo.*, *.api.weibo.*, mapi.weibo.*, *.uve.weibo.com, new.vip.weibo.cn, boot.biz.weibo.com, api.pinduoduo.com, api.yangkeduo.com, ios.sspai.com, adim.pinduoduo.com, pangolin.snssdk.com, ad.12306.cn, tiebac.baidu.com, gab.122.gov.cn, cn-acs.m.cainiao.com, amdc.m.taobao.com, acs.m.taobao.com, guide-acs.m.taobao.com, res.xiaojukeji.com, edith.xiaohongshu.com, www.xiaohongshu.com, pages.xiaohongshu.com, referee.xiaohongshu.com, ccsp-egmas.sf-express.com, shopic.sf-express.com
