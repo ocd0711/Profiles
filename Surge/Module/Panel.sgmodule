@@ -1,9 +1,8 @@
 #!name=OCD used Panel
-#!desc=Sub_info, timecard, NetInfo, 流媒体检测, skip_wifi, captureMode
+#!desc=timecard, NetInfo, 流媒体检测, skip_wifi, captureMode
 #!system=ios
 
 [Script]
-Sub_info = type=generic, timeout=10, script-path=https://raw.githubusercontent.com/ocd0711/Profiles/master/Surge/Js/sub_info_panel.js
 functionstatus = type=generic, script-path=https://raw.githubusercontent.com/smartmimi/conf/master/surge/functionstatus.js
 timecard = type=generic, timeout=10, script-path=https://raw.githubusercontent.com/smartmimi/conf/master/surge/timecard.js
 net-info-panel = type=generic, timeout=30, script-path=https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Module/Panel/Network-Info/Moore/Network-Info.js
@@ -12,7 +11,6 @@ skip_wifi = type=generic, timeout=10, script-path=https://raw.githubusercontent.
 captureMode = type=generic, timeout=10, script-path=https://raw.githubusercontent.com/ocd0711/Profiles/master/Surge/Js/captureMode.js
 
 [Panel]
-Sub_info = script-name=Sub_info, update-interval=600
 functionstatus = script-name=functionstatus, title="𝗦𝗨𝗥𝗚𝗘 𝗣𝗥𝗢 ®", content="请刷新", update-interval=60
 timecard = script-name=timecard, update-interval=43200
 net-info-panel = script-name=net-info-panel, style=info, update-interval=1
