@@ -6,53 +6,151 @@
   "repo": "https://github.com/ocd0711/Profiles/tree/master/boxjs",
   "apps": [
     {
-      "id": "wskey",
-      "name": "京东WSKEY",
-      "author": "@FoKit",
-      "descs_html": [
-        "用于自动抓取京东WSKEY"
-      ],
-      "icons": [
-        "https://raw.githubusercontent.com/FoKit/Scripts/main/images/jdjoy.png",
-        "https://raw.githubusercontent.com/FoKit/Scripts/main/images/jdjoy.png"
-      ],
+      "id": "JD_Cookies",
+      "name": "京东账号",
       "keys": [
-        "WSKEY_AUTO_UPLOAD",
-        "WSKEY_TG_BOT_TOKEN",
-        "WSKEY_TG_USER_ID",
-        "wskeyList"
+        "CookiesJD",
+        "cks_get_mute"
+      ],
+      "descs_html": [
+        "若需要方便浏览：右上角菜单->打开调试模式->调试页面地址",
+        "<a href='https://raw.githubusercontent.com/dompling/chavyleung-boxjs/boxjs/box/chavy.boxjs.html' target='_blank'>调试页面地址</a>"
       ],
       "settings": [
         {
-          "id": "WSKEY_AUTO_UPLOAD",
-          "name": "自动提交WSKEY",
-          "val": true,
+          "id": "cks_get_mute",
+          "name": "静音获取",
+          "val": false,
           "type": "boolean",
-          "desc": "启用后，重写抓取的WSKEY会自动提交（上车）"
+          "desc": "更新时，不会执行通知提示"
         },
         {
-          "id": "WSKEY_TG_BOT_TOKEN",
-          "name": "Telegram机器人Token",
+          "id": "del_condition",
+          "name": "删除条件",
           "val": "",
           "type": "text",
-          "desc": "填写 Telegram 机器人的 Token，格式：123456:abcdefgabcdefgabcdefg"
+          "desc": "输入的条件,运行一次之后则会清空条件"
         },
         {
-          "id": "WSKEY_TG_USER_ID",
-          "name": "Telegram 会话ID",
-          "val": "",
-          "type": "text",
-          "desc": "填写 Telegram 会话ID，以数组形式保存[\"-1001701121614\"]"
-        },
-        {
-          "id": "wskeyList",
-          "name": "京东WSKEY",
+          "id": "CookiesJD",
+          "name": "CK 列表",
           "val": "",
           "type": "textarea",
           "autoGrow": false,
-          "rows": 10,
-          "desc": "京东WSKEY列表"
+          "rows": 8,
+          "desc": "CK 列表 (JSON 格式)",
+          "primary": [
+            "userName"
+          ],
+          "child": []
         }
+      ],
+      "icons": [
+        "https://raw.githubusercontent.com/Orz-3/mini/master/jd.png",
+        "https://raw.githubusercontent.com/Orz-3/task/master/jd.png"
+      ],
+      "author": "@dompling",
+      "repo": "https://github.com/dompling/Script/blob/master/jd/JD_extra.js",
+      "scripts": [
+        {
+          "name": "京东签到",
+          "script": "https://raw.githubusercontent.com/dompling/Script/master/jd/JD_extra_sign.js"
+        },
+        {
+          "name": "删除相关 ck",
+          "script": "https://raw.githubusercontent.com/dompling/Script/master/jd/jd_ck_del.js"
+        }
+      ]
+    },
+    {
+      "id": "ql",
+      "name": "青龙同步",
+      "keys": [
+        "@ql.ip",
+        "@ql.client_id",
+        "@ql.client_secret",
+        "@ql.username",
+        "@ql.password",
+        "@ql.env",
+        "@ql.mute",
+        "@ql.is_pwd"
+      ],
+      "settings": [
+        {
+          "id": "@ql.mute",
+          "name": "静音",
+          "val": false,
+          "type": "boolean",
+          "desc": "同步时，不会执行通知提示"
+        },
+        {
+          "id": "@ql.is_pwd",
+          "name": "开启密码登陆",
+          "val": false,
+          "type": "boolean",
+          "desc": "同步时，优先使用密码登陆"
+        },
+        {
+          "id": "@ql.ip",
+          "name": "青龙登陆的域名或IP:端口号",
+          "val": "",
+          "type": "text",
+          "placeholder": "111.21.0.32:5700"
+        },
+        {
+          "id": "@ql.client_id",
+          "name": "应用 Client ID",
+          "val": "",
+          "type": "text"
+        },
+        {
+          "id": "@ql.client_secret",
+          "name": "应用 Client Secret",
+          "val": "",
+          "type": "text"
+        },
+        {
+          "id": "@ql.username",
+          "name": "账号",
+          "val": "",
+          "type": "text"
+        },
+        {
+          "id": "@ql.password",
+          "name": "密码",
+          "val": "",
+          "type": "text"
+        }
+      ],
+      "icons": [
+        "https://raw.githubusercontent.com/dompling/Script/master/image/ql.png",
+        "https://raw.githubusercontent.com/dompling/Script/master/image/ql.png"
+      ],
+      "author": "@dompling",
+      "repo": "https://github.com/dompling/Script/blob/master/jd/ql_cookie_sync.js",
+      "scripts": [
+        {
+          "name": "青龙同步到BoxJS(京东 Ck)",
+          "script": "https://raw.githubusercontent.com/dompling/Script/master/jd/ql_sync_box.js"
+        },
+        {
+          "name": "BoxJS同步到青龙(京东 Ck)",
+          "script": "https://raw.githubusercontent.com/ocd0711/Profiles/master/Surge/Js/ql_cookie_sync.js"
+        },
+        {
+          "name": "备份环境变量",
+          "script": "https://raw.githubusercontent.com/dompling/Script/master/jd/ql_env_back.js"
+        },
+        {
+          "name": "恢复备份环境变量",
+          "script": "https://raw.githubusercontent.com/dompling/Script/master/jd/ql_env_upload.js"
+        }
+      ],
+      "descs_html": [
+        "青龙 docker 的安装方式请移步 tg 频道",
+        "青龙 docker 作者仓库：【<a href=\"https://github.com/whyour\">github</a>】",
+        "青龙 docker 频道：【<a href=\"https://t.me/qiongqiya\">电报频道</a>】",
+        "应用client_id,client_secret（openapi）方式；请去 设置->应用 中添加相关参数，优先以 openapi 方式同步"
       ]
     },
     {
