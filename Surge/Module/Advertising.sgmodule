@@ -1,5 +1,5 @@
 #!name=Block Advertising
-#!desc=Block Advertising with Script/Rewrite(2023/11/15 10:21)
+#!desc=Block Advertising with Script/Rewrite(2023/12/11 09:04)
 # 部分来源:
 # https://raw.githubusercontent.com/ddgksf2013/Rewrite/master/AdBlock/StartUp.conf
 # https://raw.githubusercontent.com/RuCu6/QuanX/main/Rewrites/MyBlockAds.conf
@@ -126,12 +126,7 @@ https?:\/\/res\.xiaojukeji\.com\/resapi\/activity\/get(Ruled|Preload|PasMultiNot
 ^https?:\/\/fuss10.elemecdn.com\/.+\/w\/640\/h\/\d{3,4} - reject
 ^https?:\/\/fuss10.elemecdn.com\/.+\/w\/750\/h\/\d{3,4} - reject
 ^https?:\/\/fuss10\.elemecdn\.com\/.+?\.mp4 - reject
-^https?:\/\/cube\.elemecdn\.com\/[\w\/]+\.jpeg\?x-oss-process=image\/resize,m_fill,w_1\d{3},h_2\d{3}\/format,webp\/ - reject
-^https?:\/\/cube\.elemecdn\.com\/[\w\/]+\.jpeg\?x-oss-process=image\/resize,m_fill,w_6\d{2},h_8\d{2}\/format,webp\/ - reject
-^https?:\/\/cube\.elemecdn\.com\/[\w\/]+\.jpeg\?x-oss-process=image\/resize,m_fill,w_\d{3},h_\d{4}\/format,webp\/ - reject
-^https?:\/\/cube\.elemecdn\.com\/\w\/\w{2}\/\w+mp4\.mp4\? - reject
 ^https?:\/\/www1\.elecfans\.com\/www\/delivery\/ - reject
-^https:\/\/(nr-op|cube)\.elemecdn\.com\/.+\.jpeg\?x-oss-process=image\/resize,m_fill,w_\d{4,},h_\d{4,}\/($|format,webp\/$) - reject
 
 # > 滴滴出行
 https?://res\.xiaojukeji\.com\/resapi\/activity\/mget - reject
@@ -255,8 +250,11 @@ redbook_json = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\
 shunfeng_json = type=http-response,requires-body=1,max-size=0,pattern=https://ccsp-egmas.sf-express.com/cx-app-base/base/app/ad/queryInfoFlow,script-path=https://github.com/ddgksf2013/Scripts/raw/master/shunfeng_json.js
 
 # > 酷安
-coolapk = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/api\.coolapk\.com\/v6\/(feed\/(replyList|detail)|main\/indexV8|dataList),script-path=https://github.com/ddgksf2013/Scripts/raw/master/coolapk.js
-coolapk = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/api.coolapk.com\/v6\/main\/init,script-path=https://github.com/ddgksf2013/Scripts/raw/master/coolapk.js
+酷安_开屏广告 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/api.coolapk.com\/v6\/main\/init,script-path=https://github.com/ddgksf2013/Scripts/raw/master/coolapk.js
+酷安_推广广告 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/api.coolapk.com\/v6\/dataList,script-path=https://github.com/ddgksf2013/Scripts/raw/master/coolapk.js
+酷安_首页广告 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/api.coolapk.com\/v6\/main\/indexV8,script-path=https://github.com/ddgksf2013/Scripts/raw/master/coolapk.js
+酷安_评论广告 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/api.coolapk.com\/v6\/feed\/replyList,script-path=https://github.com/ddgksf2013/Scripts/raw/master/coolapk.js
+酷安_商品推广 = type=http-response,requires-body=1,max-size=0,pattern=^https?:\/\/api.coolapk.com\/v6\/feed\/detail,script-path=https://github.com/ddgksf2013/Scripts/raw/master/coolapk.js
 
 # 广告联盟去广告
 广告联盟 = type=http-response,pattern=^https:\/\/((api-access\.pangolin-sdk-toutiao|is\.snssdk)\.com\/api\/ad\/union\/sdk\/get_ads|open\.e\.kuaishou\.com\/rest\/e\/v3\/open\/univ$|mi\.gdt\.qq\.com\/gdt_mview\.fcg\?),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/adsense.js
