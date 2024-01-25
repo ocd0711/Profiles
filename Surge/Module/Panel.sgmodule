@@ -1,19 +1,15 @@
 #!name=OCD used Panel
-#!desc=timecard, NetInfo, 流媒体检测, skip_wifi, captureMode
+#!desc=timecard, 流媒体检测, skip_wifi, captureMode
 #!system=ios
 
 [Script]
-functionstatus = type=generic, script-path=https://raw.githubusercontent.com/smartmimi/conf/master/surge/functionstatus.js
 timecard = type=generic, timeout=10, script-path=https://raw.githubusercontent.com/smartmimi/conf/master/surge/timecard.js
-net-info-panel = type=generic, timeout=30, script-path=https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Module/Panel/Network-Info/Moore/Network-Info.js
-stream-all = type=generic, timeout=15, script-path=https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Module/Panel/Stream-All/Moore/Stream-All.js
+Stream-All-Lite = type=generic,timeout=30,script-path=https://raw.githubusercontent.com/githubdulong/Script/master/Stream-All.js,script-update-interval=0,argument=title=流媒体解锁检测&icon=play.tv.fill&color=#D22F28
 skip_wifi = type=generic, timeout=10, script-path=https://raw.githubusercontent.com/ocd0711/Profiles/master/Surge/Js/skip_wifi.js
 captureMode = type=generic, timeout=10, script-path=https://raw.githubusercontent.com/ocd0711/Profiles/master/Surge/Js/captureMode.js
 
 [Panel]
-functionstatus = script-name=functionstatus, title="𝗦𝗨𝗥𝗚𝗘 𝗣𝗥𝗢 ®", content="请刷新", update-interval=60
 timecard = script-name=timecard, update-interval=43200
-net-info-panel = script-name=net-info-panel, style=info, update-interval=1
-stream-all = script-name=stream-all, title="流媒体解锁检测", content="请刷新面板", update-interval=3600
+Stream-All-Lite = script-name=Stream-All-Lite,update-interval=7200
 skip_wifi = script-name=skip_wifi, update-interval=43200
 captureMode = script-name=captureMode, update-interval=43200
