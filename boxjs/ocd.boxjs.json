@@ -342,73 +342,6 @@
       ]
     },
     {
-      "id": "jhsh",
-      "name": "建行生活",
-      "author": "@FoKit",
-      "script": "https://raw.githubusercontent.com/FoKit/Scripts/main/scripts/jhsh_checkIn.js",
-      "descs_html": [
-        ""
-      ],
-      "icons": [
-        "https://raw.githubusercontent.com/FoKit/Scripts/main/images/jhsh.png",
-        "https://raw.githubusercontent.com/FoKit/Scripts/main/images/jhsh.png"
-      ],
-      "keys": [
-        "JHSH_GIFT",
-        "JHSH_BODY",
-        "JHSH_LOGIN_INFO",
-        "JHSH_VERSION"
-      ],
-      "settings": [
-        {
-          "id": "JHSH_GIFT",
-          "name": "奖励类型",
-          "val": "2",
-          "type": "radios",
-          "desc": "选择连续签到奖励类型",
-          "items": [
-            {
-              "key": "1",
-              "label": "打车券"
-            },
-            {
-              "key": "2",
-              "label": "外卖券"
-            },
-            {
-              "key": "3",
-              "label": "骑行券"
-            }
-          ]
-        },
-        {
-          "id": "JHSH_BODY",
-          "name": "签到数据",
-          "val": "",
-          "type": "textarea",
-          "autoGrow": true,
-          "rows": 1,
-          "desc": ""
-        },
-        {
-          "id": "JHSH_LOGIN_INFO",
-          "name": "登录数据",
-          "val": "",
-          "type": "textarea",
-          "autoGrow": true,
-          "rows": 1,
-          "desc": ""
-        },
-        {
-          "id": "JHSH_VERSION",
-          "name": "版本号",
-          "val": "",
-          "type": "text",
-          "desc": ""
-        }
-      ]
-    },
-    {
       "id": "blackmatrix7.zheye",
       "name": "哲也同学",
       "keys": [
@@ -592,6 +525,115 @@
           "val": "",
           "type": "input",
           "desc": "每个标签以;分隔，如“直播;科学”"
+        }
+      ]
+    },
+    {
+      "id": "jhsh",
+      "name": "建行生活",
+      "author": "@FoKit",
+      "script": "https://raw.githubusercontent.com/FoKit/Scripts/main/scripts/jhsh_checkIn.js",
+      "descs_html": [
+        ""
+      ],
+      "icons": [
+        "https://raw.githubusercontent.com/FoKit/Scripts/main/images/jhsh.png",
+        "https://raw.githubusercontent.com/FoKit/Scripts/main/images/jhsh.png"
+      ],
+      "keys": [
+        "JHSH_GIFT",
+        "JHSH_BODY",
+        "JHSH_LOGIN_INFO",
+        "JHSH_VERSION",
+        "JHSH_SKIPDAY"
+      ],
+      "settings": [
+        {
+          "id": "JHSH_GIFT",
+          "name": "奖励类型",
+          "val": "2",
+          "type": "radios",
+          "desc": "选择连续签到奖励类型, 优先领取建行信用卡优惠券",
+          "items": [
+            {
+              "key": "1",
+              "label": "打车券"
+            },
+            {
+              "key": "2",
+              "label": "外卖券"
+            },
+            {
+              "key": "3",
+              "label": "骑行券"
+            }
+          ]
+        },
+        {
+          "id": "JHSH_SKIPDAY",
+          "name": "下个断签日",
+          "val": "-1",
+          "type": "selects",
+          "items": [
+            {
+              "key": "-1",
+              "label": "不断签(建行信用卡用户)"
+            },
+            {
+              "key": "0",
+              "label": "周日"
+            },
+            {
+              "key": "1",
+              "label": "周一"
+            },
+            {
+              "key": "2",
+              "label": "周二"
+            },
+            {
+              "key": "3",
+              "label": "周三"
+            },
+            {
+              "key": "4",
+              "label": "周四"
+            },
+            {
+              "key": "5",
+              "label": "周五"
+            },
+            {
+              "key": "6",
+              "label": "周六"
+            }
+          ],
+          "desc": "由于非建行信用卡用户连续签到 7 天优惠力度较低(满39元减10元), 增加此配置用于断签"
+        },
+        {
+          "id": "JHSH_BODY",
+          "name": "签到数据",
+          "val": "",
+          "type": "textarea",
+          "autoGrow": true,
+          "rows": 1,
+          "desc": ""
+        },
+        {
+          "id": "JHSH_LOGIN_INFO",
+          "name": "登录数据",
+          "val": "",
+          "type": "textarea",
+          "autoGrow": true,
+          "rows": 1,
+          "desc": ""
+        },
+        {
+          "id": "JHSH_VERSION",
+          "name": "版本号",
+          "val": "",
+          "type": "text",
+          "desc": ""
         }
       ]
     }
