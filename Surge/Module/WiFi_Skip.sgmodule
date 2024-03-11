@@ -2,4 +2,4 @@
 #!desc=在连接特定 Wi-Fi 时直连
 
 [Rule]
-OR,((SUBNET,BSSID:7c:10:c9:e8:2c:38), (SUBNET,BSSID:7c:10:c9:e8:2c:3c), (SUBNET,SSID:OCD_AP), (SUBNET,SSID:OCD_AP_5G)), DIRECT
+OR,((SUBNET,BSSID:a2:1a:1e:f8:2a:c9), (SUBNET,SSID:hao123_5G)), DIRECT
