@@ -5,11 +5,9 @@
 [Script]
 timecard = type=generic, timeout=10, script-path=https://raw.githubusercontent.com/smartmimi/conf/master/surge/timecard.js
 Stream-All-Lite = type=generic,timeout=30,script-path=https://raw.githubusercontent.com/githubdulong/Script/master/Stream-All.js,script-update-interval=0,argument=title=流媒体解锁检测&icon=play.tv.fill&color=#D22F28
-skip_wifi = type=generic, timeout=10, script-path=https://raw.githubusercontent.com/ocd0711/Profiles/master/Surge/Js/skip_wifi.js
 captureMode = type=generic, timeout=10, script-path=https://raw.githubusercontent.com/ocd0711/Profiles/master/Surge/Js/captureMode.js
 
 [Panel]
 timecard = script-name=timecard, update-interval=43200
 Stream-All-Lite = script-name=Stream-All-Lite,update-interval=7200
-skip_wifi = script-name=skip_wifi, update-interval=43200
 captureMode = script-name=captureMode, update-interval=43200
