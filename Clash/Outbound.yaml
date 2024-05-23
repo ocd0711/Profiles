@@ -453,13 +453,6 @@ proxy-groups:
       - SG
       - DIRECT
 
-  # 广告
-  - name: "AdBlock"
-    type: select
-    proxies:
-      - REJECT
-      - DIRECT
-
   - name: "AutoTest"
     type: url-test # 亦可使用 fallback 或 load-balance
     use: # 注意此处是「use」
@@ -897,9 +890,8 @@ rule-providers:
 
 # 规则
 rules:
-  # 直连和广告拦截
+  # 直连
   - RULE-SET,Special,DIRECT
-  - RULE-SET,Reject,AdBlock
 
   # Steam 单独分流
   - RULE-SET,Steam,Steam
@@ -1013,7 +1005,6 @@ script:
   code: |
     def main(ctx, metadata):
         ruleset_action = {"Special": "DIRECT",
-            "Reject": "AdBlock",
             "Steam": "Steam",
             "YouTube": "YouTube",
             "YouTube_Music": "YouTube",
