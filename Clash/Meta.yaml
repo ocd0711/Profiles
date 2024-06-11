@@ -1,0 +1,432 @@
+######### 锚点 start #######
+# 策略组相关
+pr: &pr {type: select, proxies: [AutoTest, HK, TW, JP, US, SG, Bypass]}
+
+prnd: &prnd {type: select, proxies: [Proxy, HK, TW, JP, US, SG]}
+
+#这里是订阅更新和延迟测试相关的
+p: &p {type: http, interval: 3600, health-check: {enable: true, url: http://cp.cloudflare.com/generate_204, interval: 300}}
+
+######### 锚点 end #######
+
+# url 里填写自己的订阅,名称不能重复
+proxy-providers:
+  provider1:
+    <<: *p
+    url: ""
+
+ipv6: true
+allow-lan: true
+mixed-port: 7890
+unified-delay: false
+tcp-concurrent: true
+external-controller: 127.0.0.1:9090
+external-ui: ui
+external-ui-url: "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip"
+
+geodata-mode: true
+geox-url:
+  geoip: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat"
+  geosite: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
+  mmdb: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb"
+
+find-process-mode: strict
+global-client-fingerprint: chrome
+
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+sniffer:
+  enable: true
+  sniff:
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    TLS:
+      ports: [443, 8443]
+    QUIC:
+      ports: [443, 8443]
+  skip-domain:
+    - "Mijia Cloud"
+tun:
+  enable: true
+  stack: mixed
+  dns-hijack:
+    - "any:53"
+  auto-route: true
+  auto-detect-interface: true
+
+dns:
+  enable: true
+  listen: :1053
+  ipv6: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 28.0.0.1/8
+  fake-ip-filter:
+    - "*"
+    - "+.lan"
+    - "+.local"
+  default-nameserver:
+    - 223.5.5.5
+    - 223.6.6.6
+  nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+  proxy-server-nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+  nameserver-policy:
+    "geosite:cn,private":
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+    "geosite:geolocation-!cn":
+      - "https://dns.cloudflare.com/dns-query#dns"
+      - "https://dns.google/dns-query#dns"
+proxies:
+- name: "Bypass"
+  type: direct
+  udp: true
+proxy-groups:
+  - {name: Proxy, <<: *pr}
+  - {name: dns, <<: *prnd}
+  - {name: Final, type: select, proxies: [Proxy, Bypass]}
+  - {name: Steam, <<: *prnd}
+  - {name: YouTube, <<: *prnd}
+  - {name: Spotify, <<: *prnd}
+  - {name: Streaming, <<: *prnd}
+  - {name: Emby, <<: *prnd}
+  - {name: AI, <<: *prnd}
+  - {name: StreamingSE, type: select, proxies: [Bypass, HK, TW]}
+  - {name: Telegram, <<: *prnd}
+  - {name: Paypal, <<: *prnd}
+  - {name: Speedtest, <<: *prnd}
+  - {name: Duolingo, <<: *prnd}
+
+  #分隔,下面是地区分组
+  - {name: HK, type: url-test, include-all-providers: true, filter: "(?=.*(香港|HK))^((?!(Gamer)).)*$"}
+  - {name: TW, type: url-test, include-all-providers: true, filter: "(?=.*(台湾|TW))^((?!(Gamer)).)*$"}
+  - {name: JP, type: url-test, include-all-providers: true, filter: "(?=.*(日本|JP))^((?!(Gamer)).)*$"}
+  - {name: US, type: url-test, include-all-providers: true, filter: "(?=.*(美国|US))^((?!(Gamer)).)*$"}
+  - {name: SG, type: url-test, include-all-providers: true, filter: "(?=.*(新加坡|SG))^((?!(Gamer)).)*$"}
+  - {name: AutoTest, type: url-test, include-all-providers: true, tolerance: 10, filter: "^((?!(Gamer|arm)).)*$"}
+
+rules:
+  # 直连
+  - RULE-SET,Special,Bypass
+
+  # Steam 单独分流
+  - RULE-SET,Steam,Steam
+
+  # YouTube 单独分流
+  - RULE-SET,YouTube_Music,YouTube
+  - RULE-SET,YouTube,YouTube
+
+  # Spotify 单独分流
+  - RULE-SET,Spotify,Spotify
+
+  # Streaming 国际流媒体服务
+  - RULE-SET,Netflix,Streaming
+  - RULE-SET,Disney_Plus,Streaming
+  - RULE-SET,ABC,Streaming
+  - RULE-SET,Abema_TV,Streaming
+  - RULE-SET,Amazon,Streaming
+  - RULE-SET,Apple_Music,Bypass
+  - RULE-SET,Apple_TV,Streaming
+  - RULE-SET,Bahamut,Streaming
+  - RULE-SET,BBC_iPlayer,Streaming
+  - RULE-SET,DAZN,Streaming
+  - RULE-SET,Discovery_Plus,Streaming
+  - RULE-SET,encoreTVB,Streaming
+  - RULE-SET,F1_TV,Streaming
+  - RULE-SET,Fox_Now,Streaming
+  - RULE-SET,Fox+,Streaming
+  - RULE-SET,HBO_Go,Streaming
+  - RULE-SET,HBO_Max,Streaming
+  - RULE-SET,Hulu_Japan,Streaming
+  - RULE-SET,Hulu,Streaming
+  - RULE-SET,Japonx,Streaming
+  - RULE-SET,JOOX,Streaming
+  - RULE-SET,KKBOX,Streaming
+  - RULE-SET,KKTV,Streaming
+  - RULE-SET,Line_TV,Streaming
+  - RULE-SET,myTV_SUPER,Streaming
+  - RULE-SET,Niconico,Streaming
+  - RULE-SET,Pandora,Streaming
+  - RULE-SET,PBS,Streaming
+  - RULE-SET,Pornhub,Streaming
+  - RULE-SET,Soundcloud,Streaming
+  - RULE-SET,ViuTV,Streaming
+
+  # Emby 流媒体
+  - RULE-SET,Emby,Emby
+
+  # AI
+  - RULE-SET,OpenAI,AI
+  - DOMAIN-SUFFIX,generativelanguage.googleapis.com,DIRECT
+
+  # StreamingSE 中国流媒体服务 (面向海外版本)
+  - RULE-SET,Bilibili,StreamingSE
+  - RULE-SET,IQ,StreamingSE
+  - RULE-SET,IQIYI,StreamingSE
+  - RULE-SET,Letv,StreamingSE
+  - RULE-SET,MOO,StreamingSE
+  - RULE-SET,Netease_Music,StreamingSE
+  - RULE-SET,Tencent_Video,StreamingSE
+  - RULE-SET,Youku,StreamingSE
+  - RULE-SET,WeTV,StreamingSE
+
+  # Telegram 加速
+  - RULE-SET,Telegram,Telegram
+
+  # Paypal 加速
+  - RULE-SET,PayPal,Paypal
+
+  # Speedtest 分流
+  - RULE-SET,Speedtest,Speedtest
+
+  # Duolingo 分流
+  - RULE-SET,Duolingo,Duolingo
+
+  # Apple 服务
+  - RULE-SET,Apple,Bypass
+
+  # Global 全球加速
+  - RULE-SET,Global,Proxy
+
+  # China 中国直连
+  - RULE-SET,Domestic,Bypass
+  - RULE-SET,Domestic_IPs,Bypass
+
+  # Local Area Network 局域网
+  - GEOIP,lan,Bypass,no-resolve
+
+  # GeoIP China
+  - GEOIP,CN,Bypass
+
+  - MATCH,Final
+
+rule-anchor:
+  ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: yaml}
+  domain: &domain {type: http, interval: 86400, behavior: domain, format: yaml}
+  classical: &classical {type: http, interval: 86400, behavior: classical, format: yaml}
+rule-providers:
+  Special:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Special.yaml
+
+  Steam:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Steam.yaml
+
+  YouTube_Music:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/YouTube%20Music.yaml
+
+  YouTube:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/YouTube.yaml
+
+  Spotify:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Spotify.yaml
+
+  Netflix:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Netflix.yaml
+
+  Disney_Plus:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Disney%20Plus.yaml
+
+  ABC:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/ABC.yaml
+
+  Abema_TV:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Abema%20TV.yaml
+
+  Amazon:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Amazon.yaml
+
+  Apple_Music:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Apple%20Music.yaml
+
+  Apple_TV:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Apple%20TV.yaml
+
+  Bahamut:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Bahamut.yaml
+
+  BBC_iPlayer:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/BBC%20iPlayer.yaml
+
+  DAZN:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/DAZN.yaml
+
+  Discovery_Plus:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Discovery%20Plus.yaml
+
+  encoreTVB:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/encoreTVB.yaml
+
+  F1_TV:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/F1%20TV.yaml
+
+  Fox_Now:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Fox%20Now.yaml
+
+  Fox+:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Fox%2B.yaml
+
+  HBO_Go:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/HBO%20Go.yaml
+
+  HBO_Max:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/HBO%20Max.yaml
+
+  Hulu_Japan:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Hulu%20Japan.yaml
+
+  Hulu:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Hulu.yaml
+
+  Japonx:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Japonx.yaml
+
+  JOOX:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/JOOX.yaml
+
+  KKBOX:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/KKBOX.yaml
+
+  KKTV:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/KKTV.yaml
+
+  Line_TV:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Line%20TV.yaml
+
+  myTV_SUPER:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/myTV%20SUPER.yaml
+
+  Niconico:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Niconico.yaml
+
+  Pandora:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Pandora.yaml
+
+  PBS:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/PBS.yaml
+
+  Pornhub:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Pornhub.yaml
+
+  Soundcloud:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Soundcloud.yaml
+
+  ViuTV:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/ViuTV.yaml
+
+  Emby:
+    <<: *classical
+    url: https://raw.githubusercontent.com/Repcz/Tool/X/Clash/Rules/Emby.list
+
+  OpenAI:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/OpenAI.yaml
+
+  Bilibili:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Bilibili.yaml
+
+  IQ:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/IQ.yaml
+
+  IQIYI:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/IQIYI.yaml
+
+  Letv:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Letv.yaml
+
+  MOO:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/MOO.yaml
+
+  Netease_Music:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Netease%20Music.yaml
+
+  Tencent_Video:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Tencent%20Video.yaml
+
+  Youku:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Youku.yaml
+
+  WeTV:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/WeTV.yaml
+
+  Telegram:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Telegram.yaml
+
+  PayPal:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/PayPal.yaml
+
+  Speedtest:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Speedtest.yaml
+
+  Duolingo:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Duolingo.yaml
+
+  Apple:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Apple.yaml
+
+  Global:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Proxy.yaml
+
+  Domestic:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Domestic.yaml
+
+  Domestic_IPs:
+    <<: *ip
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Domestic%20IPs.yaml
