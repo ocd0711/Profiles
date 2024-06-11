@@ -260,7 +260,7 @@ proxies:
 proxy-providers:
   Airport: &Airport #「机场」订阅
     type: http
-    url: "https://gist.githubusercontent.com/ocd0711/xxxxx/raw/OCD-CLASH" # 放机场订阅链接
+    url: "https://gist.githubusercontent.com/ocd0711/xxxxxxxxxx/raw/OCD-CLASH" # 放机场订阅链接
     interval: 3600
     path: ./Proxy/List.yaml # 注意此处文件名不可相同
     health-check:
@@ -395,8 +395,8 @@ proxy-groups:
       - US
       - SG
 
-  # OpenAI
-  - name: "OpenAI"
+  # AI
+  - name: "AI"
     type: select
     proxies:
       - PROXY
@@ -884,7 +884,7 @@ rule-providers:
   OpenAI:
     type: http
     behavior: classical
-    path: ./RuleSet/OpenAI.yaml
+    path: ./RuleSet/AI.yaml
     url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/OpenAI.yaml
     interval: 86400
 
@@ -941,7 +941,7 @@ rules:
   - RULE-SET,Emby,Emby
 
   # OpenAI
-  - RULE-SET,OpenAI,OpenAI
+  - RULE-SET,OpenAI,AI
 
   # StreamingSE 中国流媒体服务 (面向海外版本)
   - RULE-SET,Bilibili,StreamingSE
@@ -1042,7 +1042,7 @@ script:
             "Soundcloud": "Streaming",
             "ViuTV": "Streaming",
             "Emby": "Emby",
-            "OpenAI": "OpenAI",
+            "OpenAI": "AI",
             "Bilibili": "StreamingSE",
             "IQ": "StreamingSE",
             "IQIYI": "StreamingSE",
