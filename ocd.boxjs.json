@@ -1,0 +1,62 @@
+{
+    "id": "OCDCheckin.sub",
+    "name": "OCD签到脚本订阅",
+    "author": "@ocd0711",
+    "icon": "https://avatars.githubusercontent.com/u/25606004?s=400&u=72b294d3cf1dbd6bfdfe2248661621a770507690&v=4",
+    "repo": "",
+    "apps": [
+        {
+            "id": "ocd_setting",
+            "name": "参数设置",
+            "author": "@ocd0711",
+            "repo": "",
+            "icons": [
+                "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/0d/31/0b/0d310b25-aa91-99c5-b23b-af1e8753c4d0/AppIcon-0-1x_U007emarketing-0-7-0-85-220.png/144x144.png",
+                "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/0d/31/0b/0d310b25-aa91-99c5-b23b-af1e8753c4d0/AppIcon-0-1x_U007emarketing-0-7-0-85-220.png/144x144.png"
+            ],
+            "keys": [
+                "is_debug",
+                "bark_key"
+            ],
+            "settings": [
+                {
+                    "id": "is_debug",
+                    "name": "开启调试模式",
+                    "val": false,
+                    "type": "boolean",
+                    "desc": "默认关闭"
+                },
+                {
+                    "id": "bark_key",
+                    "name": "bark通知",
+                    "val": "",
+                    "type": "text",
+                    "desc": "填写key则开启bark通知，默认留空"
+                }
+            ]
+        },
+        {
+            "id": "sliverkiss_wzyd",
+            "name": "王者营地",
+            "author": "@Sliverkiss",
+            "repo": "",
+            "icons": [
+                "https://raw.githubusercontent.com/ocd0711/Profiles/master/icon/wzyd.png",
+                "https://raw.githubusercontent.com/ocd0711/Profiles/master/icon/wzyd.png"
+            ],
+            "keys": [
+                "wzyd_data"
+            ],
+            "settings": [
+                {
+                    "id": "wzyd_data",
+                    "name": "会员Cookie数据",
+                    "val": "",
+                    "type": "textarea",
+                    "autoGrow": true,
+                    "desc": "会员Cookie数据"
+                }
+            ]
+        }
+    ]
+}

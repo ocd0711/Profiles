@@ -1,0 +1,12 @@
+#!name=王者营地签到
+#!desc=点击我/每日福利->手动签到一次，若提示获取ck即可使用，建议开启抓包再签到。
+#!category=⏱️ 模块 ▸ Task
+
+[Script]
+[Script]
+# （默认上午9:30 执行，如需更改请自行修改cron表达式）
+王者营地签到 = type=cron, cronexp="30 9 * * *", script-path=https://raw.githubusercontent.com/ocd0711/Profiles/master/Surge/Js/wzyd.js
+王者营地获取token = type=http-request,pattern=^https:\/\/kohcamp\.qq\.com\/operation\/action\/newsignin,requires-body=0,max-size=0,script-path=https://raw.githubusercontent.com/ocd0711/Profiles/master/Surge/Js/wzyd.js
+
+[MITM]
+hostname = %APPEND% kohcamp.qq.com
