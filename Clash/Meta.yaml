@@ -2,6 +2,8 @@
 # 策略组相关
 pr: &pr {type: select, proxies: [AutoTest, HK, TW, JP, US, SG, Bypass]}
 
+prn: &prn {type: select, proxies: [Proxy, HK, TW, JP, US, SG, Bypass]}
+
 prnd: &prnd {type: select, proxies: [Proxy, HK, TW, JP, US, SG]}
 
 #这里是订阅更新和延迟测试相关的
@@ -91,17 +93,17 @@ proxy-groups:
   - {name: Proxy, <<: *pr}
   - {name: dns, <<: *prnd}
   - {name: Final, type: select, proxies: [Proxy, Bypass]}
-  - {name: Steam, <<: *prnd}
+  - {name: Steam, <<: *prn}
   - {name: YouTube, <<: *prnd}
-  - {name: Spotify, <<: *prnd}
+  - {name: Spotify, <<: *prn}
   - {name: Streaming, <<: *prnd}
-  - {name: Emby, <<: *prnd}
+  - {name: Emby, <<: *prn}
   - {name: AI, <<: *prnd}
   - {name: StreamingSE, type: select, proxies: [Bypass, HK, TW]}
   - {name: Telegram, <<: *prnd}
-  - {name: Paypal, <<: *prnd}
-  - {name: Speedtest, <<: *prnd}
-  - {name: Duolingo, <<: *prnd}
+  - {name: Paypal, <<: *prn}
+  - {name: Speedtest, <<: *prn}
+  - {name: Duolingo, <<: *prn}
 
   #分隔,下面是地区分组
   - {name: HK, type: url-test, include-all-providers: true, filter: "(?=.*(香港|HK))^((?!(Gamer)).)*$"}
