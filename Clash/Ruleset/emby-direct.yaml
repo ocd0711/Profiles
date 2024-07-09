@@ -1,0 +1,6 @@
+payload:
+    # MJJ
+  - DOMAIN-SUFFIX,direct.mjjemby.org
+    # MICU
+  - DOMAIN-SUFFIX,tv.micu.hk
+  - DOMAIN-SUFFIX,tv1.micu.hk

@@ -1,9 +1,31 @@
 payload:
-  - DOMAIN-SUFFIX,misty.ltd
-  - DOMAIN-SUFFIX,emby.agon.cf
-  - DOMAIN-SUFFIX,789.123456.al
-  - DOMAIN-SUFFIX,ju.dog
-  - DOMAIN-SUFFIX,tv.atvii.com
-  - DOMAIN-SUFFIX,cf.jmsooo.com
-  - DOMAIN-SUFFIX,cf.emby.ml
+    # PAUL 电报服
+  - DOMAIN-SUFFIX,cf.imetyou.top
+    # 终点站
   - DOMAIN-SUFFIX,emby.wtf
+    # 纸片人小站
+  - DOMAIN-SUFFIX,embyplus.org
+    # 牢大的野兽餐厅
+  - DOMAIN-SUFFIX,mius.uk
+    # 江湖
+  - DOMAIN-SUFFIX,film.reddust.link
+    # MJJ
+  - DOMAIN-SUFFIX,mjjemby.org
+    # 飞跃彩虹
+  - DOMAIN-SUFFIX,581658.best
+    # StarCat
+  - DOMAIN-SUFFIX,catlinks.co.uk
+    # TreeDiagram
+  - DOMAIN-SUFFIX,789.123456.al
+    # 垃圾影音
+  - DOMAIN-SUFFIX,xmsl.org
+    # Misty
+  - DOMAIN-SUFFIX,misty.cx
+    # 卷毛鼠
+  - DOMAIN-SUFFIX,cf.jmsooo.com
+    # MICU
+  - DOMAIN-SUFFIX,micu.hk
+    # 阿甘
+  - DOMAIN-SUFFIX,agan2.vip
+    # 飞跃地平线
+  - DOMAIN-SUFFIX,123456.buzz
