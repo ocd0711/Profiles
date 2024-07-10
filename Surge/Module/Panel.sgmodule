@@ -1,6 +1,5 @@
 #!name=OCD used Panel
 #!desc=timecard, 流媒体检测, skip_wifi, captureMode
-#!system=ios
 
 [Script]
 timecard = type=generic, timeout=10, script-path=https://raw.githubusercontent.com/smartmimi/conf/master/surge/timecard.js
