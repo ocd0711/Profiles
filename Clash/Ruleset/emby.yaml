@@ -29,3 +29,7 @@ payload:
   - DOMAIN-SUFFIX,agan2.vip
     # 飞跃地平线
   - DOMAIN-SUFFIX,123456.buzz
+    # CC
+  - DOMAIN-SUFFIX,cc.coemn.com
+   # 探花 TV
+  - DOMAIN-SUFFIX,tanhuatv.site
