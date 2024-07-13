@@ -161,6 +161,7 @@ rules:
   - RULE-SET,ViuTV,Streaming
 
   # Emby 流媒体
+  - RULE-SET,Emby-Proxy,Streaming
   - RULE-SET,Emby-Direct,Bypass
   - RULE-SET,Emby,Emby
 
@@ -357,14 +358,18 @@ rule-providers:
   ViuTV:
     <<: *classical
     url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/ViuTV.yaml
+
+  Emby-Proxy:
+    <<: *classical
+    url: https://raw.githubusercontent.com/ocd0711/Profiles/master/Clash/Ruleset/emby-proxy.yaml
   
   Emby-Direct:
     <<: *classical
-    url: https://raw.githubusercontent.com/ocd0711/Profiles/master/Clash/Ruleset/emby-direct.list
+    url: https://raw.githubusercontent.com/ocd0711/Profiles/master/Clash/Ruleset/emby-direct.yaml
 
   Emby:
     <<: *classical
-    url: https://raw.githubusercontent.com/ocd0711/Profiles/master/Clash/Ruleset/emby.list
+    url: https://raw.githubusercontent.com/ocd0711/Profiles/master/Clash/Ruleset/emby.yaml
 
   OpenAI:
     <<: *classical
