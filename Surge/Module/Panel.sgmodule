@@ -1,10 +1,12 @@
 #!name=OCD used Panel
-#!desc=timecard, 流媒体检测, skip_wifi, captureMode
+#!desc=timecard, chatgpt_check, captureMode
 
 [Script]
 timecard = type=generic, timeout=10, script-path=https://raw.githubusercontent.com/smartmimi/conf/master/surge/timecard.js
+chatgpt_check = type=generic, timeout=6, script-path=https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Surge/Surge%204/Script/chatgpt_check.js, argument=icon=lasso.and.sparkles&iconerr=xmark.seal.fill&icon-color=#336FA9&iconerr-color=#D65C51
 captureMode = type=generic, timeout=10, script-path=https://raw.githubusercontent.com/ocd0711/Profiles/master/Surge/Js/captureMode.js
 
 [Panel]
 timecard = script-name=timecard, update-interval=43200
+chatgpt_check = script-name=chatgpt_check, update-interval=-1
 captureMode = script-name=captureMode, update-interval=43200
