@@ -36,9 +36,9 @@
             ]
         },
         {
-            "id": "sliverkiss_wzyd",
+            "id": "ocd_wzyd",
             "name": "王者营地",
-            "author": "@Sliverkiss",
+            "author": "@ocd0711",
             "repo": "",
             "icons": [
                 "https://raw.githubusercontent.com/ocd0711/Profiles/master/icon/wzyd.png",
@@ -55,6 +55,38 @@
                     "type": "textarea",
                     "autoGrow": true,
                     "desc": "会员Cookie数据"
+                }
+            ]
+        },
+        {
+            "id": "ocd_sync_param",
+            "name": "参数同步",
+            "author": "@ocd0711",
+            "repo": "",
+            "icons": [
+                "https://avatars.githubusercontent.com/u/25606004?s=400&u=72b294d3cf1dbd6bfdfe2248661621a770507690&v=4",
+                "https://avatars.githubusercontent.com/u/25606004?s=400&u=72b294d3cf1dbd6bfdfe2248661621a770507690&v=4"
+            ],
+            "keys": [
+                "youzan_data",
+                "youzan_cache"
+            ],
+            "settings": [
+                {
+                    "id": "youzan_data",
+                    "name": "有赞小程序 Cookie 数据",
+                    "val": "",
+                    "type": "textarea",
+                    "autoGrow": true,
+                    "desc": "有赞小程序 Cookie 数据"
+                },
+                {
+                    "id": "youzan_cache",
+                    "name": "有赞小程序店铺数据",
+                    "val": "",
+                    "type": "textarea",
+                    "autoGrow": true,
+                    "desc": "有赞小程序店铺数据"
                 }
             ]
         }
