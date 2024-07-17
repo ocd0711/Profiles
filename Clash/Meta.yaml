@@ -106,11 +106,11 @@ proxy-groups:
   - {name: Duolingo, <<: *prn}
 
   #分隔,下面是地区分组
-  - {name: HK, type: url-test, include-all-providers: true, filter: "(?=.*(香港|HK))^((?!(Gamer)).)*$"}
-  - {name: TW, type: url-test, include-all-providers: true, filter: "(?=.*(台湾|TW))^((?!(Gamer)).)*$"}
-  - {name: JP, type: url-test, include-all-providers: true, filter: "(?=.*(日本|JP))^((?!(Gamer)).)*$"}
-  - {name: US, type: url-test, include-all-providers: true, filter: "(?=.*(美国|US))^((?!(Gamer)).)*$"}
-  - {name: SG, type: url-test, include-all-providers: true, filter: "(?=.*(新加坡|SG))^((?!(Gamer)).)*$"}
+  - {name: HK, type: url-test, include-all-providers: true, filter: "(?=.*(香港|HK|🇭🇰))^((?!(Gamer)).)*$"}
+  - {name: TW, type: url-test, include-all-providers: true, filter: "(?=.*(台湾|TW|🇹🇼))^((?!(Gamer)).)*$"}
+  - {name: JP, type: url-test, include-all-providers: true, filter: "(?=.*(日本|JP|🇯🇵))^((?!(Gamer)).)*$"}
+  - {name: US, type: url-test, include-all-providers: true, filter: "(?=.*(美国|US|🇺🇸))^((?!(Gamer)).)*$"}
+  - {name: SG, type: url-test, include-all-providers: true, filter: "(?=.*(新加坡|SG|🇸🇬))^((?!(Gamer)).)*$"}
   - {name: AutoTest, type: url-test, include-all-providers: true, tolerance: 10, filter: "^((?!(Gamer|arm)).)*$"}
 
 rules:
