@@ -91,7 +91,6 @@ proxies:
   udp: true
 proxy-groups:
   - {name: Proxy, <<: *pr}
-  - {name: dns, <<: *prnd}
   - {name: Final, type: select, proxies: [Proxy, Bypass]}
   - {name: Steam, <<: *prn}
   - {name: YouTube, <<: *prnd}
@@ -167,7 +166,7 @@ rules:
 
   # AI
   - RULE-SET,OpenAI,AI
-  - DOMAIN-SUFFIX,generativelanguage.googleapis.com,DIRECT
+  - DOMAIN-SUFFIX,generativelanguage.googleapis.com,AI
 
   # StreamingSE 中国流媒体服务 (面向海外版本)
   - RULE-SET,Bilibili,StreamingSE
