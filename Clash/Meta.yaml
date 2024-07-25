@@ -165,8 +165,7 @@ rules:
   - RULE-SET,Emby,Emby
 
   # AI
-  - RULE-SET,OpenAI,AI
-  - DOMAIN-SUFFIX,generativelanguage.googleapis.com,AI
+  - RULE-SET,AI,AI
 
   # StreamingSE 中国流媒体服务 (面向海外版本)
   - RULE-SET,Bilibili,StreamingSE
@@ -370,9 +369,9 @@ rule-providers:
     <<: *classical
     url: https://raw.githubusercontent.com/ocd0711/Profiles/master/Clash/Ruleset/emby.yaml
 
-  OpenAI:
+  AI:
     <<: *classical
-    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/OpenAI.yaml
+    url: https://raw.githubusercontent.com/luestr/ProxyResource/main/Tool/Clash/Rule/AI.yaml
 
   Bilibili:
     <<: *classical
