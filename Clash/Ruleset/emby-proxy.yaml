@@ -5,3 +5,5 @@ payload:
   - DOMAIN-SUFFIX,cf.jmsooo.com
     # 飞跃地平线
   - DOMAIN,123456.buzz
+    # Misty
+  - DOMAIN-SUFFIX,misty.cx
