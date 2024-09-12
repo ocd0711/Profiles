@@ -1,0 +1,11 @@
+#!name=霸王茶姬签到
+#!desc=手动签到一次，若提示获取ck即可使用，建议开启抓包再签到。
+#!category=⏱️ 模块 ▸ Task
+
+[Script]
+# （默认上午9:30 执行，如需更改请自行修改cron表达式）
+霸王茶姬签到 = type=cron, cronexp="30 9 * * *", script-path=https://raw.githubusercontent.com/ocd0711/Profiles/master/Surge/Js/bwcj.js
+霸王茶姬获取token = type=http-request,pattern=^https:\/\/webapi2\.qmai\.cn\/web\/cmk-center\/sign\/takePartInSign,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/ocd0711/Profiles/master/Surge/Js/bwcj.js
+
+[MITM]
+hostname = %APPEND% webapi2.qmai.cn

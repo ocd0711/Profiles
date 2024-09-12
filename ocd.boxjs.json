@@ -59,6 +59,29 @@
             ]
         },
         {
+            "id": "ocd_bwcj",
+            "name": "霸王茶姬",
+            "author": "@ocd0711",
+            "repo": "",
+            "icons": [
+                "https://raw.githubusercontent.com/ocd0711/Profiles/master/icon/bwcj.png",
+                "https://raw.githubusercontent.com/ocd0711/Profiles/master/icon/bwcj.png"
+            ],
+            "keys": [
+                "bwcj_data"
+            ],
+            "settings": [
+                {
+                    "id": "bwcj_data",
+                    "name": "会员Cookie数据",
+                    "val": "",
+                    "type": "textarea",
+                    "autoGrow": true,
+                    "desc": "会员Cookie数据"
+                }
+            ]
+        },
+        {
             "id": "ocd_sync_param",
             "name": "参数同步",
             "author": "@ocd0711",

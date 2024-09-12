@@ -3,7 +3,6 @@
 #!category=⏱️ 模块 ▸ Task
 
 [Script]
-[Script]
 # （默认上午9:30 执行，如需更改请自行修改cron表达式）
 王者营地签到 = type=cron, cronexp="30 9 * * *", script-path=https://raw.githubusercontent.com/ocd0711/Profiles/master/Surge/Js/wzyd.js
 王者营地获取token = type=http-request,pattern=^https:\/\/kohcamp\.qq\.com\/operation\/action\/newsignin,requires-body=0,max-size=0,script-path=https://raw.githubusercontent.com/ocd0711/Profiles/master/Surge/Js/wzyd.js
