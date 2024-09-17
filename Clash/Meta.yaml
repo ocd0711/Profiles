@@ -113,6 +113,12 @@ proxy-groups:
   - {name: AutoTest, type: url-test, include-all-providers: true, tolerance: 10, filter: "^((?!(Gamer|arm)).)*$"}
 
 rules:
+  - DOMAIN-SUFFIX,csl.prod.ondemandconnectivity.com,HK
+  - DOMAIN-SUFFIX,hhk.prod.ondemandconnectivity.com,HK
+  - DOMAIN-SUFFIX,epdg.epc.mnc000.mcc454.pub.3gppnetwork.org,HK
+  - DOMAIN-SUFFIX,ss.epdg.epc.mnc000.mcc454.pub.3gppnetwork.org,HK
+  - DOMAIN-SUFFIX,ss.epdg.epc.geo.mnc000.mcc454.pub.3gppnetwork.org,HK
+
   # 直连
   - RULE-SET,Special,Bypass
 
