@@ -92,6 +92,7 @@ proxies:
 proxy-groups:
   - {name: Proxy, <<: *pr}
   - {name: Final, type: select, proxies: [Proxy, Bypass]}
+  - {name: FCM, <<: *prn}
   - {name: Steam, <<: *prn}
   - {name: YouTube, <<: *prnd}
   - {name: Spotify, <<: *prn}
@@ -121,6 +122,9 @@ rules:
 
   # 直连
   - RULE-SET,Special,Bypass
+
+  # FCM
+  - RULE-SET,FCM,FCM
 
   # Steam 单独分流
   - RULE-SET,Steam,Steam
@@ -222,6 +226,10 @@ rule-providers:
   Special:
     <<: *classical
     url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Special.yaml
+
+  FCM:
+    <<: *classical
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Google%20FCM.yaml
 
   Steam:
     <<: *classical
