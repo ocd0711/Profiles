@@ -177,6 +177,8 @@ rules:
   - DOMAIN-SUFFIX,ss.epdg.epc.mnc000.mcc454.pub.3gppnetwork.org,HK
   - DOMAIN-SUFFIX,ss.epdg.epc.geo.mnc000.mcc454.pub.3gppnetwork.org,HK
 
+  - DOMAIN-SUFFIX,dl.google.com,Proxy
+
   # 直连
   - RULE-SET,Special,Bypass
 
