@@ -10,7 +10,7 @@ payload:
     # 江湖
   - DOMAIN-SUFFIX,film.reddust.link
     # MJJ
-  - DOMAIN-SUFFIX,mjjemby.org
+  - DOMAIN-SUFFIX,yhemby.top
     # 飞跃彩虹
   - DOMAIN-SUFFIX,581658.best
   - DOMAIN-SUFFIX,7777777.buzz
@@ -23,7 +23,8 @@ payload:
     # Misty
   - DOMAIN-SUFFIX,misty.cx
     # 卷毛鼠
-  - DOMAIN-SUFFIX,cf.jmsooo.com
+  - DOMAIN-SUFFIX,jmsooo.com
+  - DOMAIN-SUFFIX,jmsuper.com
     # MICU
   - DOMAIN-SUFFIX,micu.hk
     # 阿甘
@@ -37,3 +38,13 @@ payload:
   - DOMAIN-SUFFIX,embycc.link
    # 探花 TV
   - DOMAIN-SUFFIX,tanhuatv.site
+   # 南天小筑
+  - DOMAIN-SUFFIX,nanflix.net
+   # 收束世界线
+  - DOMAIN-SUFFIX,worldline.acecandy.cn
+   # 非越
+  - DOMAIN-SUFFIX,sfcj.org
+   # AWA
+  - DOMAIN-SUFFIX,awatv.de
+   # hka
+  - DOMAIN-SUFFIX,aliz.work
