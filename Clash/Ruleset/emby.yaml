@@ -37,3 +37,5 @@ payload:
   - DOMAIN-SUFFIX,embycc.link
    # 探花 TV
   - DOMAIN-SUFFIX,tanhuatv.site
+   # 南天小筑
+  - DOMAIN-SUFFIX,nanflix.net
