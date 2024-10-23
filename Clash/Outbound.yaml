@@ -881,11 +881,11 @@ rule-providers:
     url: https://raw.githubusercontent.com/ocd0711/Profiles/master/Clash/Ruleset/emby.yaml
     interval: 86400
 
-  OpenAI:
+  AI_Suite:
     type: http
     behavior: classical
     path: ./RuleSet/AI.yaml
-    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/OpenAI.yaml
+    url: https://raw.githubusercontent.com/dler-io/Rules/refs/heads/main/Clash/Provider/AI%20Suite.yaml
     interval: 86400
 
 # 规则
@@ -941,7 +941,7 @@ rules:
   - RULE-SET,Emby,Emby
 
   # OpenAI
-  - RULE-SET,OpenAI,AI
+  - RULE-SET,AI_Suite,AI
 
   # StreamingSE 中国流媒体服务 (面向海外版本)
   - RULE-SET,Bilibili,StreamingSE

@@ -234,7 +234,7 @@ rules:
   - RULE-SET,Emby,Emby
 
   # AI
-  - RULE-SET,AI,AI
+  - RULE-SET,AI_Suite,AI
 
   # StreamingSE 中国流媒体服务 (面向海外版本)
   - RULE-SET,Bilibili,StreamingSE
@@ -452,9 +452,9 @@ rule-providers:
     <<: *classical
     url: https://raw.githubusercontent.com/ocd0711/Profiles/master/Clash/Ruleset/emby.yaml
 
-  AI:
+  AI_Suite:
     <<: *classical
-    url: https://raw.githubusercontent.com/luestr/ProxyResource/main/Tool/Clash/Rule/AI.yaml
+    url: https://raw.githubusercontent.com/dler-io/Rules/refs/heads/main/Clash/Provider/AI%20Suite.yaml
 
   Bilibili:
     <<: *classical
