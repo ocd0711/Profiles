@@ -650,18 +650,11 @@ rule-providers:
     url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Fox%2B.yaml
     interval: 86400
 
-  HBO_Go:
+  Max:
     type: http
     behavior: classical
-    path: ./RuleSet/Media/HBO_Go.yaml
-    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/HBO%20Go.yaml
-    interval: 86400
-
-  HBO_Max:
-    type: http
-    behavior: classical
-    path: ./RuleSet/Media/HBO_Max.yaml
-    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/HBO%20Max.yaml
+    path: ./RuleSet/Media/Max.yaml
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Max.yaml
     interval: 86400
 
   Hulu_Japan:
@@ -920,8 +913,7 @@ rules:
   - RULE-SET,F1_TV,Streaming
   - RULE-SET,Fox_Now,Streaming
   - RULE-SET,Fox+,Streaming
-  - RULE-SET,HBO_Go,Streaming
-  - RULE-SET,HBO_Max,Streaming
+  - RULE-SET,Max,Streaming
   - RULE-SET,Hulu_Japan,Streaming
   - RULE-SET,Hulu,Streaming
   - RULE-SET,Japonx,Streaming
@@ -1025,8 +1017,7 @@ script:
             "F1_TV": "Streaming",
             "Fox_Now": "Streaming",
             "Fox+": "Streaming",
-            "HBO_Go": "Streaming",
-            "HBO_Max": "Streaming",
+            "Max": "Streaming",
             "Hulu_Japan": "Streaming",
             "Hulu": "Streaming",
             "Japonx": "Streaming",

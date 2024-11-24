@@ -211,8 +211,7 @@ rules:
   - RULE-SET,F1_TV,Streaming
   - RULE-SET,Fox_Now,Streaming
   - RULE-SET,Fox+,Streaming
-  - RULE-SET,HBO_Go,Streaming
-  - RULE-SET,HBO_Max,Streaming
+  - RULE-SET,Max,Streaming
   - RULE-SET,Hulu_Japan,Streaming
   - RULE-SET,Hulu,Streaming
   - RULE-SET,Japonx,Streaming
@@ -376,13 +375,9 @@ rule-providers:
     <<: *classical
     url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Fox%2B.yaml
 
-  HBO_Go:
+  Max:
     <<: *classical
-    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/HBO%20Go.yaml
-
-  HBO_Max:
-    <<: *classical
-    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/HBO%20Max.yaml
+    url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Media/Max.yaml
 
   Hulu_Japan:
     <<: *classical
