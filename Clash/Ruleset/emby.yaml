@@ -30,7 +30,6 @@ payload:
     # 阿甘
   - DOMAIN-SUFFIX,agan2.vip
     # 飞跃地平线
-  - DOMAIN-SUFFIX,1110111.top
   - DOMAIN-SUFFIX,123456.buzz
   - IP-CIDR,110.40.36.36/32
     # CC
@@ -53,12 +52,15 @@ payload:
    # 西瓜
   - DOMAIN-SUFFIX,1024.name
    # 鹅服
-  - DOMAIN-SUFFIX,567996.xyz
-  - DOMAIN-SUFFIX,pppp.us.kg
   - DOMAIN-SUFFIX,cavps.eu.org
-  - IP-CIDR,46.3.99.99/32
-  - IP-CIDR,46.3.99.83/32
-  - IP-CIDR,46.3.101.30/32
-  - IP-CIDR,46.3.101.143/32
-  - IP-CIDR,154.29.154.124/32
-  - IP-CIDR,154.29.145.151/32
+  - DOMAIN-SUFFIX,wmxz.567996.xyz
+  - DOMAIN-SUFFIX,emby.pppp.us.kg
+  - IP-CIDR,50.114.55.29/32
+  - IP-CIDR,38.150.0.75/32
+  - IP-CIDR,141.11.218.151/32
+   # 星云
+  - DOMAIN-SUFFIX,nebula-media.org
+   # Houyinx
+  - DOMAIN-SUFFIX,crond.dev
+   # AuroraMedia
+  - DOMAIN-SUFFIX,auroramedia.vip
