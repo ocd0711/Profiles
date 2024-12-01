@@ -30,7 +30,6 @@ payload:
     # 阿甘
   - DOMAIN-SUFFIX,agan2.vip
     # 飞跃地平线
-  - DOMAIN-SUFFIX,1110111.top
   - DOMAIN-SUFFIX,123456.buzz
   - IP-CIDR,110.40.36.36/32
     # CC
@@ -62,3 +61,9 @@ payload:
   - IP-CIDR,46.3.101.143/32
   - IP-CIDR,154.29.154.124/32
   - IP-CIDR,154.29.145.151/32
+   # 星云
+  - DOMAIN-SUFFIX,nebula-media.org
+   # Houyinx
+  - DOMAIN-SUFFIX,crond.dev
+   # AuroraMedia
+  - DOMAIN-SUFFIX,auroramedia.vip
