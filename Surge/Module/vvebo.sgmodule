@@ -1,0 +1,11 @@
+#!name=  VVebo 秽土重生
+#!desc= 修复 VVebo 用户主页时间线显示和粉丝列表
+#!category=🐞 Fix
+
+[Script]
+匹配 users show 规则 = type=http-request, pattern=^https:\/\/api\.weibo\.cn\/2\/users\/show\?, script-path=https://raw.githubusercontent.com/ocd0711/Profiles/refs/heads/master/Surge/Js/vvebo.js
+匹配 user_timeline 规则 = type=http-request, pattern=^https:\/\/api\.weibo\.cn\/2\/statuses\/user_timeline\?, script-path=https://raw.githubusercontent.com/ocd0711/Profiles/refs/heads/master/Surge/Js/vvebo.js
+匹配 status tab 规则 = type=http-response, pattern=^https:\/\/api\.weibo\.cn\/2\/profile\/statuses\/tab\?, script-path=https://raw.githubusercontent.com/ocd0711/Profiles/refs/heads/master/Surge/Js/vvebo.js, requires-body=true
+
+[MITM]
+hostname = %APPEND% api.weibo.cn
