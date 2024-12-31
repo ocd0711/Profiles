@@ -117,6 +117,7 @@ proxy-groups:
   - { name: Final, type: select, proxies: [Proxy, Bypass] }
   - { name: FCM, <<: *prn2 }
   - { name: Steam, <<: *prn2 }
+  - { name: Epic, <<: *prn2 }
   - { name: YouTube, <<: *prnd }
   - { name: Spotify, <<: *prn2 }
   - { name: Streaming, <<: *prnd }
@@ -188,6 +189,9 @@ rules:
 
   # Steam 单独分流
   - RULE-SET,Steam,Steam
+
+  # Epic 单独分流
+  - RULE-SET,Epic,Epic
 
   # YouTube 单独分流
   - RULE-SET,YouTube_Music,YouTube
@@ -303,6 +307,10 @@ rule-providers:
   Steam:
     <<: *classical
     url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Steam.yaml
+  
+  Epic:
+    <<: *classical
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Epic/Epic.yaml
 
   YouTube_Music:
     <<: *classical
