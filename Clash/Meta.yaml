@@ -120,6 +120,7 @@ proxy-groups:
   - { name: YouTube, <<: *prnd }
   - { name: Spotify, <<: *prn2 }
   - { name: Streaming, <<: *prnd }
+  - { name: EmbyProxy, <<: *prnd }
   - { name: Emby, <<: *prn2 }
   - { name: AI, <<: *prnd }
   - { name: StreamingSE, type: select, proxies: [Bypass, HK, TW] }
@@ -228,7 +229,7 @@ rules:
   - RULE-SET,ViuTV,Streaming
 
   # Emby 流媒体
-  - RULE-SET,Emby-Proxy,Streaming
+  - RULE-SET,Emby-Proxy,EmbyProxy
   - RULE-SET,Emby-Direct,Bypass
   - RULE-SET,Emby,Emby
 
