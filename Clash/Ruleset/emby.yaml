@@ -69,5 +69,4 @@ payload:
    # 月饼
   - DOMAIN-SUFFIX,emby.my
    # 起点站
-  - DOMAIN-SUFFIX,tdck.fun
-  - IP-CIDR,192.99.35.111/32
+  - DOMAIN-SUFFIX,vfing.de

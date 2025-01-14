@@ -11,5 +11,3 @@ payload:
   - IP-CIDR,110.40.36.36/32
     # 非越
   - DOMAIN-SUFFIX,sfcj.org
-    # 起点站
-  - IP-CIDR,192.99.35.111/32
