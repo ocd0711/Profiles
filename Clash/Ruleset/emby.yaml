@@ -54,10 +54,8 @@ payload:
    # 鹅服
   - DOMAIN-SUFFIX,cavps.eu.org
   - DOMAIN-SUFFIX,wmxz.567996.xyz
-  - DOMAIN-SUFFIX,emby.pppp.us.kg
-  - IP-CIDR,50.114.55.29/32
-  - IP-CIDR,38.150.0.75/32
-  - IP-CIDR,141.11.218.151/32
+  - DOMAIN-SUFFIX,emby-e-hk.pppp.us.kg
+  - DOMAIN-SUFFIX,emby-e-jp.pppp.us.kg
    # 星云
   - DOMAIN-SUFFIX,nebula-media.org
    # Houyinx
@@ -69,4 +67,6 @@ payload:
    # 月饼
   - DOMAIN-SUFFIX,emby.my
    # 起点站
+  - DOMAIN-SUFFIX,favoritewife.com
+  - DOMAIN-SUFFIX,cdn.qzuie.top
   - DOMAIN-SUFFIX,vfing.de
