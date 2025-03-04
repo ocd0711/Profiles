@@ -6,7 +6,7 @@ payload:
     # 纸片人小站
   - DOMAIN-SUFFIX,embyplus.org
     # 牢大的野兽餐厅
-  - DOMAIN-SUFFIX,mius.uk
+  - DOMAIN-SUFFIX,kessoku-bando.biliblili.uk
     # 江湖
   - DOMAIN-SUFFIX,film.reddust.link
     # MJJ
@@ -72,3 +72,5 @@ payload:
   - DOMAIN-SUFFIX,vfing.de
    # 蘑菇硬盘
   - DOMAIN-SUFFIX,mm.yeahfast.com
+   # JSQ
+  - DOMAIN-SUFFIX,jsq.mooguu.xyz
