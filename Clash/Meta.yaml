@@ -4,9 +4,13 @@ pr: &pr { type: select, proxies: [AutoTest, HK, TW, JP, US, SG, Bypass] }
 
 prn: &prn { type: select, proxies: [Proxy, HK, TW, JP, US, SG, Bypass] }
 
-prn2: &prn2 { type: select, proxies: [Bypass, Proxy, HK, TW, JP, US, SG, ] }
+prn2: &prn2 { type: select, proxies: [Bypass, Proxy, HK, TW, JP, US, SG] }
 
 prnd: &prnd { type: select, proxies: [Proxy, HK, TW, JP, US, SG] }
+
+pre: &pre { type: select, proxies: [SG, TW, US, OTHER] }
+
+pren: &pren { type: select, proxies: [Bypass, Proxy, HK, TW, JP, US, SG, OTHER] }
 
 #这里是订阅更新和延迟测试相关的
 p:
@@ -121,8 +125,8 @@ proxy-groups:
   - { name: YouTube, <<: *prnd }
   - { name: Spotify, <<: *prn2 }
   - { name: Streaming, <<: *prnd }
-  - { name: EmbyProxy, <<: *prnd }
-  - { name: Emby, <<: *prn2 }
+  - { name: EmbyProxy, <<: *pre }
+  - { name: Emby, <<: *pren }
   - { name: AI, <<: *prnd }
   - { name: StreamingSE, type: select, proxies: [Bypass, HK, TW] }
   - { name: Telegram, <<: *prnd }
@@ -161,6 +165,12 @@ proxy-groups:
       type: url-test,
       include-all-providers: true,
       filter: "(?=.*(新加坡|SG|🇸🇬))^((?!(Gamer)).)*$",
+    }
+  - {
+      name: OTHER,
+      type: url-test,
+      include-all-providers: true,
+      filter: "(?=.*(emby))^((?!(Gamer)).)*$",
     }
   - {
       name: AutoTest,
