@@ -133,7 +133,6 @@ proxy-groups:
   - { name: Paypal, <<: *prn }
   - { name: Speedtest, <<: *prn }
   - { name: Duolingo, <<: *prn2 }
-  - { name: T-Mobile, <<: *prn }
 
   #分隔,下面是地区分组
   - {
@@ -275,9 +274,6 @@ rules:
 
   # Apple 服务
   - RULE-SET,Apple,Bypass
-
-  # T-Mobile 分流
-  - DOMAIN-SUFFIX,t-mobile.com,T-Mobile
 
   # Global 全球加速
   - RULE-SET,Global,Proxy
