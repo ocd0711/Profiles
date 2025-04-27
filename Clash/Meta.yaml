@@ -190,6 +190,9 @@ rules:
 
   - DOMAIN-SUFFIX,dl.google.com,Proxy
 
+  # DNS 修正
+  - RULE-SET,HTTPDNS,REJECT
+
   # 直连
   - RULE-SET,Special,Bypass
 
@@ -283,7 +286,7 @@ rules:
   - RULE-SET,Domestic_IPs,Bypass
 
   # Local Area Network 局域网
-  - GEOIP,lan,Bypass,no-resolve
+  - RULE-SET,LAN,Bypass
 
   # GeoIP China
   - GEOIP,CN,Bypass
@@ -302,6 +305,10 @@ rule-anchor:
       format: yaml,
     }
 rule-providers:
+  HTTPDNS:
+    <<: *classical
+    url: https://raw.dler.io/dler-io/Rules/main/Clash/Provider/HTTPDNS.yaml
+
   Special:
     <<: *classical
     url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Special.yaml
@@ -533,3 +540,7 @@ rule-providers:
   Domestic_IPs:
     <<: *ip
     url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Domestic%20IPs.yaml
+
+  LAN:
+    <<: *ip
+    url: https://raw.dler.io/dler-io/Rules/main/Clash/Provider/LAN.yaml
