@@ -82,9 +82,18 @@ dns:
   enhanced-mode: redir-host
   fake-ip-range: 28.0.0.1/8
   fake-ip-filter:
-    - "*"
-    - "+.lan"
-    - "+.local"
+    - "*.lan"
+    - "*.localdomain"
+    - "*.example"
+    - "*.invalid"
+    - "*.localhost"
+    - "*.test"
+    - "*.local"
+    - "*.home.arpa"
+    - router.asus.com
+    - localhost.sec.qq.com
+    - localhost.ptlogin2.qq.com
+    - "+.msftconnecttest.com"
   default-nameserver:
     - 223.5.5.5
     - 223.6.6.6
