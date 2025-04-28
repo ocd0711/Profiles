@@ -290,6 +290,9 @@ rules:
   # Global 全球加速
   - RULE-SET,Global,Proxy
 
+  # ASN China
+  - RULE-SET,ASN.China,Bypass
+
   # China 中国直连
   - RULE-SET,Domestic,Bypass
   - RULE-SET,Domestic_IPs,Bypass
@@ -541,6 +544,10 @@ rule-providers:
   Global:
     <<: *classical
     url: https://raw.githubusercontent.com/dler-io/Rules/main/Clash/Provider/Proxy.yaml
+
+  ASN.China:
+    <<: *classical
+    url: https://raw.githubusercontent.com/VirgilClyne/GetSomeFries/refs/heads/main/ruleset/ASN.China.yaml
 
   Domestic:
     <<: *classical
