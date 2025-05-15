@@ -66,6 +66,7 @@ sniffer:
       ports: [443, 8443]
   skip-domain:
     - "Mijia Cloud"
+
 tun:
   enable: true
   stack: mixed
@@ -74,49 +75,6 @@ tun:
     - "tcp://any:53"
   auto-route: true
   auto-detect-interface: true
-
-dns:
-  enable: true
-  listen: :1053
-  ipv6: true
-  enhanced-mode: redir-host
-  fake-ip-range: 28.0.0.1/8
-  fake-ip-filter:
-    - "*.lan"
-    - "*.localdomain"
-    - "*.example"
-    - "*.invalid"
-    - "*.localhost"
-    - "*.test"
-    - "*.local"
-    - "*.home.arpa"
-    - router.asus.com
-    - localhost.sec.qq.com
-    - localhost.ptlogin2.qq.com
-    - "+.msftconnecttest.com"
-  default-nameserver:
-    - 223.5.5.5
-    - 223.6.6.6
-  nameserver:
-    - https://cloudflare-dns.com/dns-query
-    - https://dns.google/dns-query
-  proxy-server-nameserver:
-    - https://dns.alidns.com/dns-query
-    - https://doh.pub/dns-query
-  # fallback:
-  #   "geosite:cn,private":
-  #     - https://dns.alidns.com/dns-query
-  #     - https://doh.pub/dns-query
-  #   "geosite:geolocation-!cn":
-  #     - "https://cloudflare-dns.com/dns-query"
-  #     - "https://dns.google/dns-query"
-  nameserver-policy:
-    "geosite:cn,private":
-      - https://dns.alidns.com/dns-query
-      - https://doh.pub/dns-query
-    "geosite:geolocation-!cn":
-      - https://cloudflare-dns.com/dns-query
-      - https://dns.google/dns-query
 
 proxies:
   - name: "Bypass"
