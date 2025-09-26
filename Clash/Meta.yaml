@@ -106,31 +106,31 @@ proxy-groups:
       name: HK,
       type: url-test,
       include-all-providers: true,
-      filter: "(?=.*(香港|HK|🇭🇰))^((?!(Gamer)).)*$",
+      filter: "(?=.*(香港|HK|🇭🇰))^((?!(Gamer|emby)).)*$",
     }
   - {
       name: TW,
       type: url-test,
       include-all-providers: true,
-      filter: "(?=.*(台湾|TW|🇹🇼))^((?!(Gamer)).)*$",
+      filter: "(?=.*(台湾|TW|🇹🇼))^((?!(Gamer|emby)).)*$",
     }
   - {
       name: JP,
       type: url-test,
       include-all-providers: true,
-      filter: "(?=.*(日本|JP|🇯🇵))^((?!(Gamer)).)*$",
+      filter: "(?=.*(日本|JP|🇯🇵))^((?!(Gamer|emby)).)*$",
     }
   - {
       name: US,
       type: url-test,
       include-all-providers: true,
-      filter: "(?=.*(美国|US|🇺🇸))^((?!(Gamer)).)*$",
+      filter: "(?=.*(美国|US|🇺🇸))^((?!(Gamer|emby)).)*$",
     }
   - {
       name: SG,
       type: url-test,
       include-all-providers: true,
-      filter: "(?=.*(新加坡|SG|🇸🇬))^((?!(Gamer)).)*$",
+      filter: "(?=.*(新加坡|SG|🇸🇬))^((?!(Gamer|emby)).)*$",
     }
   - {
       name: OTHER,
@@ -148,12 +148,6 @@ proxy-groups:
 
 rules:
   - DST-PORT,53,DNS_Hijack
-
-  - DOMAIN-SUFFIX,csl.prod.ondemandconnectivity.com,HK
-  - DOMAIN-SUFFIX,hhk.prod.ondemandconnectivity.com,HK
-  - DOMAIN-SUFFIX,epdg.epc.mnc000.mcc454.pub.3gppnetwork.org,HK
-  - DOMAIN-SUFFIX,ss.epdg.epc.mnc000.mcc454.pub.3gppnetwork.org,HK
-  - DOMAIN-SUFFIX,ss.epdg.epc.geo.mnc000.mcc454.pub.3gppnetwork.org,HK
 
   - DOMAIN-SUFFIX,dl.google.com,Proxy
 
