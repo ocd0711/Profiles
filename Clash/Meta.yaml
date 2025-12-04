@@ -149,8 +149,6 @@ proxy-groups:
 rules:
   - DST-PORT,53,DNS_Hijack
 
-  - DOMAIN-SUFFIX,dl.google.com,Proxy
-
   # DNS 修正
   - RULE-SET,HTTPDNS,REJECT
 
