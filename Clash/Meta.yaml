@@ -1,6 +1,6 @@
 ######### 锚点 start #######
 # 策略组相关
-pr: &pr { type: select, proxies: [AutoTest, HK, TW, JP, US, SG, Bypass] }
+pr: &pr { type: select, proxies: [AutoTest, HK, TW, JP, US, SG, Bypass], use: [no_emby_provider] }
 
 prn: &prn { type: select, proxies: [Proxy, HK, TW, JP, US, SG, Bypass] }
 
@@ -27,7 +27,11 @@ p:
 
 # url 里填写自己的订阅,名称不能重复
 proxy-providers:
-  provider1:
+  no_emby_provider:
+    <<: *p
+    url: ""
+
+  emby_provider:
     <<: *p
     url: ""
 
