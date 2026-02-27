@@ -182,8 +182,9 @@ rules:
   # Paypal 加速
   - RULE-SET,PayPal,Paypal
 
-  # Speedtest 分流
+  # 测速分流
   - RULE-SET,speedtest,Speedtest
+  - RULE-SET,apple_speedtest,Speedtest
 
   # Duolingo 分流
   - RULE-SET,duolingo,Duolingo
@@ -390,6 +391,12 @@ rule-providers:
     <<: *domain_text
     url: https://ruleset.skk.moe/Clash/domainset/speedtest.txt
     path: ./RuleSet/speedtest.txt
+
+  # Apple 网络测速
+  apple_speedtest:
+    <<: *domain_text
+    url: https://raw.githubusercontent.com/ocd0711/Profiles/refs/heads/master/Clash/Ruleset/AppleSpeedtest.list
+    path: ./RuleSet/apple_speedtest.txt
 
   # 常见静态 CDN
   cdn_domainset:
