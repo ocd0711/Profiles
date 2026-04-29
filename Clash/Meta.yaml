@@ -1,6 +1,6 @@
 ######### 锚点 start #######
 # 策略组相关
-pr: &pr { type: select, proxies: [AutoTest, HK, TW, JP, US, SG, Bypass], use: [no_emby_provider] }
+pr: &pr { type: select, proxies: [AutoTest, HK, TW, JP, US, SG, Bypass], use: [ocd_provider] }
 
 prn: &prn { type: select, proxies: [Proxy, HK, TW, JP, US, SG, Bypass] }
 
@@ -27,11 +27,7 @@ p:
 
 # url 里填写自己的订阅,名称不能重复
 proxy-providers:
-  no_emby_provider:
-    <<: *p
-    url: ""
-
-  emby_provider:
+  ocd_provider:
     <<: *p
     url: ""
 
@@ -133,7 +129,7 @@ proxy-groups:
       name: Emby,
       type: url-test,
       include-all-providers: true,
-      filter: "(?=.*(emby))^((?!(Gamer)).)*$",
+      filter: "^(?!.*(Gamer|香港|日本|美国|HK|JP|US)).*$",
     }
   - {
       name: AutoTest,
