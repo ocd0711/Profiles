@@ -1,0 +1,478 @@
+ipv6: true
+vif_only: true
+hide_vpn_icon: false
+hijack_dns:
+- '*:53'
+geoip_db_url: https://raw.githubusercontent.com/Masaiki/GeoIP2-CN/release/Country.mmdb
+asn_db_url: https://raw.githubusercontent.com/P3TERX/GeoLite.mmdb/download/GeoLite2-ASN.mmdb
+direct_latency_test_url: http://wifi.vivo.com.cn/generate_204
+compat_route: false
+dns:
+  bootstrap:
+  - 223.5.5.5
+  - 119.29.29.29
+  - 1.12.12.12
+  - 120.53.53.53
+  - 2400:3200::1
+  upstreams:
+    AdBlack:
+    - quic://dns.adguard-dns.com
+    - https://dns.adguard-dns.com/dns-query
+    Alibaba:
+    - 223.5.5.5
+    - https://dns.alidns.com/dns-query
+    Tencent:
+    - 119.29.29.29
+    - https://doh.pub/dns-query
+    ByteDance:
+    - 180.184.2.2
+    - 180.184.1.1
+    China:
+    - 223.5.5.5
+    - 119.29.29.29
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+    Global:
+    - https://1.1.1.1/dns-query
+    - https://8.8.8.8/dns-query
+    - https://dns.google/dns-query
+    - https://cloudflare-dns.com/dns-query
+  forward:
+  - proxy_rule_set:
+      match: https://raw.githubusercontent.com/Loyalsoldier/surge-rules/release/ruleset/reject.txt
+      value: AdBlack
+      disabled: false
+  - proxy_rule_set:
+      match: https://rule.kelee.one/Loon/Alibaba.lsr
+      value: Alibaba
+  - proxy_rule_set:
+      match: https://rule.kelee.one/Loon/Tencent.lsr
+      value: Tencent
+  - proxy_rule_set:
+      match: https://rule.kelee.one/Loon/DouYin.lsr
+      value: ByteDance
+  - proxy_rule_set:
+      match: https://rule.kelee.one/Loon/Apple.lsr
+      value: China
+  - proxy_rule_set:
+      match: https://rule.kelee.one/Loon/ChinaMax.lsr
+      value: China
+  - proxy_rule_set:
+      match: https://rule.kelee.one/Loon/Global.lsr
+      value: Global
+  - domain_wildcard:
+      match: '*'
+      value: Global
+  proxy_nameservers:
+  - https://doh.pub/dns-query
+  - https://dns.alidns.com/dns-query
+  public_ip_lookup_url: https://ifconfig.me/ip
+policy_groups:
+- external:
+    name: AllServer
+    type: select
+    urls:
+    - https://your-subscription-url
+    filter: ^((?!Remain|Expired|官网|如需|套餐|去除|剩余|距离|Reset|重置|流量).)+$
+    update_interval: 86400
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/airport.png
+    hidden: false
+- smart:
+    name: HK
+    policies:
+    - AllServer
+    flatten: true
+    filter: (?=.*(香港|HK|🇭🇰))^((?!(Gamer|emby)).)*$
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png
+    hidden: false
+- smart:
+    name: TW
+    policies:
+    - AllServer
+    flatten: true
+    filter: (?=.*(台湾|TW|🇹🇼))^((?!(Gamer|emby)).)*$
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/TW.png
+    hidden: false
+- smart:
+    name: JP
+    policies:
+    - AllServer
+    flatten: true
+    filter: (?=.*(日本|JP|🇯🇵))^((?!(Gamer|emby)).)*$
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png
+    hidden: false
+- smart:
+    name: US
+    policies:
+    - AllServer
+    flatten: true
+    filter: (?=.*(美国|US|🇺🇸))^((?!(Gamer|emby)).)*$
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png
+    hidden: false
+- smart:
+    name: SG
+    policies:
+    - AllServer
+    flatten: true
+    filter: (?=.*(新加坡|SG|🇸🇬))^((?!(Gamer|emby)).)*$
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png
+    hidden: false
+- smart:
+    name: Emby
+    policies:
+    - AllServer
+    flatten: true
+    filter: ^(?!.*(Gamer|香港|日本|美国|HK|JP|US)).*$
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/StreamingSE.png
+    hidden: false
+- auto_test:
+    name: AutoTest
+    policies:
+    - AllServer
+    flatten: true
+    filter: ^((?!(Gamer|arm|emby)).)*$
+    interval: 300
+    tolerance: 10
+    timeout: 3
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
+    hidden: true
+- select:
+    name: Proxy
+    policies:
+    - AutoTest
+    - HK
+    - TW
+    - JP
+    - US
+    - SG
+    - DIRECT
+    - AllServer
+    flatten: false
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png
+    hidden: false
+- select:
+    name: Final
+    policies:
+    - Proxy
+    - DIRECT
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Final.png
+    hidden: true
+- select:
+    name: CDN
+    policies:
+    - Proxy
+    - DIRECT
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Final.png
+    hidden: true
+- select:
+    name: Download
+    policies:
+    - Proxy
+    - HK
+    - TW
+    - JP
+    - US
+    - SG
+    - DIRECT
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Download.png
+    hidden: false
+- select:
+    name: Streaming
+    policies:
+    - Proxy
+    - HK
+    - TW
+    - JP
+    - US
+    - SG
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Streaming.png
+    hidden: false
+- select:
+    name: EmbyProxy
+    policies:
+    - SG
+    - TW
+    - US
+    - Emby
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Emby.png
+    hidden: false
+- select:
+    name: AI
+    policies:
+    - Proxy
+    - HK
+    - TW
+    - JP
+    - US
+    - SG
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/OpenAI.png
+    hidden: false
+- select:
+    name: Telegram
+    policies:
+    - Proxy
+    - HK
+    - TW
+    - JP
+    - US
+    - SG
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Telegram.png
+    hidden: false
+- select:
+    name: Paypal
+    policies:
+    - US
+    - Proxy
+    - HK
+    - TW
+    - JP
+    - SG
+    - DIRECT
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Paypal.png
+    hidden: false
+- select:
+    name: Speedtest
+    policies:
+    - Proxy
+    - HK
+    - TW
+    - JP
+    - US
+    - SG
+    - DIRECT
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Speedtest.png
+    hidden: false
+- select:
+    name: Duolingo
+    policies:
+    - Proxy
+    - HK
+    - TW
+    - JP
+    - US
+    - SG
+    - DIRECT
+    icon: https://raw.githubusercontent.com/ocd0711/Profiles/master/icon/duolingo_2.png
+    hidden: false
+rules:
+- rule_set:
+    match: https://raw.githubusercontent.com/zxfccmm4/Profiles/refs/heads/main/Surge/Ruleset/Unbreak.list
+    policy: DIRECT
+- rule_set:
+    match: https://ruleset.skk.moe/List/domainset/reject.conf
+    policy: REJECT
+- rule_set:
+    match: https://ruleset.skk.moe/List/non_ip/reject-drop.conf
+    policy: REJECT
+- rule_set:
+    match: https://ruleset.skk.moe/List/non_ip/reject.conf
+    policy: REJECT
+- rule_set:
+    match: https://ruleset.skk.moe/List/ip/reject.conf
+    policy: REJECT
+- domain:
+    match: app-site-association.cdn-apple.com
+    policy: REJECT
+- domain:
+    match: prpr.96110.cn.com
+    policy: DIRECT
+- domain_keyword:
+    match: '96110'
+    policy: REJECT
+- domain_suffix:
+    match: gjfzpt.cn
+    policy: REJECT
+- rule_set:
+    match: https://ruleset.skk.moe/List/non_ip/stream.conf
+    policy: Streaming
+- rule_set:
+    match: https://ruleset.skk.moe/List/ip/stream.conf
+    policy: Streaming
+- rule_set:
+    match: https://raw.githubusercontent.com/ocd0711/Profiles/master/Surge/Ruleset/emby-proxy.list
+    policy: Emby
+- rule_set:
+    match: https://ruleset.skk.moe/List/non_ip/ai.conf
+    policy: AI
+- rule_set:
+    match: https://ruleset.skk.moe/List/non_ip/apple_intelligence.conf
+    policy: AI
+- rule_set:
+    match: https://ruleset.skk.moe/List/non_ip/telegram.conf
+    policy: Telegram
+- rule_set:
+    match: https://ruleset.skk.moe/List/ip/telegram.conf
+    policy: Telegram
+- rule_set:
+    match: https://raw.githubusercontent.com/dler-io/Rules/main/Surge/Surge%203/Provider/PayPal.list
+    policy: Paypal
+- rule_set:
+    match: https://ruleset.skk.moe/List/domainset/speedtest.conf
+    policy: Speedtest
+- rule_set:
+    match: https://raw.githubusercontent.com/ocd0711/Profiles/refs/heads/master/Surge/Ruleset/AppleSpeedtest.list
+    policy: Speedtest
+- rule_set:
+    match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Duolingo/Duolingo.list
+    policy: Duolingo
+- rule_set:
+    match: https://ruleset.skk.moe/List/non_ip/apple_cn.conf
+    policy: DIRECT
+- rule_set:
+    match: https://ruleset.skk.moe/List/domainset/apple_cdn.conf
+    policy: DIRECT
+- rule_set:
+    match: https://ruleset.skk.moe/List/non_ip/apple_services.conf
+    policy: Proxy
+- rule_set:
+    match: https://ruleset.skk.moe/List/non_ip/microsoft_cdn.conf
+    policy: DIRECT
+- rule_set:
+    match: https://ruleset.skk.moe/List/domainset/download.conf
+    policy: Download
+- rule_set:
+    match: https://ruleset.skk.moe/List/non_ip/download.conf
+    policy: Download
+- rule_set:
+    match: https://ruleset.skk.moe/List/domainset/cdn.conf
+    policy: Proxy
+- rule_set:
+    match: https://ruleset.skk.moe/List/non_ip/cdn.conf
+    policy: Proxy
+- rule_set:
+    match: https://ruleset.skk.moe/List/non_ip/global.conf
+    policy: Proxy
+- rule_set:
+    match: https://ruleset.skk.moe/List/non_ip/domestic.conf
+    policy: DIRECT
+- rule_set:
+    match: https://ruleset.skk.moe/List/non_ip/direct.conf
+    policy: DIRECT
+- rule_set:
+    match: https://ruleset.skk.moe/List/ip/domestic.conf
+    policy: DIRECT
+- rule_set:
+    match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/BOC/BOC.list
+    policy: DIRECT
+- rule_set:
+    match: https://ruleset.skk.moe/List/ip/china_ip.conf
+    policy: DIRECT
+- rule_set:
+    match: https://ruleset.skk.moe/List/non_ip/lan.conf
+    policy: DIRECT
+- rule_set:
+    match: https://ruleset.skk.moe/List/ip/lan.conf
+    policy: DIRECT
+- geoip:
+    match: CN
+    policy: DIRECT
+    no_resolve: true
+- default:
+    policy: Final
+mitm:
+  ca_p12: ""
+  ca_passphrase: ""
+  hostnames:
+    includes:
+    - www.google.cn
+    - api.abema.io
+    - '*.zhihu.com'
+    - sub.store
+modules:
+- url: https://raw.githubusercontent.com/chavyleung/scripts/master/box/rewrite/boxjs.rewrite.loon.plugin
+  compat_arguments:
+    PROXY: Proxy
+  enabled: true
+- url: https://raw.githubusercontent.com/sub-store-org/Sub-Store/refs/heads/master/config/Surge.sgmodule
+  compat_arguments:
+    sync: '#'
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/Block_HTTPDNS.lpx
+  enabled: true
+- url: https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/modules/script-hub.surge.sgmodule
+  enabled: true
+- url: https://github.com/NSRingo/Maps/releases/latest/download/iRingo.Maps.yaml
+  enabled: true
+- url: https://github.com/NSRingo/WeatherKit/releases/latest/download/iRingo.WeatherKit.yaml
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/BlockAdvertisers.lpx
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/Remove_ads_by_keli.lpx
+  enabled: true
+- url: https://raw.githubusercontent.com/IBL3ND/module/refs/heads/main/surge-loon-to-egern.yaml
+  enabled: true
+- url: https://raw.githubusercontent.com/kokoryh/Sparkle/refs/heads/master/release/surge/module/bilibili.sgmodule
+  enabled: true
+- url: https://raw.githubusercontent.com/Yuheng0101/X/main/Tasks/QDReader/profiles/qdreader.loon.plugin
+  compat_arguments:
+    CAPTURE_ENABLE: 'true'
+    QDREADER_DEBUG: 'false'
+    QDREADER_ADV_JOB_ENABLE: 'false'
+    QDREADER_EXTRA_ADV_JOB_ENABLE: 'false'
+    QDREADER_LOTTERY_ENABLE: 'false'
+    QDREADER_WEEKLY_EXCHANGE_ENABLE: 'false'
+    QDREADER_CHAPTER_CARD_ENABLE: 'false'
+    QDREADER_MESSAGE_BOX_ENABLE: 'false'
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/CosmosPodcast_remove_ads.lpx
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/iMaiCai_remove_ads.lpx
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/RedPaper_remove_ads.lpx
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/XiaoHeiHe_remove_ads.lpx
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/FleaMarket_remove_ads.lpx
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/Weibo_remove_ads.lpx
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/Taopiaopiao_remove_ads.lpx
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/Taobao_remove_ads.lpx
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/SF-Express_remove_ads.lpx
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/smzdm_remove_ads.lpx
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/LuckinCoffee_remove_ads.lpx
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/QiDian_remove_ads.lpx
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/PinDuoDuo_remove_ads.lpx
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/MaiMai_remove_ads.lpx
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/2bulu_remove_ads.lpx
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/CoolApk_remove_ads.lpx
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/JD_remove_ads.lpx
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/JD_Price.lpx
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/MrHema_remove_ads.lpx
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/Umetrip_remove_ads.lpx
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/Amap_remove_ads.lpx
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/TaobaoTravel_remove_ads.lpx
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/DingdongMaicai_remove_ads.lpx
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/DiDi_remove_ads.lpx
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/DidaPincheTaxi_remove_ads.lpx
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/Cainiao_remove_ads.lpx
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/Bilibili_remove_ads.lpx
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/BiliComic_remove_ads.lpx
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/Reddit_remove_ads.lpx
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/Line_remove_ads.lpx
+  enabled: true
+- url: https://kelee.one/Tool/Loon/Lpx/12306_remove_ads.lpx
+  enabled: true
