@@ -202,8 +202,8 @@ rules:
   - RULE-SET,download_non_ip,Download
 
   # 常见静态 CDN
-  - RULE-SET,cdn_domainset,Proxy
-  - RULE-SET,cdn_non_ip,Proxy
+  - RULE-SET,cdn_domainset,CDN
+  - RULE-SET,cdn_non_ip,CDN
 
   # Global 全球加速
   - RULE-SET,global_non_ip,Proxy
