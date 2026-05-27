@@ -84,8 +84,7 @@ policy_groups:
       policies:
         - Proxy
         - DIRECT
-      icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Final.png
-      hidden: true
+      icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Static.png
   - select:
       name: Download
       policies:
