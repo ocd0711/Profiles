@@ -2,7 +2,7 @@ ipv6: true
 vif_only: true
 hide_vpn_icon: false
 hijack_dns:
-  - "*:53"
+  - '*:53'
 geoip_db_url: https://raw.githubusercontent.com/Masaiki/GeoIP2-CN/release/Country.mmdb
 asn_db_url: https://raw.githubusercontent.com/P3TERX/GeoLite.mmdb/download/GeoLite2-ASN.mmdb
 direct_latency_test_url: http://captive.apple.com/generate_204
@@ -51,7 +51,7 @@ dns:
         match: https://rule.kelee.one/Loon/Global.lsr
         value: Global
     - domain_wildcard:
-        match: "*"
+        match: '*'
         value: Global
   proxy_nameservers:
     - https://doh.pub/dns-query
@@ -77,8 +77,9 @@ policy_groups:
       policies:
         - Proxy
         - DIRECT
+      flatten: false
       icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Final.png
-      hidden: true
+      hidden: false
   - select:
       name: CDN
       policies:
@@ -232,7 +233,7 @@ policy_groups:
       interval: 300
       tolerance: 10
       timeout: 3
-      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Airport.png
       hidden: true
   - external:
       name: Subscription
@@ -244,8 +245,8 @@ policy_groups:
       icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/airport.png
       hidden: false
 rules:
-  - rule_set:
-      match: https://raw.githubusercontent.com/zxfccmm4/Profiles/refs/heads/main/Surge/Ruleset/Unbreak.list
+  - domain:
+      match: sub1.sntp.me
       policy: DIRECT
   - rule_set:
       match: https://ruleset.skk.moe/List/domainset/reject.conf
@@ -266,7 +267,7 @@ rules:
       match: prpr.96110.cn.com
       policy: DIRECT
   - domain_keyword:
-      match: "96110"
+      match: '96110'
       policy: REJECT
   - domain_suffix:
       match: gjfzpt.cn
@@ -344,6 +345,14 @@ rules:
       match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/BOC/BOC.list
       policy: DIRECT
   - rule_set:
+      match: https://rule.kelee.one/Loon/ChinaASN.lsr
+      policy: DIRECT
+      disabled: false
+  - rule_set:
+      match: https://rule.kelee.one/Loon/ChinaDNS.lsr
+      policy: DIRECT
+      disabled: false
+  - rule_set:
       match: https://ruleset.skk.moe/List/ip/china_ip.conf
       policy: DIRECT
   - rule_set:
@@ -358,26 +367,51 @@ rules:
       no_resolve: true
   - default:
       policy: Final
+scriptings:
+  - generic:
+      name: 解锁检测
+      script_url: https://raw.githubusercontent.com/IBL3ND/module/refs/heads/main/Unlock-Detection_Widget.JS
+  - generic:
+      name: 网络测速
+      script_url: https://raw.githubusercontent.com/IBL3ND/module/refs/heads/main/NetSpeed_Widget.JS
+  - generic:
+      name: 数据中心
+      script_url: https://raw.githubusercontent.com/magicdan3688/MyProxyScripts/refs/heads/main/ip-dch.js
+  - generic:
+      name: 节日倒计时
+      script_url: https://raw.githubusercontent.com/IBL3ND/module/refs/heads/main/Holiday_Countdown.js
+  - generic:
+      name: 机场
+      script_url: https://raw.githubusercontent.com/IBL3ND/module/refs/heads/main/Sub_Widget.JS
 mitm:
   ca_p12: ""
   ca_passphrase: ""
   hostnames:
     includes:
       - sub.store
+widgets:
+  - name: 数据中心-Proxy
+    script_name: 数据中心
+    env:
+      POLICY: Proxy
+  - name: 数据中心-AI
+    script_name: 数据中心
+    env:
+      POLICY: AI
+  - name: 网络测速
+    script_name: 网络测速
+  - name: 节日倒计时
+    script_name: 节日倒计时
 modules:
-  - url: https://raw.githubusercontent.com/xream/scripts/main/surge/modules/interface-info/interface-info.sgmodule
-    enabled: true
-  - url: https://github.com/ocd0711/Profiles/blob/master/Surge/Module/Panel.sgmodule?raw=true
-    enabled: true
-  - url: https://raw.githubusercontent.com/githubdulong/Script/master/Surge/Streaming_Media_Unlock.sgmodule
-    enabled: true
   - url: https://raw.githubusercontent.com/chavyleung/scripts/master/box/rewrite/boxjs.rewrite.loon.plugin
     compat_arguments:
       PROXY: Proxy
     enabled: true
-  - url: https://raw.githubusercontent.com/sub-store-org/Sub-Store/refs/heads/master/config/Surge.sgmodule
+  - url: https://raw.githubusercontent.com/sub-store-org/Sub-Store/master/config/Egern.yaml
     compat_arguments:
-      sync: "#"
+      sync: '#'
+    enabled: true
+  - url: https://raw.githubusercontent.com/Tartarus2014/Loon-Script/refs/heads/master/Plugin/skip-proxy.lpx
     enabled: true
   - url: https://raw.githubusercontent.com/QingRex/LoonKissSurge/refs/heads/main/Surge/Official/拦截HTTPDNS.official.sgmodule
     enabled: true
@@ -395,22 +429,18 @@ modules:
     enabled: true
   - url: https://raw.githubusercontent.com/IBL3ND/module/refs/heads/main/surge-loon-to-egern.yaml
     enabled: true
-  - url: https://raw.githubusercontent.com/kokoryh/Sparkle/refs/heads/master/release/surge/module/bilibili.sgmodule
+  - url: https://raw.githubusercontent.com/curtinp118/Loon/main/plugins/v2ex.lpx
     enabled: true
-  - url: https://raw.githubusercontent.com/Yuheng0101/X/main/Tasks/QDReader/profiles/qdreader.loon.plugin
+  - url: https://raw.githubusercontent.com/kokoryh/Sparkle/refs/heads/master/release/loon/plugin/bilibili.lpx
     compat_arguments:
-      CAPTURE_ENABLE: "true"
-      QDREADER_DEBUG: "false"
-      QDREADER_ADV_JOB_ENABLE: "false"
-      QDREADER_EXTRA_ADV_JOB_ENABLE: "false"
-      QDREADER_LOTTERY_ENABLE: "false"
-      QDREADER_WEEKLY_EXCHANGE_ENABLE: "false"
-      QDREADER_CHAPTER_CARD_ENABLE: "false"
-      QDREADER_MESSAGE_BOX_ENABLE: "false"
+      displayUpList: show
+      purifyComment: 'true'
+      optimizeRequest: 'true'
+      sponsorBlock: 'true'
+      logLevel: error
+      PROXY: Proxy
     enabled: true
   - url: https://kelee.one/Tool/Loon/Lpx/JD_Price.lpx
-    enabled: true
-  - url: http://script.hub/file/_start_/https://ddgksf2013.top/scripts/fimo.vip.js/_end_/fimo.vip.sgmodule?type=qx-rewrite&n=Fimo%E4%BC%9A%E5%91%98%E8%A7%A3%E9%94%81%40ddgksf2013+%E7%95%85%E4%BA%AB%E4%BC%9A%E5%91%98%E4%B8%93%E5%B1%9E%E8%83%B6%E5%8D%B7&headers=User-Agent:surge&del=true&jqEnabled=true&target=surge-module&category=ddgksf2013
     enabled: true
   - url: https://raw.githubusercontent.com/QingRex/LoonKissSurge/refs/heads/main/Surge/%E5%BE%AE%E5%8D%9A%E5%8E%BB%E5%B9%BF%E5%91%8A.sgmodule
     enabled: true
@@ -433,8 +463,6 @@ modules:
   - url: https://kelee.one/Tool/Loon/Lpx/smzdm_remove_ads.lpx
     enabled: true
   - url: https://kelee.one/Tool/Loon/Lpx/LuckinCoffee_remove_ads.lpx
-    enabled: true
-  - url: https://kelee.one/Tool/Loon/Lpx/QiDian_remove_ads.lpx
     enabled: true
   - url: https://kelee.one/Tool/Loon/Lpx/PinDuoDuo_remove_ads.lpx
     enabled: true
