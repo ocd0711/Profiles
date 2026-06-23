@@ -221,7 +221,7 @@ policy_groups:
       policies:
         - Subscription
       flatten: true
-      filter: ^(?!.*(Gamer|香港|日本|HK|JP)).*$
+      filter: ^(?!.*(Gamer|香港|日本|美国|HK|JP|US)).*$
       icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/StreamingSE.png
       hidden: false
   - auto_test:
@@ -230,10 +230,10 @@ policy_groups:
         - Subscription
       flatten: true
       filter: ^(?!.*(Gamer|arm|emby)).*$
-      interval: 300
-      tolerance: 10
+      interval: 600
+      tolerance: 100
       timeout: 3
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Airport.png
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
       hidden: true
   - external:
       name: Subscription
@@ -245,23 +245,18 @@ policy_groups:
       icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/airport.png
       hidden: false
 rules:
+  - domain_suffix:
+      match: orb.local
+      policy: DIRECT
+  - ip_cidr:
+      match: 100.64.0.0/10
+      policy: DIRECT
+      no_resolve: true
   - domain:
       match: sub1.sntp.me
       policy: DIRECT
-  - rule_set:
-      match: https://ruleset.skk.moe/List/domainset/reject.conf
-      policy: REJECT
-  - rule_set:
-      match: https://ruleset.skk.moe/List/non_ip/reject-drop.conf
-      policy: REJECT
-  - rule_set:
-      match: https://ruleset.skk.moe/List/non_ip/reject.conf
-      policy: REJECT
-  - rule_set:
-      match: https://ruleset.skk.moe/List/ip/reject.conf
-      policy: REJECT
   - domain:
-      match: app-site-association.cdn-apple.com
+      match: msmp.abchina.com.cn
       policy: REJECT
   - domain:
       match: prpr.96110.cn.com
@@ -280,7 +275,7 @@ rules:
       policy: Streaming
   - rule_set:
       match: https://raw.githubusercontent.com/ocd0711/Profiles/master/Surge/Ruleset/emby-proxy.list
-      policy: Emby
+      policy: EmbyProxy
   - rule_set:
       match: https://ruleset.skk.moe/List/non_ip/ai.conf
       policy: AI
@@ -294,7 +289,10 @@ rules:
       match: https://ruleset.skk.moe/List/ip/telegram.conf
       policy: Telegram
   - rule_set:
-      match: https://raw.githubusercontent.com/dler-io/Rules/main/Surge/Surge%203/Provider/PayPal.list
+      match: https://ruleset.skk.moe/List/ip/telegram_asn.conf
+      policy: Telegram
+  - rule_set:
+      match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/PayPal/PayPal.list
       policy: Paypal
   - rule_set:
       match: https://ruleset.skk.moe/List/domainset/speedtest.conf
@@ -345,15 +343,13 @@ rules:
       match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/BOC/BOC.list
       policy: DIRECT
   - rule_set:
-      match: https://rule.kelee.one/Loon/ChinaASN.lsr
+      match: https://raw.githubusercontent.com/VirgilClyne/GetSomeFries/main/ruleset/ASN.China.list
       policy: DIRECT
-      disabled: false
-  - rule_set:
-      match: https://rule.kelee.one/Loon/ChinaDNS.lsr
-      policy: DIRECT
-      disabled: false
   - rule_set:
       match: https://ruleset.skk.moe/List/ip/china_ip.conf
+      policy: DIRECT
+  - rule_set:
+      match: https://ruleset.skk.moe/List/ip/china_ip_ipv6.conf
       policy: DIRECT
   - rule_set:
       match: https://ruleset.skk.moe/List/non_ip/lan.conf
