@@ -1,12 +1,12 @@
 ######### 锚点 start #######
 # 策略组相关
-pr: &pr { type: select, proxies: [AutoTest, HK, TW, JP, US, SG, Bypass], use: [ocd_provider] }
+pr: &pr { type: select, proxies: [AutoTest, Home, HK, TW, JP, US, SG, Bypass], use: [ocd_provider] }
 
-prn: &prn { type: select, proxies: [Proxy, HK, TW, JP, US, SG, Bypass] }
+prn: &prn { type: select, proxies: [Proxy, Home, HK, TW, JP, US, SG, Bypass] }
 
-prnp: &prnp { type: select, proxies: [US, Proxy, HK, TW, JP, SG, Bypass] }
+prnp: &prnp { type: select, proxies: [US, Proxy, Home, HK, TW, JP, SG, Bypass] }
 
-prnd: &prnd { type: select, proxies: [Proxy, HK, TW, JP, US, SG] }
+prnd: &prnd { type: select, proxies: [Proxy, Home, HK, TW, JP, US, SG] }
 
 pre: &pre { type: select, proxies: [SG, TW, US, Emby] }
 
@@ -95,6 +95,12 @@ proxy-groups:
   - { name: Duolingo, <<: *prn }
 
   #分隔,下面是地区分组
+  - {
+      name: Home,
+      type: select,
+      include-all-providers: true,
+      filter: "(?=.*Home)^((?!(Gamer|emby)).)*$",
+    }
   - {
       name: HK,
       type: url-test,

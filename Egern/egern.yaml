@@ -62,6 +62,7 @@ policy_groups:
       name: Proxy
       policies:
         - AutoTest
+        - Home
         - HK
         - TW
         - JP
@@ -90,6 +91,7 @@ policy_groups:
       name: Download
       policies:
         - Proxy
+        - Home
         - HK
         - TW
         - JP
@@ -102,6 +104,7 @@ policy_groups:
       name: Streaming
       policies:
         - Proxy
+        - Home
         - HK
         - TW
         - JP
@@ -122,6 +125,7 @@ policy_groups:
       name: AI
       policies:
         - Proxy
+        - Home
         - HK
         - TW
         - JP
@@ -133,6 +137,7 @@ policy_groups:
       name: Telegram
       policies:
         - Proxy
+        - Home
         - HK
         - TW
         - JP
@@ -145,6 +150,7 @@ policy_groups:
       policies:
         - US
         - Proxy
+        - Home
         - HK
         - TW
         - JP
@@ -156,6 +162,7 @@ policy_groups:
       name: Speedtest
       policies:
         - Proxy
+        - Home
         - HK
         - TW
         - JP
@@ -168,6 +175,7 @@ policy_groups:
       name: Duolingo
       policies:
         - Proxy
+        - Home
         - HK
         - TW
         - JP
@@ -175,6 +183,14 @@ policy_groups:
         - SG
         - DIRECT
       icon: https://raw.githubusercontent.com/ocd0711/Profiles/master/icon/duolingo_2.png
+      hidden: false
+  - select:
+      name: Home
+      policies:
+        - Subscription
+      flatten: true
+      filter: ^(?=.*Home)(?!.*(Gamer|emby)).*$
+      icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Home.png
       hidden: false
   - smart:
       name: HK
