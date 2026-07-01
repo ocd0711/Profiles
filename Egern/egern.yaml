@@ -184,20 +184,20 @@ policy_groups:
         - DIRECT
       icon: https://raw.githubusercontent.com/ocd0711/Profiles/master/icon/duolingo_2.png
       hidden: false
-  - select:
+  - smart:
       name: Home
       policies:
         - Subscription
       flatten: true
       filter: ^(?=.*Home)(?!.*(Gamer|emby)).*$
-      icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Home.png
+      icon: https://raw.githubusercontent.com/ocd0711/Profiles/master/icon/Home.png
       hidden: false
   - smart:
       name: HK
       policies:
         - Subscription
       flatten: true
-      filter: ^(?=.*(香港|HK|🇭🇰))(?!.*(Gamer|emby)).*$
+      filter: ^(?=.*(香港|HK|🇭🇰))(?!.*(Gamer|emby|Home)).*$
       icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png
       hidden: false
   - smart:
@@ -205,7 +205,7 @@ policy_groups:
       policies:
         - Subscription
       flatten: true
-      filter: ^(?=.*(台湾|TW|🇹🇼))(?!.*(Gamer|emby)).*$
+      filter: ^(?=.*(台湾|TW|🇹🇼))(?!.*(Gamer|emby|Home)).*$
       icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/TW.png
       hidden: false
   - smart:
@@ -213,7 +213,7 @@ policy_groups:
       policies:
         - Subscription
       flatten: true
-      filter: ^(?=.*(日本|JP|🇯🇵))(?!.*(Gamer|emby)).*$
+      filter: ^(?=.*(日本|JP|🇯🇵))(?!.*(Gamer|emby|Home)).*$
       icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png
       hidden: false
   - smart:
@@ -221,7 +221,7 @@ policy_groups:
       policies:
         - Subscription
       flatten: true
-      filter: ^(?=.*(美国|US|🇺🇸))(?!.*(Gamer|emby)).*$
+      filter: ^(?=.*(美国|US|🇺🇸))(?!.*(Gamer|emby|Home)).*$
       icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png
       hidden: false
   - smart:
@@ -229,7 +229,7 @@ policy_groups:
       policies:
         - Subscription
       flatten: true
-      filter: ^(?=.*(新加坡|SG|🇸🇬))(?!.*(Gamer|emby)).*$
+      filter: ^(?=.*(新加坡|SG|🇸🇬))(?!.*(Gamer|emby|Home)).*$
       icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png
       hidden: false
   - smart:
@@ -237,7 +237,7 @@ policy_groups:
       policies:
         - Subscription
       flatten: true
-      filter: ^(?!.*(Gamer|香港|日本|美国|HK|JP|US)).*$
+      filter: ^(?!.*(Gamer|香港|日本|美国|HK|JP|US|Home)).*$
       icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/StreamingSE.png
       hidden: false
   - auto_test:
@@ -245,7 +245,7 @@ policy_groups:
       policies:
         - Subscription
       flatten: true
-      filter: ^(?!.*(Gamer|arm|emby)).*$
+      filter: ^(?!.*(Gamer|arm|emby|Home)).*$
       interval: 600
       tolerance: 100
       timeout: 3

@@ -82,17 +82,17 @@ proxies:
     type: dns
 
 proxy-groups:
-  - { name: Proxy, <<: *pr }
-  - { name: Final, type: select, proxies: [Proxy, Bypass] }
-  - { name: CDN, type: select, proxies: [Proxy, Bypass] }
-  - { name: Download, <<: *prn }
-  - { name: Streaming, <<: *prnd }
-  - { name: EmbyProxy, <<: *pre }
-  - { name: AI, <<: *prnd }
-  - { name: Telegram, <<: *prnd }
-  - { name: Paypal, <<: *prnp }
-  - { name: Speedtest, <<: *prn }
-  - { name: Duolingo, <<: *prn }
+  - { name: Proxy, <<: *pr, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png }
+  - { name: Final, type: select, proxies: [Proxy, Bypass], icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Final.png }
+  - { name: CDN, type: select, proxies: [Proxy, Bypass], icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Static.png }
+  - { name: Download, <<: *prn, icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Download.png }
+  - { name: Streaming, <<: *prnd, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Streaming.png }
+  - { name: EmbyProxy, <<: *pre, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Emby.png }
+  - { name: AI, <<: *prnd, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/OpenAI.png }
+  - { name: Telegram, <<: *prnd, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Telegram.png }
+  - { name: Paypal, <<: *prnp, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Paypal.png }
+  - { name: Speedtest, <<: *prn, icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Speedtest.png }
+  - { name: Duolingo, <<: *prn, icon: https://raw.githubusercontent.com/ocd0711/Profiles/master/icon/duolingo_2.png }
 
   #分隔,下面是地区分组
   - {
@@ -100,49 +100,57 @@ proxy-groups:
       type: select,
       include-all-providers: true,
       filter: "(?=.*Home)^((?!(Gamer|emby)).)*$",
+      icon: https://raw.githubusercontent.com/ocd0711/Profiles/master/icon/Home.png,
     }
   - {
       name: HK,
       type: url-test,
       include-all-providers: true,
-      filter: "(?=.*(香港|HK|🇭🇰))^((?!(Gamer|emby)).)*$",
+      filter: "(?=.*(香港|HK|🇭🇰))^((?!(Gamer|emby|Home)).)*$",
+      icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png,
     }
   - {
       name: TW,
       type: url-test,
       include-all-providers: true,
-      filter: "(?=.*(台湾|TW|🇹🇼))^((?!(Gamer|emby)).)*$",
+      filter: "(?=.*(台湾|TW|🇹🇼))^((?!(Gamer|emby|Home)).)*$",
+      icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/TW.png,
     }
   - {
       name: JP,
       type: url-test,
       include-all-providers: true,
-      filter: "(?=.*(日本|JP|🇯🇵))^((?!(Gamer|emby)).)*$",
+      filter: "(?=.*(日本|JP|🇯🇵))^((?!(Gamer|emby|Home)).)*$",
+      icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png,
     }
   - {
       name: US,
       type: url-test,
       include-all-providers: true,
-      filter: "(?=.*(美国|US|🇺🇸))^((?!(Gamer|emby)).)*$",
+      filter: "(?=.*(美国|US|🇺🇸))^((?!(Gamer|emby|Home)).)*$",
+      icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png,
     }
   - {
       name: SG,
       type: url-test,
       include-all-providers: true,
-      filter: "(?=.*(新加坡|SG|🇸🇬))^((?!(Gamer|emby)).)*$",
+      filter: "(?=.*(新加坡|SG|🇸🇬))^((?!(Gamer|emby|Home)).)*$",
+      icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png,
     }
   - {
       name: Emby,
       type: url-test,
       include-all-providers: true,
-      filter: "^(?!.*(Gamer|香港|日本|美国|HK|JP|US)).*$",
+      filter: "^(?!.*(Gamer|香港|日本|美国|HK|JP|US|Home)).*$",
+      icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/StreamingSE.png,
     }
   - {
       name: AutoTest,
       type: url-test,
       include-all-providers: true,
       tolerance: 10,
-      filter: "^((?!(Gamer|arm|emby)).)*$",
+      filter: "^((?!(Gamer|arm|emby|Home)).)*$",
+      icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png,
     }
 
 rules:
