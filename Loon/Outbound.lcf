@@ -137,14 +137,14 @@ https://ruleset.skk.moe/List/ip/telegram.conf, policy=Telegram, tag=telegram_ip,
 https://ruleset.skk.moe/List/ip/telegram_asn.conf, policy=Telegram, tag=telegram_asn, enabled=true
 
 # Paypal 加速
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/PayPal/PayPal.list, policy=PayPal, tag=paypal, enabled=true
+https://magicrule.pages.dev/data/_shared/artifacts/PayPal_rules_e33777c2ef792abd.list, policy=PayPal, tag=paypal, enabled=true
 
 # 测速分流
 https://rule.kelee.one/Loon/Speedtest.lsr, policy=Speedtest, tag=speedtest, enabled=true
 https://raw.githubusercontent.com/ocd0711/Profiles/refs/heads/master/Surge/Ruleset/AppleSpeedtest.list, policy=Speedtest, tag=apple_speedtest, enabled=true
 
 # Duolingo 分流
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Duolingo/Duolingo.list, policy=Duolingo, tag=duolingo, enabled=true
+https://magicrule.pages.dev/data/_shared/artifacts/Duolingo_rules_8254e1b9f9e860d0.list, policy=Duolingo, tag=duolingo, enabled=true
 
 # Apple CN
 https://ruleset.skk.moe/List/non_ip/apple_cn.conf, policy=DIRECT, tag=apple_cn, enabled=true
@@ -171,7 +171,7 @@ https://raw.githubusercontent.com/VirgilClyne/GetSomeFries/main/ruleset/ASN.Chin
 https://ruleset.skk.moe/List/non_ip/domestic.conf, policy=DIRECT, tag=domestic_non_ip, enabled=true
 https://ruleset.skk.moe/List/non_ip/direct.conf, policy=DIRECT, tag=direct_non_ip, enabled=true
 https://ruleset.skk.moe/List/ip/domestic.conf, policy=DIRECT, tag=domestic_ip, enabled=true
-https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/BOC/BOC.list, policy=DIRECT, tag=boc, enabled=true
+https://magicrule.pages.dev/data/_shared/artifacts/BOC_rules_79305f937be72f79.list, policy=DIRECT, tag=boc, enabled=true
 https://ruleset.skk.moe/List/ip/china_ip.conf, policy=DIRECT, tag=china_ip, enabled=true
 https://ruleset.skk.moe/List/ip/china_ip_ipv6.conf, policy=DIRECT, tag=china_ip_ipv6, enabled=true
 

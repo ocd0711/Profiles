@@ -308,7 +308,7 @@ rules:
       match: https://ruleset.skk.moe/List/ip/telegram_asn.conf
       policy: Telegram
   - rule_set:
-      match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/PayPal/PayPal.list
+      match: https://magicrule.pages.dev/data/_shared/artifacts/PayPal_rules_6750724545dc8d5e.yaml
       policy: Paypal
   - rule_set:
       match: https://ruleset.skk.moe/List/domainset/speedtest.conf
@@ -317,7 +317,7 @@ rules:
       match: https://raw.githubusercontent.com/ocd0711/Profiles/refs/heads/master/Surge/Ruleset/AppleSpeedtest.list
       policy: Speedtest
   - rule_set:
-      match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Duolingo/Duolingo.list
+      match: https://magicrule.pages.dev/data/_shared/artifacts/Duolingo_rules_72d9b043a15dee51.yaml
       policy: Duolingo
   - rule_set:
       match: https://ruleset.skk.moe/List/non_ip/apple_cn.conf
@@ -356,7 +356,7 @@ rules:
       match: https://ruleset.skk.moe/List/ip/domestic.conf
       policy: DIRECT
   - rule_set:
-      match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/BOC/BOC.list
+      match: https://magicrule.pages.dev/data/_shared/artifacts/BOC_rules_4a91d6541912bcee.yaml
       policy: DIRECT
   - rule_set:
       match: https://raw.githubusercontent.com/VirgilClyne/GetSomeFries/main/ruleset/ASN.China.list
